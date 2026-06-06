@@ -616,38 +616,74 @@ def write_layout(results: dict[str, Any], project: dict[str, Any]) -> None:
     output.write_text(wrap_mxfile("Layout", cells, width=1400, height=900), encoding="utf-8")
 
 
-def write_mapoflow(results: dict[str, Any]) -> None:
+def write_mapoflow(results: dict[str, Any], project: dict[str, Any]) -> None:
     cells: list[str] = []
+    dims = results["layout"]["layout_dimensions_m"]
     SCALE_PX = 42
     ORIGIN_X, ORIGIN_Y = 30, 70
-    cells.append(mx_cell("title", "Mapofluxograma - fluxo sobre o arranjo fisico", "text;html=1;fontSize=20;fontStyle=1;", 40, 20, 700, 40))
-    cells.append(mx_cell("outer", "Area total proposta: 24 m x 16 m", "rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=none;", ORIGIN_X, ORIGIN_Y, 24*SCALE_PX, 16*SCALE_PX))
+
+    cells.append(mx_cell("title", "Mapofluxograma — Fluxo sobre o Arranjo Físico",
+                         "text;html=1;fontSize=18;fontStyle=1;", 30, 20, 700, 38))
+    cells.append(mx_cell("outer",
+                         f"Área total: {dims['length']} m × {dims['width']} m",
+                         "rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=none;",
+                         ORIGIN_X, ORIGIN_Y,
+                         dims["length"]*SCALE_PX, dims["width"]*SCALE_PX))
+
     for zone in layout_zones():
-        cells.append(
-            mx_cell(
-                zone["id"],
-                zone["name"],
-                f"rounded=0;whiteSpace=wrap;html=1;fillColor={zone['fill']};strokeColor=#333333;fontStyle=1;",
-                ORIGIN_X + zone["x_m"] * SCALE_PX,
-                ORIGIN_Y + zone["y_m"] * SCALE_PX,
-                zone["w_m"] * SCALE_PX,
-                zone["h_m"] * SCALE_PX,
-            )
-        )
-    points = [
-        ("n1", "1-2", 95, 170),
-        ("n2", "3-10", 405, 200),
-        ("n3", "11-17", 760, 200),
-        ("n4", "18-22", 460, 485),
-        ("n5", "23", 790, 430),
-        ("n6", "24-26", 130, 485),
-    ]
-    for pid, label, x, y in points:
-        cells.append(mx_cell(pid, label, "ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#111111;fontStyle=1;", x, y, 74, 48))
-    for idx in range(len(points) - 1):
-        cells.append(mx_edge(f"flow{idx+1}", points[idx][0], points[idx + 1][0]))
+        cells.append(mx_cell(
+            zone["id"], zone["name"],
+            f"rounded=0;whiteSpace=wrap;html=1;fillColor={zone['fill']};strokeColor=#888;fontStyle=2;fontSize=11;",
+            ORIGIN_X + zone["x_m"]*SCALE_PX,
+            ORIGIN_Y + zone["y_m"]*SCALE_PX,
+            zone["w_m"]*SCALE_PX,
+            zone["h_m"]*SCALE_PX,
+        ))
+
+    # Process positions on layout in meters (center of each process node)
+    MAPO_POS = {
+        1:  (11.5, 12.0),  2:  (7.5,  10.0),  3:  (5.5,  9.5),
+        4:  (3.0,  2.5),   5:  (6.0,  2.5),    6:  (8.8,  1.3),
+        7:  (8.8,  5.0),   8:  (11.5, 1.3),    9:  (11.5, 2.8),
+        10: (6.5,  13.0),  11: (11.2, 9.5),    12: (15.3, 1.6),
+        13: (18.5, 1.5),   14: (15.0, 5.3),    15: (22.0, 1.5),
+        16: (22.0, 4.0),   17: (22.0, 7.0),    18: (12.5, 9.0),
+        19: (15.0, 10.5),  20: (2.5,  9.5),    21: (17.5, 10.5),
+        22: (21.5, 10.5),  23: (2.5,  11.5),   24: (21.5, 13.0),
+        25: (7.5,  13.8),  26: (11.5, 14.5),
+    }
+
+    procs_by_num = {p["number"]: p for p in results["processes"]}
+    node_ids: dict[int, str] = {}
+    node_size = 40  # square pixels for each process circle node
+
+    for num, (mx_pos, my_pos) in MAPO_POS.items():
+        pid = f"mp{num}"
+        node_ids[num] = pid
+        proc = procs_by_num[num]
+        fill = PROCESS_COLORS.get(proc["type"], "#FFFFFF")
+        cells.append(mx_cell(
+            pid, str(num),
+            f"ellipse;whiteSpace=wrap;html=1;fillColor={fill};strokeColor=#333;fontStyle=1;fontSize=11;",
+            ORIGIN_X + mx_pos*SCALE_PX - node_size//2,
+            ORIGIN_Y + my_pos*SCALE_PX - node_size//2,
+            node_size, node_size,
+        ))
+
+    flow_edges = (
+        [(i, i+1) for i in range(1, 10)] +
+        [(2, 11)] + [(i, i+1) for i in range(11, 17)] +
+        [(10, 18), (17, 18)] +
+        [(i, i+1) for i in range(18, 26)]
+    )
+    seen: set[tuple[int,int]] = set()
+    for idx, (a, b) in enumerate(flow_edges):
+        if (a, b) not in seen:
+            seen.add((a, b))
+            cells.append(mx_edge(f"mf{idx}", node_ids[a], node_ids[b], str(b)))
+
     output = ROOT / "03_diagramas" / "mapofluxograma.drawio"
-    output.write_text(wrap_mxfile("Mapofluxograma", cells), encoding="utf-8")
+    output.write_text(wrap_mxfile("Mapofluxograma", cells, width=1400, height=900), encoding="utf-8")
 
 
 def split_svg_lines(text: str, max_chars: int = 21, max_lines: int = 3) -> list[str]:
@@ -1715,7 +1751,7 @@ def main() -> None:
     write_slide_script(results)
     write_flowchart(results)
     write_layout(results, project)
-    write_mapoflow(results)
+    write_mapoflow(results, project)
     write_render_assets(results, project)
     write_dashboard(results)
     print(f"Generated outputs from {DATA_PATH}")
