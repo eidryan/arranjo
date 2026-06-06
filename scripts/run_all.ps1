@@ -12,8 +12,15 @@ if (-not (Test-Path $NodeModules)) {
 
 Push-Location $Root
 try {
+  Write-Host "[1/3] generate_outputs.py ..."
   & $Python (Join-Path $Root "scripts\generate_outputs.py")
+  Write-Host "[2/3] build_workbook.mjs ..."
   & $Node (Join-Path $Root "scripts\build_workbook.mjs")
+  Write-Host "[3/3] build_latex.py ..."
+  & $Python (Join-Path $Root "scripts\build_latex.py")
+  Write-Host ""
+  Write-Host "Done. Open 06_dashboard\index.html to review."
+  Write-Host "LaTeX ready at 07_latex\relatorio_tecnico.tex — upload to Overleaf (XeLaTeX)."
 }
 finally {
   Pop-Location
