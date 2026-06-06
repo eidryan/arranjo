@@ -333,6 +333,43 @@ function addFormulas() {
   styleTable(sheet, 3, 1, rows.length, 3);
 }
 
+function addObjetivos() {
+  const sheet = workbook.worksheets.add("Objetivos");
+  addTitle(sheet, "Objetivos do projeto", 1);
+  const rows = [["Objetivo"]];
+  (results.project_objectives || []).forEach((obj) => {
+    rows.push([obj]);
+  });
+  writeBlock(sheet, 3, 1, rows);
+  styleTable(sheet, 3, 1, rows.length, 1);
+}
+
+function addMercado() {
+  const sheet = workbook.worksheets.add("Mercado");
+  addTitle(sheet, "Segmentos de mercado", 3);
+  const rows = [["Segmento", "Descrição", "Justificativa"]];
+  (results.market_segments || []).forEach(seg => {
+    rows.push([seg.name, seg.description, seg.justification]);
+  });
+  writeBlock(sheet, 3, 1, rows);
+  styleTable(sheet, 3, 1, rows.length, 3);
+}
+
+function addConclusoes() {
+  const sheet = workbook.worksheets.add("Conclusoes");
+  addTitle(sheet, "Conclusoes do projeto", 2);
+  const rows = [["Tópico", "Conteúdo"]];
+  const c = results.conclusions || {};
+  rows.push(["Resumo", c.summary || ""]);
+  rows.push(["Gargalo", c.bottleneck_note || ""]);
+  rows.push(["Layout", c.layout_note || ""]);
+  (c.improvements || []).forEach((imp, i) => {
+    rows.push([`Melhoria ${i + 1}`, imp]);
+  });
+  writeBlock(sheet, 3, 1, rows);
+  styleTable(sheet, 3, 1, rows.length, 2);
+}
+
 addPremissas();
 addMembers();
 addResumo();
@@ -345,6 +382,9 @@ addCapacity();
 addSelected();
 addAreas();
 addFormulas();
+addObjetivos();
+addMercado();
+addConclusoes();
 
 const check = await workbook.inspect({
   kind: "table",
