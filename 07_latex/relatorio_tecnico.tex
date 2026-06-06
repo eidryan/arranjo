@@ -1,0 +1,261 @@
+% =====================================================
+% Relatório Técnico — Projeto de Fábrica
+% Kit para Churrasco Tramontina 22399036 — UFF Niterói
+% Gerado por scripts/build_latex.py — NÃO EDITAR
+% Compilar no Overleaf com XeLaTeX
+% =====================================================
+\documentclass[12pt,a4paper,oneside,english,brazil]{abntex2}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{svg}
+\usepackage{amsmath}
+
+\titulo{Projeto de Fábrica --- Kit para Churrasco Tramontina com Laminas em Aco Inox e Cabos em Madeira Natural 3 Pecas}
+\autor{Bernardo Gomes \\
+Lucas de Mello \\
+Clara Hermsdorff \\
+João Deccax \\
+André Baptista}
+\local{Niterói, RJ}
+\data{\the\year}
+\instituicao{Universidade Federal Fluminense (UFF)}
+
+\begin{document}
+
+\imprimircapa
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\clearpage
+
+\chapter{Objetivos do Projeto}
+\begin{itemize}
+  \item Desenvolver proposta básica de fábrica para o Kit para Churrasco Tramontina 3 Peças (ref. 22399036), com meta semanal de 1.000 kits bons.
+  \item Dimensionar processos, equipamentos e arranjo físico para integrar setor metálico, setor madeira, montagem e embalagem em fluxo contínuo.
+  \item Calcular quantidades de equipamentos com base em tempos-padrão estimados, eficiência, confiabilidade e rendimento de processo explicitados.
+  \item Selecionar segmentos de mercado visados e justificar a meta de produção proposta.
+  \item Gerar documentação técnica auditável — tabelas, fluxograma, mapofluxograma, layout esquemático e memória de cálculo — com todas as fontes identificadas.
+\end{itemize}
+
+\chapter{Descrição do Produto}
+O produto a ser fabricado é o \textbf{Kit para Churrasco Tramontina com Laminas em Aco Inox e Cabos em Madeira Natural 3 Pecas}, referência \textbf{22399036}, composto por faca chef 8 polegadas, garfo trinchante e tábua retangular de madeira Maçaranduba.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.5\textwidth]{figuras/fluxograma_render}
+  \caption{Produto principal --- Kit Churrasco Tramontina 22399036}
+  \legend{Fonte: Tramontina.}
+\end{figure}
+
+Dimensões da embalagem: 38.9 cm × 21.6 cm × 4.0 cm. Peso: 1.23 kg.
+
+\chapter{Estrutura do Produto (Itens Pais e Filhos)}
+O kit embalado (item pai) é composto pelos seguintes itens filhos:
+\begin{itemize}
+  \item Faca chef 8 pol. com lamina em aco inox, cabo de madeira natural e rebites de aluminio (Fazer)
+  \item Garfo trinchante com lamina em aco inox, cabo de madeira natural e rebites de aluminio (Fazer)
+  \item Tabua retangular em madeira Macaranduba com acabamento natural (Fazer)
+  \item Cartela/cinta impressa da embalagem (Comprar)
+  \item Blister/suporte plastico transparente (Comprar)
+  \item Etiqueta/codigo de barras/rastreabilidade (Comprar)
+  \item Caixa de transporte para envio (Comprar)
+\end{itemize}
+
+\chapter{Segmentos de Mercado}
+\textbf{Varejo doméstico de churrasco} --- Supermercados, lojas de utilidades domésticas, redes especializadas em artigos para churrasco e grill. O Brasil possui cultura de churrasco consolidada com consumo frequente em todas as regiões. O produto Tramontina tem reconhecimento nacional de qualidade, garantia de 5 anos e distribuição em redes de varejo de grande porte.
+
+\textbf{Kits presente e gift sets sazonais} --- Embalagem blister/cartela posiciona o produto como presente premium em datas comemorativas. Dia dos Pais, Natal e Dia dos Namorados concentram picos de demanda por kits de churrasco. A embalagem compacta (1,23 kg, 38,9 cm de altura) facilita o transporte e o presenteamento.
+
+\textbf{E-commerce e marketplaces} --- Venda direta em plataformas como Mercado Livre, Amazon Brasil, Shopee e site próprio Tramontina. As dimensões compactas da embalagem (38,9 × 4,0 × 21,6 cm, 1,23 kg) são favoráveis ao custo de frete e compatíveis com restrições de tamanho das plataformas. O produto já está disponível no e-commerce oficial da Tramontina.
+
+\textbf{Brindes corporativos e programas de fidelidade} --- Empresas que oferecem brindes premium para clientes, colaboradores e ações de marketing. A certificação FSC C125626 da madeira e a marca Tramontina reforçam o apelo sustentável, relevante para empresas com compromissos ESG. O kit representa um brinde de alto valor percebido com custo unitário moderado.
+
+
+\chapter{Meta Semanal de Produção}
+A meta estabelecida é de \textbf{1000 kits bons por semana}.
+
+\begin{table}[H]
+\IBGEtab{\caption{Quadro Resumo --- Meta e Premissas de Produção}\label{tab:meta}}{}
+\begin{tabular}{ll}
+\toprule
+Premissa & Valor \\
+\midrule
+  Meta semanal de kits bons & 1000 kits/semana \\
+  Rendimento final assumido & 95% \\
+  Demanda bruta calculada & 1053 kits/semana \\
+  Jornada de trabalho & 5 dias × 1 turno × 7 h úteis \\
+  Horas úteis semanais & 35.0 h/semana \\
+  Ritmo médio necessário & 30.09 kits/h \\
+  Eficiência geral & 85% \\
+  Confiabilidade & 92% \\
+\bottomrule
+\end{tabular}
+{\legend{Fonte: elaborado pelos autores.}}
+\end{table}
+
+\chapter{Tabela 1 --- Componentes, Quantidades e Fazer/Comprar}
+\begin{table}[H]
+\IBGEtab{\caption{Tabela 1 --- Componentes, Quantidades e Fazer/Comprar}\label{tab:bom}}{}
+\begin{tabular}{p{8cm}ccc}
+\toprule
+Componente & Qtd. & Unidade & Fazer/Comprar \\
+\midrule
+  Faca chef 8 pol. com lamina em aco inox, cabo de madeira natural e rebites de aluminio & 1 & unidade & Fazer \\
+  Garfo trinchante com lamina em aco inox, cabo de madeira natural e rebites de aluminio & 1 & unidade & Fazer \\
+  Tabua retangular em madeira Macaranduba com acabamento natural & 1 & unidade & Fazer \\
+  Cartela/cinta impressa da embalagem & 1 & unidade & Comprar \\
+  Blister/suporte plastico transparente & 1 & unidade & Comprar \\
+  Etiqueta/codigo de barras/rastreabilidade & 1 & conjunto & Comprar \\
+  Caixa de transporte para envio & 1 & unidade & Comprar \\
+\bottomrule
+\end{tabular}
+{\legend{Fonte: elaborado pelos autores com base na composição oficial Tramontina SKU 22399036.}}
+\end{table}
+
+\chapter{Tabela 2 --- Processos de Fabricação}
+O processo produtivo é dividido em 26 etapas distribuídas em trilha metálica (1--10), trilha madeira (2 e 11--17) e montagem/embalagem (18--26).
+
+\begin{longtable}{p{0.6cm}p{5.5cm}p{2.8cm}p{5.5cm}}
+\caption{Tabela 2 --- Processos de Fabricação}\label{tab:processos}\\
+\toprule
+N° & Processo & Tipo & Recursos Físicos \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\tablename\ \thetable{} -- (continuação)}\\
+\toprule N° & Processo & Tipo & Recursos Físicos \\\midrule
+\endhead
+  1 & Receber materias-primas e embalagens & Inspeção & doca, paleteira, balanca, bancada de conferencia \\
+  2 & Armazenar aco inox, madeira, rebites e embalagens & Armazenagem & porta-paletes, estantes, area seca para madeira \\
+  3 & Transportar aco inox para corte & Transporte & carrinho/plataforma \\
+  4 & Cortar blanks da faca e do garfo em chapa de aco inox & Operação & corte laser fibra CNC \\
+  5 & Inspecionar blanks metalicos & Inspeção & paquimetro, gabarito, bancada \\
+  6 & Realizar tratamento termico das pecas metalicas & Operação & forno de tratamento termico com carro \\
+  7 & Aguardar resfriamento/estabilizacao das pecas & Espera & rack metalico resistente a temperatura \\
+  8 & Rebarbar, lixar e polir faca e garfo & Operação & lixadeira/politriz de metal, exaustao, EPIs \\
+  9 & Afiar faca & Operação & afiador de facas, refrigeracao, gabarito de angulo \\
+  10 & Armazenar pecas metalicas semiacabadas & Armazenagem & racks identificados \\
+  11 & Transportar madeira para corte & Transporte & carrinho para tabuas e sarrafos \\
+  12 & Cortar tabuas e blanks dos cabos & Operação & esquadrejadeira, coletor de po \\
+  13 & Fresar sulco da tabua e usinar/furar cabos & Operação & router CNC, fresas, presilhas \\
+  14 & Lixar tabua e cabos & Operação & lixadeira de madeira, bancadas, exaustao \\
+  15 & Aplicar acabamento superficial na madeira & Operação & bancada de acabamento, exaustao, suportes \\
+  16 & Aguardar cura/secagem do acabamento & Espera & estante de cura e area ventilada \\
+  17 & Inspecionar pecas de madeira & Inspeção & gabaritos, inspeção visual, paquimetro \\
+  18 & Transportar pecas para montagem & Transporte & carrinhos e caixas plasticas \\
+  19 & Montar cabos na faca e no garfo por rebitagem & Operação & rebitadeira pneumatica, gabaritos, compressor \\
+  20 & Inspecionar montagem, fio e acabamento & Inspeção & bancada, gabarito, check-list de qualidade \\
+  21 & Montar kit na cartela/blister & Operação & bancada de montagem, berco de posicionamento \\
+  22 & Selar blister/cartela & Operação & seladora blister tipo carrossel \\
+  23 & Inspecionar kit embalado & Inspeção & bancada, check-list visual, amostragem dimensional \\
+  24 & Embalar para envio em caixa de transporte & Operação & bancada de embalagem, etiquetadora, fita \\
+  25 & Armazenar produto acabado & Armazenagem & porta-paletes, enderecamento, FIFO \\
+  26 & Transportar para expedicao & Transporte & paleteira, doca de expedicao \\
+\bottomrule
+\end{longtable}
+
+\chapter{Fluxograma do Processo}
+\begin{figure}[H]
+  \centering
+  \includesvg[width=\textwidth]{figuras/fluxograma_render}
+  \caption{Fluxograma --- símbolos ASME, duas trilhas paralelas}
+  \legend{Fonte: elaborado pelos autores.}
+\end{figure}
+
+\chapter{Tabela 3 --- Equipamentos Selecionados}
+\begin{longtable}{p{3.5cm}p{2.5cm}p{2.5cm}p{2.8cm}p{3.0cm}}
+\caption{Tabela 3 --- Equipamentos Selecionados}\label{tab:equipamentos}\\
+\toprule
+Tipo & Fornecedor & Modelo & Dimensões & Cap. Fabricante \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable{} -- (continuação)}\\
+\toprule Tipo & Fornecedor & Modelo & Dimensões & Cap. \\\midrule
+\endhead
+  Corte laser fibra CNC & Madetech & CNC Fiber Pro 1530 & 5.0×3.0×1.8 m & Laser 1500 W; mesa 3000x1500 mm; velocidade de corte 20.000 mm/min; inox ate 2 mm \\
+  Forno de tratamento termico & Cecomatec & 703.099 com carro & 3.75×1.6×3.1 m & Camara 800x1400x900 mm; temperatura maxima 1200 C \\
+  Lixadeira/politriz de cinta para metal & Fornecedor a definir & Lixadeira/politriz industrial & 1.2×0.8×1.4 m & A definir em cotacao; usar tempo padrao \\
+  Afiador de facas & Maksiwa & AF.650 & 0.65×0.33×0.36 m & Afia facas ate 650 mm; 1440 RPM \\
+  Esquadrejadeira para madeira & Maksiwa & BMS.1900.I & 2.6×2.2×1.5 m & Capacidade de corte 1900 mm; serra 4000 RPM \\
+  Router CNC para madeira & Maksiwa Store & RTC.1313 & 1.7×2.0×1.8 m & Area util 1300x1300x200 mm; velocidade maxima 30 m/min; spindle 3,5 kW \\
+  Lixadeira de madeira & Fornecedor a definir & Lixadeira de cinta/orbital industrial & 1.2×0.8×1.4 m & A definir em cotacao; usar tempo padrao \\
+  Bancada de acabamento de madeira & Montagem interna & Bancada + exaustao/local de cura & 2.0×1.0×0.9 m & Capacidade definida por tempo padrao e area de cura \\
+  Rebitadeira pneumatica & Rebitex & 404-S TURBO-X & 1.2×0.8×1.5 m & Capacidade ate 4 toneladas; velocidade 60 ciclos/min \\
+  Bancada de montagem e inspecao & Montagem interna & Bancada industrial & 2.0×1.0×0.9 m & Capacidade definida por tempo padrao \\
+  Seladora blister tipo carrossel & Flockcolor & 40 x 50 cm semiautomatica pneumatica & 1.9×1.6×1.6 m & Area util 40x50 cm; produtividade 4 prensadas/min; dimensao 190x160x160 cm \\
+\bottomrule
+\end{longtable}
+
+\chapter{Cálculo do Equipamento Selecionado}
+O equipamento selecionado é \textbf{Router CNC para madeira} --- Maksiwa Store RTC.1313.
+
+\textbf{Motivo:} A tabua e os cabos exigem usinagem/fresagem com repetibilidade; a etapa tem tempo padrao estimado alto e tende a ser gargalo.
+
+\textbf{Operação(ões):} 13 - Fresar sulco da tabua e usinar/furar cabos
+
+\begin{table}[H]
+\IBGEtab{\caption{Memória de Cálculo --- Router CNC Maksiwa RTC.1313}\label{tab:calc}}{}
+\begin{tabular}{ll}
+\toprule
+Parâmetro & Valor \\
+\midrule
+  Tempo padrão por kit & 120 s/kit \\
+  Taxa nominal & 3600 / 120 = 30.00 kits/h \\
+  Eficiência geral & 85% \\
+  Confiabilidade & 92% \\
+  Rendimento do processo & 98% \\
+  Taxa efetiva & 22.99 kits/h \\
+  Capacidade semanal/máquina & 804.68 kits/semana \\
+  Demanda bruta semanal & 1053 kits/semana \\
+  Quantidade necessária & $\lceil 1053 / 804.68 \rceil = 2$ \\
+  Utilização estimada & 65.4% \\
+\bottomrule
+\end{tabular}
+{\legend{Fonte: fabricante (Maksiwa Store) e premissas de engenharia. Fórmula: $N = \lceil D / (T \times H \times E \times C \times R) \rceil$.}}
+\end{table}
+
+\chapter{Arranjo Físico Esquemático}
+A fábrica proposta ocupa 24 m × 16 m = 384 m². Área requerida: 260.4 m². Ocupação: 67.8\%.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=\textwidth]{figuras/layout_render}
+  \caption{Arranjo físico --- equipamentos e zonas funcionais}
+  \legend{Fonte: elaborado pelos autores.}
+\end{figure}
+
+\chapter{Mapofluxograma}
+\begin{figure}[H]
+  \centering
+  \includesvg[width=\textwidth]{figuras/mapofluxograma_render}
+  \caption{Mapofluxograma --- 26 processos sobre o arranjo físico}
+  \legend{Fonte: elaborado pelos autores.}
+\end{figure}
+
+\chapter{Conclusões}
+O projeto propõe uma fábrica de 384 m² (24 m × 16 m) capaz de produzir 1.000 kits bons/semana (demanda bruta calculada de 1.053 kits/semana) em regime de 1 turno de 7 h úteis/dia, 5 dias/semana. A ocupação do espaço é de 67,8\%, com área requerida estimada de 260,4 m².
+
+\textbf{Gargalo:} O gargalo identificado é o Router CNC (Maksiwa RTC.1313), com utilização de 65,4\% para 2 unidades. A operação de fresagem do sulco da tábua e usinagem dos cabos tem o maior tempo-padrão estimado (120 s/kit). Para dobrar a capacidade sem alterar o prédio, seria necessário adicionar um terceiro turno ou uma terceira unidade do Router CNC.
+
+\textbf{Layout:} O arranjo físico proposto é misto: setores funcionais para metal e madeira (com equipamentos agrupados por processo) e fluxo em célula/linha para montagem e embalagem. A folga de 32,2\% da área (123,6 m²) permite expansão futura sem reforma estrutural.
+
+\textbf{O que seria necessário para aprimorar o projeto:}
+\begin{itemize}
+  \item Realizar estudo de tempos real (cronoanálise) no chão de fábrica para substituir os tempos-padrão estimados por valores medidos.
+  \item Cotar equipamentos com pelo menos dois fornecedores alternativos para validar capacidades e dimensões antes de fechar o layout definitivo.
+  \item Conduzir um piloto de produção de 1 semana para validar o rendimento final de 95\% e as taxas de eficiência e confiabilidade assumidas.
+  \item Avaliar implantação de Controle Estatístico de Processo (CEP) nas etapas críticas de tratamento térmico e afiação para reduzir variabilidade de qualidade.
+  \item Modelar cenários de demanda (±30\%) para dimensionar plano de capacidade de resposta sem ociosidade excessiva ou gargalos adicionais.
+  \item Incluir análise de custo de implantação e payback como complemento ao projeto básico de fábrica.
+\end{itemize}
+
+\bibliography{referencias}
+
+\end{document}

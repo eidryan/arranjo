@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 2418" width="1100" height="2418" font-family="Arial,Helvetica,sans-serif">
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#444"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<text x="550" y="28" text-anchor="middle" font-size="17" font-weight="bold">Fluxograma do Processo — Kit Churrasco Tramontina 22399036</text>
+<text x="220" y="278" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Trilha Metálica</text>
+<text x="880" y="278" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Trilha Madeira</text>
+<line x1="550" y1="119" x2="550" y2="149" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="550,237 550,283 220,283 220,276" fill="none" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="550,237 550,283 880,283 880,276" fill="none" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="364" x2="220" y2="394" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="482" x2="220" y2="512" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="600" x2="220" y2="630" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="718" x2="220" y2="748" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="836" x2="220" y2="866" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="954" x2="220" y2="984" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="220" y1="1072" x2="220" y2="1102" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="880" y1="364" x2="880" y2="394" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="880" y1="482" x2="880" y2="512" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="880" y1="600" x2="880" y2="630" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="880" y1="718" x2="880" y2="748" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="880" y1="836" x2="880" y2="866" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="880" y1="954" x2="880" y2="984" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="220,1190 220,1236 550,1236 550,1232" fill="none" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="880,1072 880,1236 550,1236" fill="none" stroke="#444" stroke-width="2"/>
+<line x1="550" y1="1320" x2="550" y2="1350" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="1438" x2="550" y2="1468" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="1556" x2="550" y2="1586" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="1674" x2="550" y2="1704" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="1792" x2="550" y2="1822" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="1910" x2="550" y2="1940" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="2028" x2="550" y2="2058" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="2146" x2="550" y2="2176" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+<polygon points="550,29 650,75 550,121 450,75" fill="#FFF2CC" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="55" font-size="11" font-weight="bold" fill="#222">1</text>
+<text x="550" y="70" text-anchor="middle" font-size="10" fill="#222">Receber</text>
+<text x="550" y="84" text-anchor="middle" font-size="10" fill="#222">materias-primas e...</text>
+<polygon points="450,151 650,151 550,239" fill="#EADCF8" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="173" font-size="11" font-weight="bold" fill="#222">2</text>
+<text x="550" y="188" text-anchor="middle" font-size="10" fill="#222">Armazenar aco inox,</text>
+<text x="550" y="202" text-anchor="middle" font-size="10" fill="#222">madeira, rebites e...</text>
+<polygon points="120,298 278,298 278,276 320,320 278,364 278,342 120,342" fill="#D9EAF7" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="300" font-size="11" font-weight="bold" fill="#222">3</text>
+<text x="220" y="315" text-anchor="middle" font-size="10" fill="#222">Transportar aco inox</text>
+<text x="220" y="329" text-anchor="middle" font-size="10" fill="#222">para corte</text>
+<ellipse cx="220" cy="438" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="418" font-size="11" font-weight="bold" fill="#222">4</text>
+<text x="220" y="433" text-anchor="middle" font-size="10" fill="#222">Cortar blanks da faca</text>
+<text x="220" y="447" text-anchor="middle" font-size="10" fill="#222">e do garfo em chapa de...</text>
+<polygon points="220,510 320,556 220,602 120,556" fill="#FFF2CC" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="536" font-size="11" font-weight="bold" fill="#222">5</text>
+<text x="220" y="551" text-anchor="middle" font-size="10" fill="#222">Inspecionar blanks</text>
+<text x="220" y="565" text-anchor="middle" font-size="10" fill="#222">metalicos</text>
+<ellipse cx="220" cy="674" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="654" font-size="11" font-weight="bold" fill="#222">6</text>
+<text x="220" y="669" text-anchor="middle" font-size="10" fill="#222">Realizar tratamento</text>
+<text x="220" y="683" text-anchor="middle" font-size="10" fill="#222">termico das pecas...</text>
+<path d="M 120,750 L 275,750 Q 320,750 320,792 Q 320,834 275,834 L 120,834 Z" fill="#F4CCCC" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="772" font-size="11" font-weight="bold" fill="#222">7</text>
+<text x="220" y="787" text-anchor="middle" font-size="10" fill="#222">Aguardar</text>
+<text x="220" y="801" text-anchor="middle" font-size="10" fill="#222">resfriamento/estabilizacao...</text>
+<ellipse cx="220" cy="910" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="890" font-size="11" font-weight="bold" fill="#222">8</text>
+<text x="220" y="905" text-anchor="middle" font-size="10" fill="#222">Rebarbar, lixar e</text>
+<text x="220" y="919" text-anchor="middle" font-size="10" fill="#222">polir faca e garfo</text>
+<ellipse cx="220" cy="1028" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="1008" font-size="11" font-weight="bold" fill="#222">9</text>
+<text x="220" y="1023" text-anchor="middle" font-size="10" fill="#222">Afiar faca</text>
+<polygon points="120,1104 320,1104 220,1192" fill="#EADCF8" stroke="#444" stroke-width="1.8"/>
+<text x="140" y="1126" font-size="11" font-weight="bold" fill="#222">10</text>
+<text x="220" y="1141" text-anchor="middle" font-size="10" fill="#222">Armazenar pecas</text>
+<text x="220" y="1155" text-anchor="middle" font-size="10" fill="#222">metalicas semiacabadas</text>
+<polygon points="780,298 938,298 938,276 980,320 938,364 938,342 780,342" fill="#D9EAF7" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="300" font-size="11" font-weight="bold" fill="#222">11</text>
+<text x="880" y="315" text-anchor="middle" font-size="10" fill="#222">Transportar madeira</text>
+<text x="880" y="329" text-anchor="middle" font-size="10" fill="#222">para corte</text>
+<ellipse cx="880" cy="438" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="418" font-size="11" font-weight="bold" fill="#222">12</text>
+<text x="880" y="433" text-anchor="middle" font-size="10" fill="#222">Cortar tabuas e blanks</text>
+<text x="880" y="447" text-anchor="middle" font-size="10" fill="#222">dos cabos</text>
+<ellipse cx="880" cy="556" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="536" font-size="11" font-weight="bold" fill="#222">13</text>
+<text x="880" y="551" text-anchor="middle" font-size="10" fill="#222">Fresar sulco da tabua</text>
+<text x="880" y="565" text-anchor="middle" font-size="10" fill="#222">e usinar/furar cabos</text>
+<ellipse cx="880" cy="674" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="654" font-size="11" font-weight="bold" fill="#222">14</text>
+<text x="880" y="669" text-anchor="middle" font-size="10" fill="#222">Lixar tabua e cabos</text>
+<ellipse cx="880" cy="792" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="772" font-size="11" font-weight="bold" fill="#222">15</text>
+<text x="880" y="787" text-anchor="middle" font-size="10" fill="#222">Aplicar acabamento</text>
+<text x="880" y="801" text-anchor="middle" font-size="10" fill="#222">superficial na madeira</text>
+<path d="M 780,868 L 935,868 Q 980,868 980,910 Q 980,952 935,952 L 780,952 Z" fill="#F4CCCC" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="890" font-size="11" font-weight="bold" fill="#222">16</text>
+<text x="880" y="905" text-anchor="middle" font-size="10" fill="#222">Aguardar cura/secagem</text>
+<text x="880" y="919" text-anchor="middle" font-size="10" fill="#222">do acabamento</text>
+<polygon points="880,982 980,1028 880,1074 780,1028" fill="#FFF2CC" stroke="#444" stroke-width="1.8"/>
+<text x="800" y="1008" font-size="11" font-weight="bold" fill="#222">17</text>
+<text x="880" y="1023" text-anchor="middle" font-size="10" fill="#222">Inspecionar pecas de</text>
+<text x="880" y="1037" text-anchor="middle" font-size="10" fill="#222">madeira</text>
+<polygon points="450,1254 608,1254 608,1232 650,1276 608,1320 608,1298 450,1298" fill="#D9EAF7" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1256" font-size="11" font-weight="bold" fill="#222">18</text>
+<text x="550" y="1271" text-anchor="middle" font-size="10" fill="#222">Transportar pecas para</text>
+<text x="550" y="1285" text-anchor="middle" font-size="10" fill="#222">montagem</text>
+<ellipse cx="550" cy="1394" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1374" font-size="11" font-weight="bold" fill="#222">19</text>
+<text x="550" y="1389" text-anchor="middle" font-size="10" fill="#222">Montar cabos na faca e</text>
+<text x="550" y="1403" text-anchor="middle" font-size="10" fill="#222">no garfo por rebitagem</text>
+<polygon points="550,1466 650,1512 550,1558 450,1512" fill="#FFF2CC" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1492" font-size="11" font-weight="bold" fill="#222">20</text>
+<text x="550" y="1507" text-anchor="middle" font-size="10" fill="#222">Inspecionar montagem,</text>
+<text x="550" y="1521" text-anchor="middle" font-size="10" fill="#222">fio e acabamento</text>
+<ellipse cx="550" cy="1630" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1610" font-size="11" font-weight="bold" fill="#222">21</text>
+<text x="550" y="1625" text-anchor="middle" font-size="10" fill="#222">Montar kit na</text>
+<text x="550" y="1639" text-anchor="middle" font-size="10" fill="#222">cartela/blister</text>
+<ellipse cx="550" cy="1748" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1728" font-size="11" font-weight="bold" fill="#222">22</text>
+<text x="550" y="1743" text-anchor="middle" font-size="10" fill="#222">Selar blister/cartela</text>
+<polygon points="550,1820 650,1866 550,1912 450,1866" fill="#FFF2CC" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1846" font-size="11" font-weight="bold" fill="#222">23</text>
+<text x="550" y="1861" text-anchor="middle" font-size="10" fill="#222">Inspecionar kit</text>
+<text x="550" y="1875" text-anchor="middle" font-size="10" fill="#222">embalado</text>
+<ellipse cx="550" cy="1984" rx="100" ry="42" fill="#D9EAD3" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="1964" font-size="11" font-weight="bold" fill="#222">24</text>
+<text x="550" y="1979" text-anchor="middle" font-size="10" fill="#222">Embalar para envio em</text>
+<text x="550" y="1993" text-anchor="middle" font-size="10" fill="#222">caixa de transporte</text>
+<polygon points="450,2060 650,2060 550,2148" fill="#EADCF8" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="2082" font-size="11" font-weight="bold" fill="#222">25</text>
+<text x="550" y="2097" text-anchor="middle" font-size="10" fill="#222">Armazenar produto</text>
+<text x="550" y="2111" text-anchor="middle" font-size="10" fill="#222">acabado</text>
+<polygon points="450,2198 608,2198 608,2176 650,2220 608,2264 608,2242 450,2242" fill="#D9EAF7" stroke="#444" stroke-width="1.8"/>
+<text x="470" y="2200" font-size="11" font-weight="bold" fill="#222">26</text>
+<text x="550" y="2215" text-anchor="middle" font-size="10" fill="#222">Transportar para</text>
+<text x="550" y="2229" text-anchor="middle" font-size="10" fill="#222">expedicao</text>
+<rect x="857" y="47" width="225" height="178" fill="white" stroke="#aaa" stroke-width="1" rx="4"/>
+<text x="970" y="65" text-anchor="middle" font-size="12" font-weight="bold">Legenda</text>
+<rect x="865" y="76" width="26" height="19" fill="#D9EAD3" stroke="#444" stroke-width="1"/>
+<text x="900" y="90" font-size="12" fill="#222">Operação</text>
+<rect x="865" y="104" width="26" height="19" fill="#FFF2CC" stroke="#444" stroke-width="1"/>
+<text x="900" y="118" font-size="12" fill="#222">Inspeção</text>
+<rect x="865" y="132" width="26" height="19" fill="#EADCF8" stroke="#444" stroke-width="1"/>
+<text x="900" y="146" font-size="12" fill="#222">Armazenagem</text>
+<rect x="865" y="160" width="26" height="19" fill="#F4CCCC" stroke="#444" stroke-width="1"/>
+<text x="900" y="174" font-size="12" fill="#222">Espera</text>
+<rect x="865" y="188" width="26" height="19" fill="#D9EAF7" stroke="#444" stroke-width="1"/>
+<text x="900" y="202" font-size="12" fill="#222">Transporte</text>
+</svg>
