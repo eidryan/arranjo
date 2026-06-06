@@ -642,15 +642,19 @@ def write_mapoflow(results: dict[str, Any], project: dict[str, Any]) -> None:
 
     # Process positions on layout in meters (center of each process node)
     MAPO_POS = {
-        1:  (11.5, 12.0),  2:  (7.5,  10.0),  3:  (5.5,  9.5),
-        4:  (3.0,  2.5),   5:  (6.0,  2.5),    6:  (8.8,  1.3),
-        7:  (8.8,  5.0),   8:  (11.5, 1.3),    9:  (11.5, 2.8),
-        10: (6.5,  13.0),  11: (11.2, 9.5),    12: (15.3, 1.6),
-        13: (18.5, 1.5),   14: (15.0, 5.3),    15: (22.0, 1.5),
-        16: (22.0, 4.0),   17: (22.0, 7.0),    18: (12.5, 9.0),
-        19: (15.0, 10.5),  20: (2.5,  9.5),    21: (17.5, 10.5),
-        22: (21.5, 10.5),  23: (2.5,  11.5),   24: (21.5, 13.0),
-        25: (7.5,  13.8),  26: (11.5, 14.5),
+        # Metal track
+        1:  (11.5, 12.0),  2:  ( 7.5, 10.0),  3:  ( 3.5,  8.3),
+        4:  ( 2.5,  2.0),  5:  ( 5.5,  2.0),  6:  ( 8.5,  2.0),
+        7:  ( 8.5,  4.5),  8:  (11.0,  4.5),  9:  (11.0,  6.5),
+        10: ( 9.5,  7.0),
+        # Wood track
+        11: (14.0,  7.5),  12: (15.0,  2.0),  13: (19.0,  2.0),
+        14: (19.0,  5.0),  15: (22.0,  5.0),  16: (22.0,  7.0),
+        17: (21.0,  8.5),
+        # Assembly / shipping
+        18: (14.0,  9.5),  19: (14.5, 11.5),  20: (16.5, 11.5),
+        21: (18.5, 11.5),  22: (21.5, 11.0),  23: (21.5, 12.5),
+        24: (21.5, 14.0),  25: ( 7.5, 14.5),  26: (11.5, 15.0),
     }
 
     procs_by_num = {p["number"]: p for p in results["processes"]}
@@ -933,15 +937,35 @@ def build_layout_svg(results: dict[str, Any], project: dict[str, Any], with_flow
 
     if with_flow:
         MAPO_POS = {
-            1:  (11.5, 12.0),  2:  (7.5,  10.0),  3:  (5.5,  9.5),
-            4:  (3.0,  2.5),   5:  (6.0,  2.5),    6:  (8.8,  1.3),
-            7:  (8.8,  5.0),   8:  (11.5, 1.3),    9:  (11.5, 2.8),
-            10: (6.5,  13.0),  11: (11.2, 9.5),    12: (15.3, 1.6),
-            13: (18.5, 1.5),   14: (15.0, 5.3),    15: (22.0, 1.5),
-            16: (22.0, 4.0),   17: (22.0, 7.0),    18: (12.5, 9.0),
-            19: (15.0, 10.5),  20: (2.5,  9.5),    21: (17.5, 10.5),
-            22: (21.5, 10.5),  23: (2.5,  11.5),   24: (21.5, 13.0),
-            25: (7.5,  13.8),  26: (11.5, 14.5),
+            # Metal track — Setor Metal (x=0–13 m, y=0–8 m)
+            1:  (11.5, 12.0),  # Recebimento
+            2:  ( 7.5, 10.0),  # Estoque MP
+            3:  ( 3.5,  8.3),  # boundary Metal
+            4:  ( 2.5,  2.0),  # top-left Metal (laser)
+            5:  ( 5.5,  2.0),  # top Metal — 4→5 horizontal
+            6:  ( 8.5,  2.0),  # top-center (forno) — 5→6 horizontal
+            7:  ( 8.5,  4.5),  # center Metal (espera) — 6→7 down
+            8:  (11.0,  4.5),  # right Metal (politriz) — 7→8 horizontal
+            9:  (11.0,  6.5),  # right-lower (afiador) — 8→9 down
+            10: ( 9.5,  7.0),  # bottom Metal (armazenar semi)
+            # Wood track — Setor Madeira (x=13–24 m, y=0–9 m)
+            11: (14.0,  7.5),  # boundary Wood
+            12: (15.0,  2.0),  # top-left Wood
+            13: (19.0,  2.0),  # top-center — 12→13 horizontal
+            14: (19.0,  5.0),  # below P13 — 13→14 straight down
+            15: (22.0,  5.0),  # right of P14 — 14→15 horizontal
+            16: (22.0,  7.0),  # below P15 — 15→16 straight down
+            17: (21.0,  8.5),  # bottom-right (offset from P15/P16 column)
+            # Assembly / shipping (x=13–24 m, y=9–16 m)
+            18: (14.0,  9.5),  # entry Montagem
+            19: (14.5, 11.5),  # Montagem left (rebitagem)
+            20: (16.5, 11.5),  # INLINE next to P19 (insp. montagem) — was (2.5, 9.5)
+            21: (18.5, 11.5),  # Montagem right — 19→20→21 horizontal
+            22: (21.5, 11.0),  # Embalagem top (selar blister)
+            23: (21.5, 12.5),  # INLINE below P22 (insp. embalado) — was (2.5, 11.5)
+            24: (21.5, 14.0),  # Embalagem bottom — 22↓23↓24 down
+            25: ( 7.5, 14.5),  # Est. Intermediário
+            26: (11.5, 15.0),  # Recebimento (expedição)
         }
         PCOLORS = {
             "operacao": "#D9EAD3", "transporte": "#D9EAF7",
@@ -949,15 +973,46 @@ def build_layout_svg(results: dict[str, Any], project: dict[str, Any], with_flow
         }
         procs_by_num = {p["number"]: p for p in results["processes"]}
         metal_set  = set(range(1, 11))
-        wood_set   = {11,12,13,14,15,16,17}
+        wood_set   = {11, 12, 13, 14, 15, 16, 17}
         metal_color, wood_color, single_color = "#1e7a3c", "#a05000", "#17212b"
 
+        # Pre-compute SVG pixel coordinates for each node
+        svgx = {n: MARGIN + x * SCALE for n, (x, _) in MAPO_POS.items()}
+        svgy = {n: 55     + y * SCALE for n, (_, y) in MAPO_POS.items()}
+
+        # 4 edges routed as L-shaped polylines; all others are straight lines
+        ELBOW_EDGES: dict[tuple[int, int], list[tuple[float, float]]] = {
+            # 2→11: V-then-H — go UP first to avoid crossing Recebimento zone
+            (2, 11):  [
+                (svgx[2],  svgy[11]),   # same x as P2, same y as P11
+                (svgx[11], svgy[11]),   # arrive at P11
+            ],
+            # 10→18: H-then-V — exit Metal rightward at zone boundary, then drop
+            (10, 18): [
+                (svgx[18], svgy[10]),   # same x as P18, same y as P10
+                (svgx[18], svgy[18]),   # arrive at P18
+            ],
+            # 17→18: V-then-H — drop then go left (offset from P15/P16 column)
+            (17, 18): [
+                (svgx[17], svgy[18]),   # same x as P17, same y as P18
+                (svgx[18], svgy[18]),   # arrive at P18
+            ],
+            # 24→25: V-H-V — route along bottom border below all zones
+            (24, 25): [
+                (svgx[24], 55 + 15.8 * SCALE),  # drop below layout flow
+                (svgx[25], 55 + 15.8 * SCALE),  # travel left
+                (svgx[25], svgy[25]),             # arrive at P25
+            ],
+        }
+
         flow_edges = (
-            [(i, i+1) for i in range(1, 10)] +
-            [(2, 11)] + [(i, i+1) for i in range(11, 17)] +
+            [(i, i + 1) for i in range(1, 10)] +
+            [(2, 11)] + [(i, i + 1) for i in range(11, 17)] +
             [(10, 18), (17, 18)] +
-            [(i, i+1) for i in range(18, 26)]
+            [(i, i + 1) for i in range(18, 26)]
         )
+
+        # Draw edges FIRST (behind nodes)
         for (a, b) in flow_edges:
             if b in wood_set or (a == 2 and b == 11):
                 color = wood_color
@@ -965,37 +1020,63 @@ def build_layout_svg(results: dict[str, Any], project: dict[str, Any], with_flow
                 color = metal_color
             else:
                 color = single_color
-            ax = MARGIN + MAPO_POS[a][0] * SCALE
-            ay = 55     + MAPO_POS[a][1] * SCALE
-            bx = MARGIN + MAPO_POS[b][0] * SCALE
-            by_ = 55    + MAPO_POS[b][1] * SCALE
-            parts.append(
-                f'<line x1="{ax:.1f}" y1="{ay:.1f}" x2="{bx:.1f}" y2="{by_:.1f}" '
-                f'stroke="{color}" stroke-width="2.5" marker-end="url(#arr)" opacity="0.8"/>'
-            )
 
+            if (a, b) in ELBOW_EDGES:
+                pts = (f"{svgx[a]:.1f},{svgy[a]:.1f} " +
+                       " ".join(f"{wx:.1f},{wy:.1f}" for wx, wy in ELBOW_EDGES[(a, b)]))
+                parts.append(
+                    f'<polyline points="{pts}" fill="none" stroke="{color}" '
+                    f'stroke-width="2.5" marker-end="url(#arr)" opacity="0.85"/>'
+                )
+            else:
+                parts.append(
+                    f'<line x1="{svgx[a]:.1f}" y1="{svgy[a]:.1f}" '
+                    f'x2="{svgx[b]:.1f}" y2="{svgy[b]:.1f}" '
+                    f'stroke="{color}" stroke-width="2.5" marker-end="url(#arr)" opacity="0.85"/>'
+                )
+
+        # Draw nodes ON TOP of edges
         for num, (mx_pos, my_pos) in MAPO_POS.items():
             px_ = MARGIN + mx_pos * SCALE
             py_ = 55     + my_pos * SCALE
             proc = procs_by_num[num]
             fill = PCOLORS.get(proc["type"], "#FFFFFF")
-            stroke = metal_color if num in metal_set else (wood_color if num in wood_set else single_color)
+            stroke = (metal_color if num in metal_set
+                      else wood_color if num in wood_set
+                      else single_color)
             parts.append(
                 f'<circle cx="{px_:.1f}" cy="{py_:.1f}" r="16" '
                 f'fill="{fill}" stroke="{stroke}" stroke-width="2"/>'
             )
             parts.append(
-                f'<text x="{px_:.1f}" y="{py_+5:.1f}" text-anchor="middle" '
+                f'<text x="{px_:.1f}" y="{py_ + 5:.1f}" text-anchor="middle" '
                 f'font-size="11" font-weight="bold" fill="{stroke}">{num}</text>'
             )
 
-        lx, ly = SVG_W - 185, 58
-        parts.append(f'<rect x="{lx-5}" y="{ly-5}" width="178" height="80" fill="white" stroke="#aaa" stroke-width="1" rx="3"/>')
-        parts.append(f'<text x="{lx+85}" y="{ly+10}" text-anchor="middle" font-size="11" font-weight="bold">Legenda</text>')
-        for li, (color, label) in enumerate([(metal_color,"Trilha Metálica"),(wood_color,"Trilha Madeira"),(single_color,"Montagem/Embalagem")]):
-            iy = ly + 30 + li * 17
-            parts.append(f'<line x1="{lx}" y1="{iy}" x2="{lx+22}" y2="{iy}" stroke="{color}" stroke-width="3"/>')
-            parts.append(f'<text x="{lx+28}" y="{iy+4}" font-size="10" fill="#222">{label}</text>')
+        # Legend — bottom-right, clear of all nodes
+        lx = SVG_W - 190
+        ly = SVG_H - 102
+        parts.append(
+            f'<rect x="{lx - 5}" y="{ly - 5}" width="183" height="95" '
+            f'fill="white" stroke="#ccc" stroke-width="1" rx="4"/>'
+        )
+        parts.append(
+            f'<text x="{lx + 88}" y="{ly + 12}" text-anchor="middle" '
+            f'font-size="11" font-weight="bold" fill="#333">Legenda</text>'
+        )
+        for li, (color, label) in enumerate([
+            (metal_color,  "Trilha Metálica (1–10)"),
+            (wood_color,   "Trilha Madeira (11–17)"),
+            (single_color, "Montagem/Embalagem (18–26)"),
+        ]):
+            iy = ly + 32 + li * 22
+            parts.append(
+                f'<line x1="{lx}" y1="{iy}" x2="{lx + 22}" y2="{iy}" '
+                f'stroke="{color}" stroke-width="3"/>'
+            )
+            parts.append(
+                f'<text x="{lx + 30}" y="{iy + 4}" font-size="10" fill="#333">{label}</text>'
+            )
 
     parts.append("</svg>")
     return "\n".join(parts)
