@@ -1,22 +1,36 @@
-<mxfile host="app.diagrams.net" modified="2026-05-13T00:00:00.000Z" agent="Codex"><diagram name="Layout"><mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0"><root><mxCell id="0"/>
+<mxfile host="app.diagrams.net" modified="2026-05-13T00:00:00.000Z" agent="Codex"><diagram name="Layout"><mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0"><root><mxCell id="0"/>
 <mxCell id="1" parent="0"/>
-<mxCell id="title" value="Layout esquematico - 24 m x 16 m" style="text;html=1;fontSize=20;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="650" height="40" as="geometry"/></mxCell>
-<mxCell id="outer" value="Dimensoes totais: 24 m x 16 m = 384 m2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=none;" vertex="1" parent="1"><mxGeometry x="30" y="70" width="910" height="540" as="geometry"/></mxCell>
-<mxCell id="receb" value="Recebimento / MP" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="80" width="180" height="210" as="geometry"/></mxCell>
-<mxCell id="metal" value="Setor metal" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9EAF7;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="260" y="80" width="300" height="240" as="geometry"/></mxCell>
-<mxCell id="madeira" value="Setor madeira" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="610" y="80" width="310" height="240" as="geometry"/></mxCell>
-<mxCell id="montagem" value="Montagem e embalagem" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EADCF8;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="260" y="380" width="400" height="210" as="geometry"/></mxCell>
-<mxCell id="qualidade" value="Inspecao / CQ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE5CD;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="700" y="380" width="180" height="95" as="geometry"/></mxCell>
-<mxCell id="pa" value="PA / Expedicao" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F4CCCC;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="380" width="180" height="210" as="geometry"/></mxCell>
-<mxCell id="apoio" value="Apoio / manutencao" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EEEEEE;strokeColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="700" y="505" width="220" height="85" as="geometry"/></mxCell>
-<mxCell id="eq0" value="Laser fibra" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="130" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq1" value="Forno TT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="420" y="130" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq2" value="Politriz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="230" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq3" value="Afiador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="420" y="230" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq4" value="Esquadrej." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="640" y="130" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq5" value="2x Router CNC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="780" y="130" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq6" value="Lixadeira" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="640" y="235" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq7" value="Acabamento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="780" y="235" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq8" value="Rebitadeira" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="300" y="450" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq9" value="Bancadas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="430" y="450" width="90" height="48" as="geometry"/></mxCell>
-<mxCell id="eq10" value="Seladora" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="450" width="90" height="48" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>
+<mxCell id="title" value="Layout Esquemático — 24 m × 16 m" style="text;html=1;fontSize=18;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="30" y="20" width="700" height="38" as="geometry"/></mxCell>
+<mxCell id="outer" value="Área total: 24×16 = 384 m²" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=none;" vertex="1" parent="1"><mxGeometry x="30" y="70" width="1008" height="672" as="geometry"/></mxCell>
+<mxCell id="setor_metal" value="Setor Metal
+104 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="30" y="70" width="546" height="336" as="geometry"/></mxCell>
+<mxCell id="setor_madeira" value="Setor Madeira
+99 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="576" y="70" width="462" height="378" as="geometry"/></mxCell>
+<mxCell id="montagem" value="Montagem
+49 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9EAF7;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="576" y="448" width="294" height="294" as="geometry"/></mxCell>
+<mxCell id="embalagem" value="Embalagem
+28 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F4CCCC;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="870" y="448" width="168" height="294" as="geometry"/></mxCell>
+<mxCell id="inspecao_qc" value="Inspeção / QC
+20 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE5CD;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="30" y="406" width="210" height="168" as="geometry"/></mxCell>
+<mxCell id="apoio" value="Apoio / Manutenção
+20 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="30" y="574" width="210" height="168" as="geometry"/></mxCell>
+<mxCell id="estoque_mp" value="Estoque MP
+20 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EADCF8;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="240" y="406" width="210" height="168" as="geometry"/></mxCell>
+<mxCell id="estoque_inter" value="Est. Intermediário
+20 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EADCF8;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="240" y="574" width="210" height="168" as="geometry"/></mxCell>
+<mxCell id="recebimento" value="Recebimento / Expedição
+24 m²" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CFE2F3;strokeColor=#555;fontStyle=1;fontSize=11;" vertex="1" parent="1"><mxGeometry x="450" y="406" width="126" height="336" as="geometry"/></mxCell>
+<mxCell id="eq0" value="CNC Fiber Pro 1530" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="43" y="83" width="210" height="126" as="geometry"/></mxCell>
+<mxCell id="eq1" value="703.099 com carro" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="316" y="83" width="158" height="67" as="geometry"/></mxCell>
+<mxCell id="eq2" value="Lixadeira/politriz industrial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="513" y="83" width="50" height="34" as="geometry"/></mxCell>
+<mxCell id="eq3" value="AF.650" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="513" y="154" width="27" height="14" as="geometry"/></mxCell>
+<mxCell id="eq4" value="BMS.1900.I" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="589" y="83" width="109" height="92" as="geometry"/></mxCell>
+<mxCell id="eq5" value="Router CNC (1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="736" y="83" width="71" height="84" as="geometry"/></mxCell>
+<mxCell id="eq6" value="Router CNC (2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="736" y="188" width="71" height="84" as="geometry"/></mxCell>
+<mxCell id="eq7" value="Lixadeira de cinta/orbital industrial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="589" y="259" width="50" height="34" as="geometry"/></mxCell>
+<mxCell id="eq8" value="Bancada + exaustao/local de cura" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="904" y="83" width="84" height="42" as="geometry"/></mxCell>
+<mxCell id="eq9" value="404-S TURBO-X" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="589" y="461" width="50" height="34" as="geometry"/></mxCell>
+<mxCell id="eq10" value="Bancada Montagem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="702" y="461" width="84" height="42" as="geometry"/></mxCell>
+<mxCell id="eq11" value="40 x 50 cm semiautomatica pneumatica" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="883" y="461" width="80" height="67" as="geometry"/></mxCell>
+<mxCell id="eq12" value="Bancada QC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="43" y="419" width="84" height="42" as="geometry"/></mxCell>
+<mxCell id="eq13" value="Bancada Embalagem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;" vertex="1" parent="1"><mxGeometry x="883" y="629" width="84" height="42" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>

@@ -543,69 +543,95 @@ def write_flowchart(results: dict[str, Any]) -> None:
 
 
 def layout_zones() -> list[dict[str, Any]]:
+    # 9 zones covering exactly 24 m x 16 m = 384 m2, no gaps, no overlaps.
     return [
-        {"id": "receb", "name": "Recebimento / MP", "x": 40, "y": 80, "w": 180, "h": 210, "fill": "#D9EAD3"},
-        {"id": "metal", "name": "Setor metal", "x": 260, "y": 80, "w": 300, "h": 240, "fill": "#D9EAF7"},
-        {"id": "madeira", "name": "Setor madeira", "x": 610, "y": 80, "w": 310, "h": 240, "fill": "#FFF2CC"},
-        {"id": "montagem", "name": "Montagem e embalagem", "x": 260, "y": 380, "w": 400, "h": 210, "fill": "#EADCF8"},
-        {"id": "qualidade", "name": "Inspecao / CQ", "x": 700, "y": 380, "w": 180, "h": 95, "fill": "#FCE5CD"},
-        {"id": "pa", "name": "PA / Expedicao", "x": 40, "y": 380, "w": 180, "h": 210, "fill": "#F4CCCC"},
-        {"id": "apoio", "name": "Apoio / manutencao", "x": 700, "y": 505, "w": 220, "h": 85, "fill": "#EEEEEE"},
+        {"id": "setor_metal",    "name": "Setor Metal",             "x_m": 0,  "y_m": 0,  "w_m": 13, "h_m": 8,  "fill": "#D9EAD3"},
+        {"id": "setor_madeira",  "name": "Setor Madeira",           "x_m": 13, "y_m": 0,  "w_m": 11, "h_m": 9,  "fill": "#FFF2CC"},
+        {"id": "montagem",       "name": "Montagem",                "x_m": 13, "y_m": 9,  "w_m": 7,  "h_m": 7,  "fill": "#D9EAF7"},
+        {"id": "embalagem",      "name": "Embalagem",               "x_m": 20, "y_m": 9,  "w_m": 4,  "h_m": 7,  "fill": "#F4CCCC"},
+        {"id": "inspecao_qc",    "name": "Inspeção / QC",           "x_m": 0,  "y_m": 8,  "w_m": 5,  "h_m": 4,  "fill": "#FCE5CD"},
+        {"id": "apoio",          "name": "Apoio / Manutenção",      "x_m": 0,  "y_m": 12, "w_m": 5,  "h_m": 4,  "fill": "#F5F5F5"},
+        {"id": "estoque_mp",     "name": "Estoque MP",              "x_m": 5,  "y_m": 8,  "w_m": 5,  "h_m": 4,  "fill": "#EADCF8"},
+        {"id": "estoque_inter",  "name": "Est. Intermediário",      "x_m": 5,  "y_m": 12, "w_m": 5,  "h_m": 4,  "fill": "#EADCF8"},
+        {"id": "recebimento",    "name": "Recebimento / Expedição", "x_m": 10, "y_m": 8,  "w_m": 3,  "h_m": 8,  "fill": "#CFE2F3"},
     ]
 
 
-def write_layout(results: dict[str, Any]) -> None:
+def write_layout(results: dict[str, Any], project: dict[str, Any]) -> None:
     cells: list[str] = []
     dims = results["layout"]["layout_dimensions_m"]
-    cells.append(mx_cell("title", f"Layout esquematico - {dims['length']} m x {dims['width']} m", "text;html=1;fontSize=20;fontStyle=1;", 40, 20, 650, 40))
-    cells.append(mx_cell("outer", f"Dimensoes totais: {dims['length']} m x {dims['width']} m = {results['layout']['layout_total_area_m2']:.0f} m2", "rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=none;", 30, 70, 910, 540))
-    for zone in layout_zones():
-        cells.append(
-            mx_cell(
-                zone["id"],
-                zone["name"],
-                f"rounded=0;whiteSpace=wrap;html=1;fillColor={zone['fill']};strokeColor=#333333;fontStyle=1;",
-                zone["x"],
-                zone["y"],
-                zone["w"],
-                zone["h"],
-            )
-        )
+    SCALE_PX = 42
+    ORIGIN_X, ORIGIN_Y = 30, 70
 
-    equipment_positions = [
-        ("laser_fibra", "Laser fibra", 290, 130),
-        ("forno_tt", "Forno TT", 420, 130),
-        ("politriz_metal", "Politriz", 290, 230),
-        ("afiador", "Afiador", 420, 230),
-        ("esquadrejadeira", "Esquadrej.", 640, 130),
-        ("router_cnc", "2x Router CNC", 780, 130),
-        ("lixadeira_madeira", "Lixadeira", 640, 235),
-        ("acabamento_madeira", "Acabamento", 780, 235),
-        ("rebitadeira", "Rebitadeira", 300, 450),
-        ("bancada_montagem", "Bancadas", 430, 450),
-        ("seladora_blister", "Seladora", 560, 450),
+    cells.append(mx_cell("title", f"Layout Esquemático — {dims['length']} m × {dims['width']} m",
+                         "text;html=1;fontSize=18;fontStyle=1;", 30, 20, 700, 38))
+    cells.append(mx_cell("outer",
+                         f"Área total: {dims['length']}×{dims['width']} = {results['layout']['layout_total_area_m2']:.0f} m²",
+                         "rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=none;",
+                         ORIGIN_X, ORIGIN_Y, dims["length"]*SCALE_PX, dims["width"]*SCALE_PX))
+
+    for zone in layout_zones():
+        cells.append(mx_cell(
+            zone["id"],
+            f"{zone['name']}\n{zone['w_m']*zone['h_m']} m²",
+            f"rounded=0;whiteSpace=wrap;html=1;fillColor={zone['fill']};strokeColor=#555;fontStyle=1;fontSize=11;",
+            ORIGIN_X + zone["x_m"]*SCALE_PX,
+            ORIGIN_Y + zone["y_m"]*SCALE_PX,
+            zone["w_m"]*SCALE_PX,
+            zone["h_m"]*SCALE_PX,
+        ))
+
+    eq_map = {e["id"]: e for e in project["equipment"]}
+    PLACEMENTS = [
+        ("laser_fibra",        None,                     0.3,  0.3),
+        ("forno_tt",           None,                     6.8,  0.3),
+        ("politriz_metal",     None,                    11.5,  0.3),
+        ("afiador",            None,                    11.5,  2.0),
+        ("esquadrejadeira",    None,                    13.3,  0.3),
+        ("router_cnc",         "Router CNC (1)",        16.8,  0.3),
+        ("router_cnc",         "Router CNC (2)",        16.8,  2.8),
+        ("lixadeira_madeira",  None,                    13.3,  4.5),
+        ("acabamento_madeira", None,                    20.8,  0.3),
+        ("rebitadeira",        None,                    13.3,  9.3),
+        ("bancada_montagem",   "Bancada Montagem",      16.0,  9.3),
+        ("seladora_blister",   None,                    20.3,  9.3),
+        ("bancada_montagem",   "Bancada QC",             0.3,  8.3),
+        ("bancada_montagem",   "Bancada Embalagem",     20.3, 13.3),
     ]
-    for idx, (_, label, x, y) in enumerate(equipment_positions):
-        cells.append(mx_cell(f"eq{idx}", label, "rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=10;", x, y, 90, 48))
+    for idx, (eq_id, lbl_override, ex_m, ey_m) in enumerate(PLACEMENTS):
+        eq = eq_map.get(eq_id)
+        if not eq:
+            continue
+        label = lbl_override or eq["model"]
+        cells.append(mx_cell(
+            f"eq{idx}", label,
+            "rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333;fontSize=9;",
+            ORIGIN_X + ex_m * SCALE_PX,
+            ORIGIN_Y + ey_m * SCALE_PX,
+            eq["dimensions_m"]["length"] * SCALE_PX,
+            eq["dimensions_m"]["width"]  * SCALE_PX,
+        ))
 
     output = ROOT / "03_diagramas" / "layout_esquematico.drawio"
-    output.write_text(wrap_mxfile("Layout", cells), encoding="utf-8")
+    output.write_text(wrap_mxfile("Layout", cells, width=1400, height=900), encoding="utf-8")
 
 
 def write_mapoflow(results: dict[str, Any]) -> None:
     cells: list[str] = []
+    SCALE_PX = 42
+    ORIGIN_X, ORIGIN_Y = 30, 70
     cells.append(mx_cell("title", "Mapofluxograma - fluxo sobre o arranjo fisico", "text;html=1;fontSize=20;fontStyle=1;", 40, 20, 700, 40))
-    cells.append(mx_cell("outer", "Area total proposta: 24 m x 16 m", "rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=none;", 30, 70, 910, 540))
+    cells.append(mx_cell("outer", "Area total proposta: 24 m x 16 m", "rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=none;", ORIGIN_X, ORIGIN_Y, 24*SCALE_PX, 16*SCALE_PX))
     for zone in layout_zones():
         cells.append(
             mx_cell(
                 zone["id"],
                 zone["name"],
                 f"rounded=0;whiteSpace=wrap;html=1;fillColor={zone['fill']};strokeColor=#333333;fontStyle=1;",
-                zone["x"],
-                zone["y"],
-                zone["w"],
-                zone["h"],
+                ORIGIN_X + zone["x_m"] * SCALE_PX,
+                ORIGIN_Y + zone["y_m"] * SCALE_PX,
+                zone["w_m"] * SCALE_PX,
+                zone["h_m"] * SCALE_PX,
             )
         )
     points = [
@@ -763,7 +789,183 @@ def build_flowchart_svg(results: dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
-def write_render_assets(results: dict[str, Any]) -> None:
+def build_layout_svg(results: dict[str, Any], project: dict[str, Any], with_flow: bool = False) -> str:
+    SCALE = 38
+    MARGIN = 65
+    W_m = results["layout"]["layout_dimensions_m"]["length"]   # 24
+    H_m = results["layout"]["layout_dimensions_m"]["width"]    # 16
+    SVG_W = W_m * SCALE + MARGIN * 2
+    SVG_H = H_m * SCALE + MARGIN * 2 + 50
+
+    eq_map = {e["id"]: e for e in project["equipment"]}
+
+    PLACEMENTS = [
+        ("laser_fibra",        None,                     0.3,  0.3),
+        ("forno_tt",           None,                     6.8,  0.3),
+        ("politriz_metal",     None,                    11.5,  0.3),
+        ("afiador",            None,                    11.5,  2.0),
+        ("esquadrejadeira",    None,                    13.3,  0.3),
+        ("router_cnc",         "Router CNC (1)",        16.8,  0.3),
+        ("router_cnc",         "Router CNC (2)",        16.8,  2.8),
+        ("lixadeira_madeira",  None,                    13.3,  4.5),
+        ("acabamento_madeira", None,                    20.8,  0.3),
+        ("rebitadeira",        None,                    13.3,  9.3),
+        ("bancada_montagem",   "Bancada Montagem",      16.0,  9.3),
+        ("seladora_blister",   None,                    20.3,  9.3),
+        ("bancada_montagem",   "Bancada QC",             0.3,  8.3),
+        ("bancada_montagem",   "Bancada Embalagem",     20.3, 13.3),
+    ]
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {SVG_W} {SVG_H}" '
+        f'width="{SVG_W}" height="{SVG_H}" font-family="Arial,Helvetica,sans-serif">',
+        '<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">'
+        '<path d="M0,0 L0,6 L8,3 z" fill="#444"/></marker></defs>',
+        '<rect width="100%" height="100%" fill="white"/>',
+    ]
+    title = "Mapofluxograma" if with_flow else "Arranjo Físico Esquemático"
+    parts.append(
+        f'<text x="{SVG_W//2}" y="24" text-anchor="middle" font-size="16" font-weight="bold">'
+        f'{title} — Kit Churrasco Tramontina 22399036</text>'
+    )
+    layout = results["layout"]
+    parts.append(
+        f'<text x="{SVG_W//2}" y="42" text-anchor="middle" font-size="12" fill="#555">'
+        f'Área total: {W_m} m × {H_m} m = {W_m*H_m} m²  |  '
+        f'Área requerida: {layout["total_required_area_m2"]:.1f} m²  |  '
+        f'Ocupação: {layout["occupancy"]*100:.1f}%</text>'
+    )
+
+    for z in layout_zones():
+        px = MARGIN + z["x_m"] * SCALE
+        py = 55 + z["y_m"] * SCALE
+        pw = z["w_m"] * SCALE
+        ph = z["h_m"] * SCALE
+        parts.append(
+            f'<rect x="{px:.1f}" y="{py:.1f}" width="{pw:.1f}" height="{ph:.1f}" '
+            f'fill="{z["fill"]}" stroke="#888" stroke-width="1.5"/>'
+        )
+        parts.append(
+            f'<text x="{px+pw/2:.1f}" y="{py+ph/2-6:.1f}" text-anchor="middle" '
+            f'font-size="11" font-weight="bold" fill="#444">{xml_escape(z["name"])}</text>'
+        )
+        parts.append(
+            f'<text x="{px+pw/2:.1f}" y="{py+ph/2+9:.1f}" text-anchor="middle" '
+            f'font-size="9" fill="#888">{z["w_m"]*z["h_m"]} m²</text>'
+        )
+
+    if not with_flow:
+        for eq_id, lbl_override, ex_m, ey_m in PLACEMENTS:
+            eq = eq_map.get(eq_id)
+            if not eq:
+                continue
+            ew = eq["dimensions_m"]["length"] * SCALE
+            eh = eq["dimensions_m"]["width"]  * SCALE
+            epx = MARGIN + ex_m * SCALE
+            epy = 55 + ey_m * SCALE
+            label = lbl_override or eq["model"]
+            parts.append(
+                f'<rect x="{epx:.1f}" y="{epy:.1f}" width="{ew:.1f}" height="{eh:.1f}" '
+                f'fill="#444" fill-opacity="0.78" stroke="#111" stroke-width="1" rx="2"/>'
+            )
+            parts.append(
+                f'<text x="{epx+ew/2:.1f}" y="{epy+eh/2+4:.1f}" text-anchor="middle" '
+                f'font-size="8" fill="white">{xml_escape(label[:18])}</text>'
+            )
+
+    # Dimension annotations
+    dim_y = 55 + H_m * SCALE + 22
+    parts.append(
+        f'<line x1="{MARGIN}" y1="{dim_y}" x2="{MARGIN + W_m*SCALE}" y2="{dim_y}" '
+        f'stroke="#222" stroke-width="1.5"/>'
+    )
+    parts.append(
+        f'<text x="{MARGIN + W_m*SCALE/2:.1f}" y="{dim_y+14}" text-anchor="middle" '
+        f'font-size="12" font-weight="bold">{W_m} m</text>'
+    )
+    dim_x = MARGIN + W_m * SCALE + 20
+    cx = dim_x + 12
+    cy = 55 + H_m * SCALE / 2
+    parts.append(
+        f'<line x1="{dim_x}" y1="55" x2="{dim_x}" y2="{55+H_m*SCALE}" '
+        f'stroke="#222" stroke-width="1.5"/>'
+    )
+    parts.append(
+        f'<text x="{cx}" y="{cy}" text-anchor="middle" font-size="12" font-weight="bold" '
+        f'transform="rotate(-90 {cx} {cy})">{H_m} m</text>'
+    )
+
+    if with_flow:
+        MAPO_POS = {
+            1:  (11.5, 12.0),  2:  (7.5,  10.0),  3:  (5.5,  9.5),
+            4:  (3.0,  2.5),   5:  (6.0,  2.5),    6:  (8.8,  1.3),
+            7:  (8.8,  5.0),   8:  (11.5, 1.3),    9:  (11.5, 2.8),
+            10: (6.5,  13.0),  11: (11.2, 9.5),    12: (15.3, 1.6),
+            13: (18.5, 1.5),   14: (15.0, 5.3),    15: (22.0, 1.5),
+            16: (22.0, 4.0),   17: (22.0, 7.0),    18: (12.5, 9.0),
+            19: (15.0, 10.5),  20: (2.5,  9.5),    21: (17.5, 10.5),
+            22: (21.5, 10.5),  23: (2.5,  11.5),   24: (21.5, 13.0),
+            25: (7.5,  13.8),  26: (11.5, 14.5),
+        }
+        PCOLORS = {
+            "operacao": "#D9EAD3", "transporte": "#D9EAF7",
+            "inspecao": "#FFF2CC", "armazenagem": "#EADCF8", "espera": "#F4CCCC",
+        }
+        procs_by_num = {p["number"]: p for p in results["processes"]}
+        metal_set  = set(range(1, 11))
+        wood_set   = {11,12,13,14,15,16,17}
+        metal_color, wood_color, single_color = "#1e7a3c", "#a05000", "#17212b"
+
+        flow_edges = (
+            [(i, i+1) for i in range(1, 10)] +
+            [(2, 11)] + [(i, i+1) for i in range(11, 17)] +
+            [(10, 18), (17, 18)] +
+            [(i, i+1) for i in range(18, 26)]
+        )
+        for (a, b) in flow_edges:
+            if b in wood_set or (a == 2 and b == 11):
+                color = wood_color
+            elif a in metal_set and b in metal_set:
+                color = metal_color
+            else:
+                color = single_color
+            ax = MARGIN + MAPO_POS[a][0] * SCALE
+            ay = 55     + MAPO_POS[a][1] * SCALE
+            bx = MARGIN + MAPO_POS[b][0] * SCALE
+            by_ = 55    + MAPO_POS[b][1] * SCALE
+            parts.append(
+                f'<line x1="{ax:.1f}" y1="{ay:.1f}" x2="{bx:.1f}" y2="{by_:.1f}" '
+                f'stroke="{color}" stroke-width="2.5" marker-end="url(#arr)" opacity="0.8"/>'
+            )
+
+        for num, (mx_pos, my_pos) in MAPO_POS.items():
+            px_ = MARGIN + mx_pos * SCALE
+            py_ = 55     + my_pos * SCALE
+            proc = procs_by_num[num]
+            fill = PCOLORS.get(proc["type"], "#FFFFFF")
+            stroke = metal_color if num in metal_set else (wood_color if num in wood_set else single_color)
+            parts.append(
+                f'<circle cx="{px_:.1f}" cy="{py_:.1f}" r="16" '
+                f'fill="{fill}" stroke="{stroke}" stroke-width="2"/>'
+            )
+            parts.append(
+                f'<text x="{px_:.1f}" y="{py_+5:.1f}" text-anchor="middle" '
+                f'font-size="11" font-weight="bold" fill="{stroke}">{num}</text>'
+            )
+
+        lx, ly = SVG_W - 185, 58
+        parts.append(f'<rect x="{lx-5}" y="{ly-5}" width="178" height="80" fill="white" stroke="#aaa" stroke-width="1" rx="3"/>')
+        parts.append(f'<text x="{lx+85}" y="{ly+10}" text-anchor="middle" font-size="11" font-weight="bold">Legenda</text>')
+        for li, (color, label) in enumerate([(metal_color,"Trilha Metálica"),(wood_color,"Trilha Madeira"),(single_color,"Montagem/Embalagem")]):
+            iy = ly + 30 + li * 17
+            parts.append(f'<line x1="{lx}" y1="{iy}" x2="{lx+22}" y2="{iy}" stroke="{color}" stroke-width="3"/>')
+            parts.append(f'<text x="{lx+28}" y="{iy+4}" font-size="10" fill="#222">{label}</text>')
+
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+
+def write_render_assets(results: dict[str, Any], project: dict[str, Any]) -> None:
     render_dir = ROOT / "06_dashboard" / "renders"
     render_dir.mkdir(parents=True, exist_ok=True)
 
@@ -771,51 +973,12 @@ def write_render_assets(results: dict[str, Any]) -> None:
         build_flowchart_svg(results), encoding="utf-8"
     )
 
-    def layout_svg(with_flow: bool) -> str:
-        svg_w, svg_h = 1200, 760
-        scale_x = 1040 / 910
-        scale_y = 620 / 540
-        off_x, off_y = 80, 95
-        parts = [
-            f'<svg xmlns="http://www.w3.org/2000/svg" width="{svg_w}" height="{svg_h}" viewBox="0 0 {svg_w} {svg_h}">',
-            '<rect width="100%" height="100%" fill="#ffffff"/>',
-            svg_text(70, 48, ["Mapofluxograma" if with_flow else "Layout esquemático"], size=28, weight="700"),
-            svg_text(70, 80, ["Área total proposta: 24 m x 16 m"], size=15),
-            f'<rect x="{off_x}" y="{off_y}" width="{910 * scale_x:.0f}" height="{540 * scale_y:.0f}" fill="#f8fafc" stroke="#17212b" stroke-width="3"/>',
-        ]
-        for zone in layout_zones():
-            x = off_x + (zone["x"] - 30) * scale_x
-            y = off_y + (zone["y"] - 70) * scale_y
-            w = zone["w"] * scale_x
-            h = zone["h"] * scale_y
-            parts.append(
-                f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" fill="{zone["fill"]}" stroke="#334155" stroke-width="1.5"/>'
-            )
-            lines = split_svg_lines(zone["name"], 18, 2)
-            parts.append(svg_text(x + 12, y + 28, lines, size=13, weight="700"))
-        if with_flow:
-            points = [
-                ("1-2", 95, 170),
-                ("3-10", 405, 200),
-                ("11-17", 760, 200),
-                ("18-22", 460, 485),
-                ("23", 790, 430),
-                ("24-26", 130, 485),
-            ]
-            scaled = [
-                (label, off_x + (x - 30 + 37) * scale_x, off_y + (y - 70 + 24) * scale_y)
-                for label, x, y in points
-            ]
-            poly = " ".join(f"{x:.1f},{y:.1f}" for _, x, y in scaled)
-            parts.append(f'<polyline points="{poly}" fill="none" stroke="#17212b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>')
-            for label, x, y in scaled:
-                parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="27" fill="#ffffff" stroke="#111827" stroke-width="3"/>')
-                parts.append(svg_text(x - 18, y + 5, [label], size=13, weight="700"))
-        parts.append("</svg>")
-        return "\n".join(parts)
-
-    (render_dir / "layout_render.svg").write_text(layout_svg(False), encoding="utf-8")
-    (render_dir / "mapofluxograma_render.svg").write_text(layout_svg(True), encoding="utf-8")
+    (render_dir / "layout_render.svg").write_text(
+        build_layout_svg(results, project, with_flow=False), encoding="utf-8"
+    )
+    (render_dir / "mapofluxograma_render.svg").write_text(
+        build_layout_svg(results, project, with_flow=True), encoding="utf-8"
+    )
 
 
 def markdown_to_html(markdown: str) -> str:
@@ -1241,7 +1404,7 @@ def write_dashboard(results: dict[str, Any]) -> None:
         ]
     )
     layout_cards = "\n".join(
-        f"<div class='zone' style='left:{(zone['x'] - 30) / 910 * 100:.2f}%;top:{(zone['y'] - 70) / 540 * 100:.2f}%;width:{zone['w'] / 910 * 100:.2f}%;height:{zone['h'] / 540 * 100:.2f}%;background:{zone['fill']}'>{escape(zone['name'])}</div>"
+        f"<div class='zone' style='left:{zone['x_m'] / 24 * 100:.2f}%;top:{zone['y_m'] / 16 * 100:.2f}%;width:{zone['w_m'] / 24 * 100:.2f}%;height:{zone['h_m'] / 16 * 100:.2f}%;background:{zone['fill']}'>{escape(zone['name'])}</div>"
         for zone in layout_zones()
     )
     flow_points = [
@@ -1551,9 +1714,9 @@ def main() -> None:
     write_memory_markdown(results)
     write_slide_script(results)
     write_flowchart(results)
-    write_layout(results)
+    write_layout(results, project)
     write_mapoflow(results)
-    write_render_assets(results)
+    write_render_assets(results, project)
     write_dashboard(results)
     print(f"Generated outputs from {DATA_PATH}")
     print(f"Results: {RESULTS_PATH}")
