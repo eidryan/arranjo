@@ -485,37 +485,61 @@ def wrap_mxfile(name: str, cells: list[str], width: int = 1200, height: int = 80
 
 def write_flowchart(results: dict[str, Any]) -> None:
     cells: list[str] = []
-    processes = results["processes"]
-    node_ids: list[str] = []
-    start_x, start_y = 30, 90
-    step_x, step_y = 175, 135
-    per_row = 6
+    processes_by_num = {p["number"]: p for p in results["processes"]}
+    metal  = [3, 4, 5, 6, 7, 8, 9, 10]
+    wood   = [11, 12, 13, 14, 15, 16, 17]
+    single = [18, 19, 20, 21, 22, 23, 24, 25, 26]
+    COL_L, COL_R, COL_C = 80, 700, 390
+    ROW_H = 110
+    node_w, node_h = 200, 75
+    legend_x = 1050
 
-    cells.append(mx_cell("title", "Fluxograma do processo - Kit 22399036", "text;html=1;fontSize=20;fontStyle=1;", 30, 20, 620, 40))
-    legend_x = 1000
+    cells.append(mx_cell("title", "Fluxograma do Processo — Kit Churrasco Tramontina 22399036",
+                         "text;html=1;fontSize=18;fontStyle=1;", 80, 15, 700, 38))
+    cells.append(mx_cell("lbl_metal",   "Trilha Metálica", "text;html=1;fontSize=13;fontStyle=2;", COL_L, 260, 200, 24))
+    cells.append(mx_cell("lbl_madeira", "Trilha Madeira",        "text;html=1;fontSize=13;fontStyle=2;", COL_R, 260, 200, 24))
     for idx, key in enumerate(["operacao", "transporte", "inspecao", "armazenagem", "espera"]):
         style = PROCESS_STYLES[key] + f"fillColor={PROCESS_COLORS[key]};strokeColor=#555555;"
-        cells.append(mx_cell(f"legend_{key}", PROCESS_LABELS[key], style, legend_x, 40 + idx * 65, 130, 48))
+        cells.append(mx_cell(f"legend_{key}", PROCESS_LABELS[key], style, legend_x, 60 + idx * 85, 150, 65))
 
-    for index, process in enumerate(processes):
-        row = index // per_row
-        col = index % per_row
-        if row % 2 == 1:
-            col = per_row - 1 - col
-        x = start_x + col * step_x
-        y = start_y + row * step_y
-        pid = f"p{process['number']}"
-        node_ids.append(pid)
-        key = process["type"]
-        label = f"{process['number']}. {process['name']}"
+    pos_x: dict[int, float] = {}
+    pos_y: dict[int, float] = {}
+    pos_x[1] = pos_x[2] = COL_C
+    pos_y[1] = 60; pos_y[2] = 170
+    for i, n in enumerate([3,4,5,6,7,8,9,10]):
+        pos_x[n] = COL_L; pos_y[n] = 290 + i * ROW_H
+    for i, n in enumerate([11,12,13,14,15,16,17]):
+        pos_x[n] = COL_R; pos_y[n] = 290 + i * ROW_H
+    merge_start_y = 290 + 7 * ROW_H + 120
+    for i, n in enumerate([18,19,20,21,22,23,24,25,26]):
+        pos_x[n] = COL_C; pos_y[n] = merge_start_y + i * ROW_H
+
+    node_ids: dict[int, str] = {}
+    for num in range(1, 27):
+        proc = processes_by_num[num]
+        pid = f"p{num}"
+        node_ids[num] = pid
+        key = proc["type"]
+        label = f"{num}. {proc['name']}"
         style = PROCESS_STYLES[key] + f"fillColor={PROCESS_COLORS[key]};strokeColor=#555555;fontSize=11;"
-        cells.append(mx_cell(pid, label, style, x, y, 140, 78))
+        cells.append(mx_cell(pid, label, style, pos_x[num], pos_y[num], node_w, node_h))
 
-    for idx in range(len(node_ids) - 1):
-        cells.append(mx_edge(f"e{idx + 1}", node_ids[idx], node_ids[idx + 1]))
+    flow_edges = (
+        [(1,2), (2,3), (2,11)] +
+        [(metal[i], metal[i+1]) for i in range(len(metal)-1)] +
+        [(wood[i],  wood[i+1])  for i in range(len(wood)-1)] +
+        [(10,18), (17,18)] +
+        [(single[i], single[i+1]) for i in range(len(single)-1)]
+    )
+    seen: set[tuple[int,int]] = set()
+    for idx, (a, b) in enumerate(flow_edges):
+        if (a,b) not in seen:
+            seen.add((a,b))
+            cells.append(mx_edge(f"e_{a}_{b}", node_ids[a], node_ids[b]))
 
+    canvas_h = int(merge_start_y + len(single) * ROW_H + 200)
     output = ROOT / "03_diagramas" / "fluxograma_processo.drawio"
-    output.write_text(wrap_mxfile("Fluxograma", cells), encoding="utf-8")
+    output.write_text(wrap_mxfile("Fluxograma", cells, width=1400, height=canvas_h), encoding="utf-8")
 
 
 def layout_zones() -> list[dict[str, Any]]:
@@ -634,49 +658,118 @@ def svg_text(x: float, y: float, lines: list[str], size: int = 13, weight: str =
     )
 
 
+def build_flowchart_svg(results: dict[str, Any]) -> str:
+    processes_by_num = {p["number"]: p for p in results["processes"]}
+    COLORS = {
+        "operacao": "#D9EAD3", "transporte": "#D9EAF7",
+        "inspecao": "#FFF2CC", "armazenagem": "#EADCF8", "espera": "#F4CCCC",
+    }
+    W = 1100
+    COL_L, COL_R, COL_C = 220, 880, 550
+    ROW_H = 118
+
+    pos: dict[int, tuple[int, int]] = {}
+    pos[1] = (COL_C, 75)
+    pos[2] = (COL_C, 193)
+    metal = [3, 4, 5, 6, 7, 8, 9, 10]
+    wood  = [11, 12, 13, 14, 15, 16, 17]
+    single = [18, 19, 20, 21, 22, 23, 24, 25, 26]
+    for i, n in enumerate(metal):
+        pos[n] = (COL_L, 320 + i * ROW_H)
+    for i, n in enumerate(wood):
+        pos[n] = (COL_R, 320 + i * ROW_H)
+    merge_y = 320 + 7 * ROW_H + 130
+    for i, n in enumerate(single):
+        pos[n] = (COL_C, merge_y + i * ROW_H)
+    total_h = merge_y + len(single) * ROW_H + 80
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {total_h}" '
+        f'width="{W}" height="{total_h}" font-family="Arial,Helvetica,sans-serif">',
+        '<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">'
+        '<path d="M0,0 L0,6 L8,3 z" fill="#444"/></marker></defs>',
+        '<rect width="100%" height="100%" fill="white"/>',
+        f'<text x="{W//2}" y="28" text-anchor="middle" font-size="17" font-weight="bold">'
+        'Fluxograma do Processo — Kit Churrasco Tramontina 22399036</text>',
+        f'<text x="{COL_L}" y="278" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Trilha Metálica</text>',
+        f'<text x="{COL_R}" y="278" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Trilha Madeira</text>',
+    ]
+
+    def arr_line(x1, y1, x2, y2):
+        return (f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" '
+                f'stroke="#444" stroke-width="2" marker-end="url(#arr)"/>')
+
+    def poly_arr(pts):
+        return (f'<polyline points="{pts}" fill="none" stroke="#444" '
+                f'stroke-width="2" marker-end="url(#arr)"/>')
+
+    parts.append(arr_line(COL_C, pos[1][1]+44, COL_C, pos[2][1]-44))
+    branch_y = pos[2][1] + 44
+    fork_y   = pos[2][1] + 90
+    parts.append(poly_arr(f"{COL_C},{branch_y} {COL_C},{fork_y} {COL_L},{fork_y} {COL_L},{pos[3][1]-44}"))
+    parts.append(poly_arr(f"{COL_C},{branch_y} {COL_C},{fork_y} {COL_R},{fork_y} {COL_R},{pos[11][1]-44}"))
+    for i in range(len(metal)-1):
+        parts.append(arr_line(COL_L, pos[metal[i]][1]+44, COL_L, pos[metal[i+1]][1]-44))
+    for i in range(len(wood)-1):
+        parts.append(arr_line(COL_R, pos[wood[i]][1]+44, COL_R, pos[wood[i+1]][1]-44))
+    pre_y = pos[18][1] - 40
+    parts.append(poly_arr(f"{COL_L},{pos[10][1]+44} {COL_L},{pre_y} {COL_C},{pre_y} {COL_C},{pos[18][1]-44}"))
+    parts.append(f'<polyline points="{COL_R},{pos[17][1]+44} {COL_R},{pre_y} {COL_C},{pre_y}" '
+                 f'fill="none" stroke="#444" stroke-width="2"/>')
+    for i in range(len(single)-1):
+        parts.append(arr_line(COL_C, pos[single[i]][1]+44, COL_C, pos[single[i+1]][1]-44))
+
+    def node(proc):
+        n = proc["number"]
+        ptype = proc["type"]
+        x, y = pos[n]
+        color = COLORS[ptype]
+        lines_txt = split_svg_lines(proc["name"], 22, 2)
+        if ptype == "operacao":
+            shape = (f'<ellipse cx="{x}" cy="{y}" rx="100" ry="42" '
+                     f'fill="{color}" stroke="#444" stroke-width="1.8"/>')
+        elif ptype == "inspecao":
+            pts = f"{x},{y-46} {x+100},{y} {x},{y+46} {x-100},{y}"
+            shape = f'<polygon points="{pts}" fill="{color}" stroke="#444" stroke-width="1.8"/>'
+        elif ptype == "armazenagem":
+            pts = f"{x-100},{y-42} {x+100},{y-42} {x},{y+46}"
+            shape = f'<polygon points="{pts}" fill="{color}" stroke="#444" stroke-width="1.8"/>'
+        elif ptype == "espera":
+            shape = (f'<path d="M {x-100},{y-42} L {x+55},{y-42} '
+                     f'Q {x+100},{y-42} {x+100},{y} Q {x+100},{y+42} {x+55},{y+42} '
+                     f'L {x-100},{y+42} Z" fill="{color}" stroke="#444" stroke-width="1.8"/>')
+        else:  # transporte
+            pts = f"{x-100},{y-22} {x+58},{y-22} {x+58},{y-44} {x+100},{y} {x+58},{y+44} {x+58},{y+22} {x-100},{y+22}"
+            shape = f'<polygon points="{pts}" fill="{color}" stroke="#444" stroke-width="1.8"/>'
+        num_lbl = f'<text x="{x-80}" y="{y-20}" font-size="11" font-weight="bold" fill="#222">{n}</text>'
+        tspans = []
+        for li, lt in enumerate(lines_txt):
+            dy = y - 5 + li * 14
+            tspans.append(f'<text x="{x}" y="{dy}" text-anchor="middle" font-size="10" fill="#222">{xml_escape(lt)}</text>')
+        return shape + "\n" + num_lbl + "\n" + "\n".join(tspans)
+
+    for num in sorted(pos.keys()):
+        parts.append(node(processes_by_num[num]))
+
+    lx, ly = W - 235, 55
+    parts.append(f'<rect x="{lx-8}" y="{ly-8}" width="225" height="178" fill="white" stroke="#aaa" stroke-width="1" rx="4"/>')
+    parts.append(f'<text x="{lx+105}" y="{ly+10}" text-anchor="middle" font-size="12" font-weight="bold">Legenda</text>')
+    for i, (ptype, lbl) in enumerate([("operacao","Operação"),("inspecao","Inspeção"),("armazenagem","Armazenagem"),("espera","Espera"),("transporte","Transporte")]):
+        liy = ly + 32 + i * 28
+        parts.append(f'<rect x="{lx}" y="{liy-11}" width="26" height="19" fill="{COLORS[ptype]}" stroke="#444" stroke-width="1"/>')
+        parts.append(f'<text x="{lx+35}" y="{liy+3}" font-size="12" fill="#222">{lbl}</text>')
+
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+
 def write_render_assets(results: dict[str, Any]) -> None:
     render_dir = ROOT / "06_dashboard" / "renders"
     render_dir.mkdir(parents=True, exist_ok=True)
 
-    processes = results["processes"]
-    width, height = 1600, 920
-    per_row = 6
-    node_w, node_h = 215, 84
-    start_x, start_y = 55, 120
-    step_x, step_y = 250, 145
-    node_positions: list[tuple[float, float]] = []
-    flux_parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        '<rect width="100%" height="100%" fill="#ffffff"/>',
-        svg_text(55, 48, ["Fluxograma do processo industrial"], size=28, weight="700"),
-        svg_text(55, 82, ["Operação, transporte, inspeção, armazenagem e espera"], size=15),
-    ]
-    for idx, process in enumerate(processes):
-        row = idx // per_row
-        col = idx % per_row
-        if row % 2 == 1:
-            col = per_row - 1 - col
-        x = start_x + col * step_x
-        y = start_y + row * step_y
-        node_positions.append((x, y))
-        color = PROCESS_COLORS.get(process["type"], "#eeeeee")
-        flux_parts.append(
-            f'<rect x="{x}" y="{y}" width="{node_w}" height="{node_h}" rx="8" fill="{color}" stroke="#4b5563" stroke-width="1.6"/>'
-        )
-        flux_parts.append(svg_text(x + 14, y + 26, [f"{process['number']}. {PROCESS_LABELS.get(process['type'], process['type'])}"], size=13, weight="700"))
-        flux_parts.append(svg_text(x + 14, y + 49, split_svg_lines(process["name"], 24, 2), size=12))
-    for idx in range(len(node_positions) - 1):
-        x1, y1 = node_positions[idx]
-        x2, y2 = node_positions[idx + 1]
-        flux_parts.append(
-            f'<line x1="{x1 + node_w}" y1="{y1 + node_h / 2}" x2="{x2}" y2="{y2 + node_h / 2}" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>'
-        )
-    flux_parts.insert(
-        1,
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker></defs>',
+    (render_dir / "fluxograma_render.svg").write_text(
+        build_flowchart_svg(results), encoding="utf-8"
     )
-    flux_parts.append("</svg>")
-    (render_dir / "fluxograma_render.svg").write_text("\n".join(flux_parts), encoding="utf-8")
 
     def layout_svg(with_flow: bool) -> str:
         svg_w, svg_h = 1200, 760
