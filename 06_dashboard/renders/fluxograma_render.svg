@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="55" y="48" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#17212b"><tspan x="55" dy="0">Fluxograma do processo industrial</tspan></text>
+<text x="55" y="82" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#17212b"><tspan x="55" dy="0">Operação, transporte, inspeção, armazenagem e espera</tspan></text>
+<rect x="55" y="120" width="215" height="84" rx="8" fill="#FFF2CC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="69" y="146" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="69" dy="0">1. Inspeção</tspan></text>
+<text x="69" y="169" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="69" dy="0">Receber materias-primas</tspan><tspan x="69" dy="15">e embalagens</tspan></text>
+<rect x="305" y="120" width="215" height="84" rx="8" fill="#EADCF8" stroke="#4b5563" stroke-width="1.6"/>
+<text x="319" y="146" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="319" dy="0">2. Armazenagem</tspan></text>
+<text x="319" y="169" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="319" dy="0">Armazenar aco inox,</tspan><tspan x="319" dy="15">madeira, rebites e...</tspan></text>
+<rect x="555" y="120" width="215" height="84" rx="8" fill="#D9EAF7" stroke="#4b5563" stroke-width="1.6"/>
+<text x="569" y="146" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="569" dy="0">3. Transporte</tspan></text>
+<text x="569" y="169" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="569" dy="0">Transportar aco inox</tspan><tspan x="569" dy="15">para corte</tspan></text>
+<rect x="805" y="120" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="819" y="146" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="819" dy="0">4. Operação</tspan></text>
+<text x="819" y="169" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="819" dy="0">Cortar blanks da faca e</tspan><tspan x="819" dy="15">do garfo em chapa de aco...</tspan></text>
+<rect x="1055" y="120" width="215" height="84" rx="8" fill="#FFF2CC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1069" y="146" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1069" dy="0">5. Inspeção</tspan></text>
+<text x="1069" y="169" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1069" dy="0">Inspecionar blanks</tspan><tspan x="1069" dy="15">metalicos</tspan></text>
+<rect x="1305" y="120" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1319" y="146" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1319" dy="0">6. Operação</tspan></text>
+<text x="1319" y="169" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1319" dy="0">Realizar tratamento</tspan><tspan x="1319" dy="15">termico das pecas...</tspan></text>
+<rect x="1305" y="265" width="215" height="84" rx="8" fill="#F4CCCC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1319" y="291" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1319" dy="0">7. Espera</tspan></text>
+<text x="1319" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1319" dy="0">Aguardar</tspan><tspan x="1319" dy="15">resfriamento/estabilizacao...</tspan></text>
+<rect x="1055" y="265" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1069" y="291" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1069" dy="0">8. Operação</tspan></text>
+<text x="1069" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1069" dy="0">Rebarbar, lixar e polir</tspan><tspan x="1069" dy="15">faca e garfo</tspan></text>
+<rect x="805" y="265" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="819" y="291" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="819" dy="0">9. Operação</tspan></text>
+<text x="819" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="819" dy="0">Afiar faca</tspan></text>
+<rect x="555" y="265" width="215" height="84" rx="8" fill="#EADCF8" stroke="#4b5563" stroke-width="1.6"/>
+<text x="569" y="291" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="569" dy="0">10. Armazenagem</tspan></text>
+<text x="569" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="569" dy="0">Armazenar pecas</tspan><tspan x="569" dy="15">metalicas semiacabadas</tspan></text>
+<rect x="305" y="265" width="215" height="84" rx="8" fill="#D9EAF7" stroke="#4b5563" stroke-width="1.6"/>
+<text x="319" y="291" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="319" dy="0">11. Transporte</tspan></text>
+<text x="319" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="319" dy="0">Transportar madeira para</tspan><tspan x="319" dy="15">corte</tspan></text>
+<rect x="55" y="265" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="69" y="291" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="69" dy="0">12. Operação</tspan></text>
+<text x="69" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="69" dy="0">Cortar tabuas e blanks</tspan><tspan x="69" dy="15">dos cabos</tspan></text>
+<rect x="55" y="410" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="69" y="436" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="69" dy="0">13. Operação</tspan></text>
+<text x="69" y="459" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="69" dy="0">Fresar sulco da tabua e</tspan><tspan x="69" dy="15">usinar/furar cabos</tspan></text>
+<rect x="305" y="410" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="319" y="436" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="319" dy="0">14. Operação</tspan></text>
+<text x="319" y="459" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="319" dy="0">Lixar tabua e cabos</tspan></text>
+<rect x="555" y="410" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="569" y="436" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="569" dy="0">15. Operação</tspan></text>
+<text x="569" y="459" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="569" dy="0">Aplicar acabamento</tspan><tspan x="569" dy="15">superficial na madeira</tspan></text>
+<rect x="805" y="410" width="215" height="84" rx="8" fill="#F4CCCC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="819" y="436" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="819" dy="0">16. Espera</tspan></text>
+<text x="819" y="459" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="819" dy="0">Aguardar cura/secagem do</tspan><tspan x="819" dy="15">acabamento</tspan></text>
+<rect x="1055" y="410" width="215" height="84" rx="8" fill="#FFF2CC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1069" y="436" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1069" dy="0">17. Inspeção</tspan></text>
+<text x="1069" y="459" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1069" dy="0">Inspecionar pecas de</tspan><tspan x="1069" dy="15">madeira</tspan></text>
+<rect x="1305" y="410" width="215" height="84" rx="8" fill="#D9EAF7" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1319" y="436" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1319" dy="0">18. Transporte</tspan></text>
+<text x="1319" y="459" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1319" dy="0">Transportar pecas para</tspan><tspan x="1319" dy="15">montagem</tspan></text>
+<rect x="1305" y="555" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1319" y="581" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1319" dy="0">19. Operação</tspan></text>
+<text x="1319" y="604" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1319" dy="0">Montar cabos na faca e</tspan><tspan x="1319" dy="15">no garfo por rebitagem</tspan></text>
+<rect x="1055" y="555" width="215" height="84" rx="8" fill="#FFF2CC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="1069" y="581" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="1069" dy="0">20. Inspeção</tspan></text>
+<text x="1069" y="604" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="1069" dy="0">Inspecionar montagem,</tspan><tspan x="1069" dy="15">fio e acabamento</tspan></text>
+<rect x="805" y="555" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="819" y="581" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="819" dy="0">21. Operação</tspan></text>
+<text x="819" y="604" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="819" dy="0">Montar kit na</tspan><tspan x="819" dy="15">cartela/blister</tspan></text>
+<rect x="555" y="555" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="569" y="581" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="569" dy="0">22. Operação</tspan></text>
+<text x="569" y="604" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="569" dy="0">Selar blister/cartela</tspan></text>
+<rect x="305" y="555" width="215" height="84" rx="8" fill="#FFF2CC" stroke="#4b5563" stroke-width="1.6"/>
+<text x="319" y="581" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="319" dy="0">23. Inspeção</tspan></text>
+<text x="319" y="604" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="319" dy="0">Inspecionar kit embalado</tspan></text>
+<rect x="55" y="555" width="215" height="84" rx="8" fill="#D9EAD3" stroke="#4b5563" stroke-width="1.6"/>
+<text x="69" y="581" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="69" dy="0">24. Operação</tspan></text>
+<text x="69" y="604" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="69" dy="0">Embalar para envio em</tspan><tspan x="69" dy="15">caixa de transporte</tspan></text>
+<rect x="55" y="700" width="215" height="84" rx="8" fill="#EADCF8" stroke="#4b5563" stroke-width="1.6"/>
+<text x="69" y="726" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="69" dy="0">25. Armazenagem</tspan></text>
+<text x="69" y="749" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="69" dy="0">Armazenar produto</tspan><tspan x="69" dy="15">acabado</tspan></text>
+<rect x="305" y="700" width="215" height="84" rx="8" fill="#D9EAF7" stroke="#4b5563" stroke-width="1.6"/>
+<text x="319" y="726" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="319" dy="0">26. Transporte</tspan></text>
+<text x="319" y="749" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#17212b"><tspan x="319" dy="0">Transportar para</tspan><tspan x="319" dy="15">expedicao</tspan></text>
+<line x1="270" y1="162.0" x2="305" y2="162.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="520" y1="162.0" x2="555" y2="162.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="770" y1="162.0" x2="805" y2="162.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1020" y1="162.0" x2="1055" y2="162.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1270" y1="162.0" x2="1305" y2="162.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1520" y1="162.0" x2="1305" y2="307.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1520" y1="307.0" x2="1055" y2="307.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1270" y1="307.0" x2="805" y2="307.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1020" y1="307.0" x2="555" y2="307.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="770" y1="307.0" x2="305" y2="307.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="520" y1="307.0" x2="55" y2="307.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="270" y1="307.0" x2="55" y2="452.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="270" y1="452.0" x2="305" y2="452.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="520" y1="452.0" x2="555" y2="452.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="770" y1="452.0" x2="805" y2="452.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1020" y1="452.0" x2="1055" y2="452.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1270" y1="452.0" x2="1305" y2="452.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1520" y1="452.0" x2="1305" y2="597.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1520" y1="597.0" x2="1055" y2="597.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1270" y1="597.0" x2="805" y2="597.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1020" y1="597.0" x2="555" y2="597.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="770" y1="597.0" x2="305" y2="597.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="520" y1="597.0" x2="55" y2="597.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="270" y1="597.0" x2="55" y2="742.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="270" y1="742.0" x2="305" y2="742.0" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+</svg>

@@ -1,0 +1,220 @@
+{
+  "metadata": {
+    "project_name": "Projeto de fabrica - Kit para Churrasco Tramontina 22399036",
+    "access_date": "2026-05-13",
+    "calculation_policy": "Todas as contas devem ser geradas por codigo e expostas com formula, entradas e fonte/premissa.",
+    "timezone": "America/Sao_Paulo",
+    "group_members": [
+      {"name": "Bernardo Gomes", "status": "confirmado", "note": "Nome limpo a partir de 'Bernardo Gomes eg'."},
+      {"name": "Lucas de Mello", "status": "confirmado", "note": "Nome limpo a partir de 'Lucas de Mello meta'."},
+      {"name": "Clara Hermsdorff", "status": "confirmado", "note": "Nome limpo a partir da captura."},
+      {"name": "João Deccax", "status": "confirmado", "note": "Nome limpo a partir da captura."},
+      {"name": "André Baptista", "status": "confirmado", "note": "Nome limpo a partir da captura."}
+    ],
+    "pending_member_note": "A captura mostra um integrante como 'You'; falta substituir pelo nome real antes da entrega final."
+  },
+  "product": {
+    "name": "Kit para Churrasco Tramontina com Laminas em Aco Inox e Cabos em Madeira Natural 3 Pecas",
+    "sku": "22399036",
+    "brand": "Tramontina",
+    "category": "Ambientes > Churrasco > Talheres e Jogos > Jogos para Churrasco",
+    "package_dimensions_cm": {"height": 38.9, "width": 4.0, "length": 21.6},
+    "package_weight_kg": 1.23,
+    "official_description_short": "Kit de 3 pecas para churrasco composto por faca chef 8 polegadas, garfo trinchante e tabua retangular de madeira.",
+    "official_materials": [
+      "Laminas de aco inox",
+      "Cabos de madeira natural",
+      "Rebites de aluminio",
+      "Tabua de madeira Macaranduba com acabamento natural",
+      "Certificacao FSC C125626 informada na pagina/embalagem"
+    ]
+  },
+  "premises": {
+    "target_good_kits_per_week": 1000,
+    "work_days_per_week": 5,
+    "shifts_per_day": 1,
+    "scheduled_hours_per_shift": 8,
+    "useful_hours_per_shift": 7,
+    "general_efficiency": 0.85,
+    "equipment_reliability": 0.92,
+    "final_good_yield": 0.95,
+    "process_yield_default": 0.98,
+    "service_area_factor_default": 2.0,
+    "layout_target_width_m": 24,
+    "layout_target_length_m": 16,
+    "inventory_days_raw_material": 5,
+    "inventory_days_finished_goods": 3
+  },
+  "sources": [
+    {
+      "id": "tramontina_product",
+      "type": "official_product_page",
+      "title": "Pagina oficial Tramontina - produto 22399036",
+      "url": "https://www.tramontina.com.br/kit-para-churrasco-tramontina-com-laminas-em-aco-inox-e-cabos-em-madeira-natural-3-pecas/22399036.html",
+      "used_for": "produto, SKU, composicao, dimensoes de embalagem, garantia, recomendacoes, certificacao e imagens"
+    },
+    {
+      "id": "tramontina_technical_drawing",
+      "type": "official_asset",
+      "title": "Desenho tecnico Tramontina 22399036",
+      "url": "https://assets.tramontina.com.br/upload/tramon/imagens/CUT/22399036DCM002G.jpg",
+      "used_for": "dimensoes da faca e do garfo"
+    },
+    {
+      "id": "aperam_420d",
+      "type": "material_supplier",
+      "title": "Aperam 420D - AISI 420/SUS420J1",
+      "url": "https://www.aperam.com/pt-br/product/420d-aisi-420-sus420j1-pt/",
+      "used_for": "aco inox martensitico endurecivel por tratamento termico e aplicacao em laminas para facas"
+    },
+    {
+      "id": "rolmetais_aisi420",
+      "type": "material_datasheet",
+      "title": "Ficha tecnica AISI 420 - Rolmetais",
+      "url": "https://rolmetais.com/ficheiros/fichas_tecnicas/ft_22_ficha_tecnica_aisi_420_site.docx.pdf",
+      "used_for": "densidade do aco inox 420 e faixa de tratamento termico"
+    },
+    {
+      "id": "madeira_macaranduba_remade",
+      "type": "material_reference",
+      "title": "Madeira Macaranduba - propriedades fisico-mecanicas",
+      "url": "https://www.remade.com.br/madeiras-exoticas/210/madeiras-brasileiras-e-exoticas/macaranduba",
+      "used_for": "densidade aparente e caracterizacao da madeira Macaranduba"
+    },
+    {
+      "id": "madetech_laser",
+      "type": "equipment_supplier",
+      "title": "Madetech CNC Fiber Pro 1530",
+      "url": "https://www.madetech.com.br/M%C3%A1quinas/cnc-fiber-pro-1530.html",
+      "used_for": "corte laser fibra, mesa, velocidade, precisao e espessura maxima"
+    },
+    {
+      "id": "cecomatec_furnace",
+      "type": "equipment_supplier",
+      "title": "Cecomatec Forno de Tratamento Termico com Carro",
+      "url": "https://www.cecomatec.com.br/produto/forno-de-tratamento-termico-com-carro",
+      "used_for": "forno de tratamento termico, dimensoes externas/camara e temperatura maxima"
+    },
+    {
+      "id": "maksiwa_router",
+      "type": "equipment_supplier",
+      "title": "Maksiwa Store Router CNC RTC.1313",
+      "url": "https://maksiwastore.com/produtos/router-cnc-rtc-1313/",
+      "used_for": "router CNC para madeira, area util, dimensoes, velocidade e potencia"
+    },
+    {
+      "id": "maksiwa_esquadrejadeira",
+      "type": "equipment_supplier",
+      "title": "Maksiwa Esquadrejadeira BMS.1900.I",
+      "url": "https://maksiwa.com.br/produto/esquadrejadeira-de-precisao-bms-1900-i-black-edition/",
+      "used_for": "corte de madeira, capacidade de corte e dimensoes da maquina"
+    },
+    {
+      "id": "maksiwa_afiador",
+      "type": "equipment_supplier",
+      "title": "Maksiwa Afiador de Facas AF.650",
+      "url": "https://maksiwa.com.br/produto/afiador-de-facas-af-650/",
+      "used_for": "afiacao, comprimento maximo de faca, rpm e dimensoes"
+    },
+    {
+      "id": "rebitex_rebitadeira",
+      "type": "equipment_supplier",
+      "title": "Rebitex Rebitadeira Pneumatica 404-S TURBO-X",
+      "url": "https://www.rebitex.com.br/rebitadeira-pneumatica-404s",
+      "used_for": "rebitagem, capacidade, pressao e ciclos por minuto"
+    },
+    {
+      "id": "flockcolor_blister",
+      "type": "equipment_supplier",
+      "title": "Flockcolor Seladora Blister tipo carrossel",
+      "url": "https://www.flockcolor.com.br/produtos/maquinas-para-embalagens/seladora-blister/seladora-blister-tipo-carrossel-semiautomatica-pneumatica",
+      "used_for": "selagem de blister/cartela, area util, dimensoes e produtividade"
+    },
+    {
+      "id": "aula_arranjo",
+      "type": "class_material",
+      "title": "Slides e guias de Arranjo Fisico Industrial",
+      "url": "C:/Users/dvill/Documents/arranjo",
+      "used_for": "metodo produto-arvore-tabela-processo-fluxograma-layout-mapofluxograma e tipos de processo"
+    }
+  ],
+  "research_matrix": [
+    {"topic": "Produto", "data": "Kit 3 pecas ref. 22399036", "value": "faca + garfo + tabua", "unit": "kit", "source_id": "tramontina_product", "confidence": "alta", "used_in": "descricao, arvore do produto, Tabela 1"},
+    {"topic": "Embalagem", "data": "Dimensoes com embalagem", "value": "38.9 x 4.0 x 21.6", "unit": "cm", "source_id": "tramontina_product", "confidence": "alta", "used_in": "produto, embalagem, layout de embalagem"},
+    {"topic": "Embalagem", "data": "Peso com embalagem", "value": 1.23, "unit": "kg", "source_id": "tramontina_product", "confidence": "alta", "used_in": "estoque, transporte, embalagem"},
+    {"topic": "Material", "data": "Aco inox 420D endurecivel por tratamento termico e aplicavel a laminas de facas", "value": "AISI 420/SUS420J1", "unit": "tipo de aco", "source_id": "aperam_420d", "confidence": "media", "used_in": "material da faca/garfo e processo termico"},
+    {"topic": "Material", "data": "Densidade AISI 420", "value": 7.7, "unit": "g/cm3", "source_id": "rolmetais_aisi420", "confidence": "media", "used_in": "estimativa de massa de aco"},
+    {"topic": "Material", "data": "Densidade aparente Macaranduba", "value": 1.04, "unit": "g/cm3", "source_id": "madeira_macaranduba_remade", "confidence": "media", "used_in": "estimativa de massa da tabua"},
+    {"topic": "Equipamento", "data": "CNC laser fiber mesa 3000x1500, velocidade 20000 mm/min", "value": "1500 W; 20.000 mm/min", "unit": "capacidade fabricante", "source_id": "madetech_laser", "confidence": "media", "used_in": "Tabela 3 e corte metal"},
+    {"topic": "Equipamento", "data": "Forno tratamento termico com camara 800x1400x900 e 1200 C", "value": "1200 C", "unit": "temperatura maxima", "source_id": "cecomatec_furnace", "confidence": "alta", "used_in": "Tabela 3 e tratamento termico"},
+    {"topic": "Equipamento", "data": "Router CNC area util 1300x1300x200 e velocidade maxima 30 m/min", "value": "30 m/min", "unit": "velocidade deslocamento", "source_id": "maksiwa_router", "confidence": "alta", "used_in": "Tabela 3 e calculo detalhado"},
+    {"topic": "Equipamento", "data": "Rebitadeira 60 ciclos/min, capacidade ate 4 toneladas", "value": "60", "unit": "ciclos/min", "source_id": "rebitex_rebitadeira", "confidence": "alta", "used_in": "Tabela 3 e montagem"},
+    {"topic": "Equipamento", "data": "Seladora blister 4 prensadas/min", "value": "4", "unit": "prensadas/min", "source_id": "flockcolor_blister", "confidence": "alta", "used_in": "Tabela 3 e embalagem"},
+    {"topic": "Metodo", "data": "Fluxograma mostra sequencia; mapofluxograma mostra sequencia sobre layout", "value": "metodo da aula", "unit": "conceito", "source_id": "aula_arranjo", "confidence": "alta", "used_in": "diagramas"}
+  ],
+  "bom": [
+    {"component": "Faca chef 8 pol. com lamina em aco inox, cabo de madeira natural e rebites de aluminio", "quantity": 1, "unit": "unidade", "make_or_buy": "Fazer", "source_or_premise": "Item filho oficial; fabricar internamente por ser item de valor/qualidade"},
+    {"component": "Garfo trinchante com lamina em aco inox, cabo de madeira natural e rebites de aluminio", "quantity": 1, "unit": "unidade", "make_or_buy": "Fazer", "source_or_premise": "Item filho oficial; fabricar internamente por controle de acabamento/montagem"},
+    {"component": "Tabua retangular em madeira Macaranduba com acabamento natural", "quantity": 1, "unit": "unidade", "make_or_buy": "Fazer", "source_or_premise": "Item filho oficial; fabricar internamente por ser peca principal do kit"},
+    {"component": "Cartela/cinta impressa da embalagem", "quantity": 1, "unit": "unidade", "make_or_buy": "Comprar", "source_or_premise": "Inferido pela embalagem oficial; item grafico padronizado"},
+    {"component": "Blister/suporte plastico transparente", "quantity": 1, "unit": "unidade", "make_or_buy": "Comprar", "source_or_premise": "Inferido pela embalagem oficial; fornecedor especializado"},
+    {"component": "Etiqueta/codigo de barras/rastreabilidade", "quantity": 1, "unit": "conjunto", "make_or_buy": "Comprar", "source_or_premise": "Premissa de venda e rastreabilidade"},
+    {"component": "Caixa de transporte para envio", "quantity": 1, "unit": "unidade", "make_or_buy": "Comprar", "source_or_premise": "Requisito do enunciado: unidade embalada para envio"}
+  ],
+  "material_estimates": [
+    {"item": "Aco inox faca", "formula": "comprimento_blank_cm * largura_media_cm * espessura_cm * densidade_g_cm3 * fator_perda", "inputs": {"comprimento_blank_cm": 31.7, "largura_media_cm": 2.4, "espessura_cm": 0.20, "densidade_g_cm3": 7.7, "fator_perda": 1.25}, "source_id": "tramontina_technical_drawing/rolmetais_aisi420", "unit_output": "g/kit"},
+    {"item": "Aco inox garfo", "formula": "comprimento_cm * largura_media_cm * espessura_cm * densidade_g_cm3 * fator_perda", "inputs": {"comprimento_cm": 29.8, "largura_media_cm": 1.3, "espessura_cm": 0.20, "densidade_g_cm3": 7.7, "fator_perda": 1.30}, "source_id": "tramontina_technical_drawing/rolmetais_aisi420", "unit_output": "g/kit"},
+    {"item": "Madeira tabua Macaranduba", "formula": "comprimento_cm * largura_cm * espessura_cm * densidade_g_cm3 * fator_perda_usinagem", "inputs": {"comprimento_cm": 34.0, "largura_cm": 19.0, "espessura_cm": 1.5, "densidade_g_cm3": 1.04, "fator_perda_usinagem": 1.12}, "source_id": "tramontina_product/madeira_macaranduba_remade", "unit_output": "g/kit"},
+    {"item": "Madeira cabos", "formula": "volume_estimado_cabos_cm3 * densidade_g_cm3 * fator_perda", "inputs": {"volume_estimado_cabos_cm3": 42.0, "densidade_g_cm3": 0.65, "fator_perda": 1.35}, "source_id": "premissa de engenharia", "unit_output": "g/kit"},
+    {"item": "Aluminio rebites", "formula": "quantidade_rebites * massa_unitaria_g * fator_perda", "inputs": {"quantidade_rebites": 4, "massa_unitaria_g": 1.2, "fator_perda": 1.05}, "source_id": "premissa de engenharia", "unit_output": "g/kit"}
+  ],
+  "equipment": [
+    {"id": "laser_fibra", "type": "Corte laser fibra CNC", "supplier": "Madetech", "model": "CNC Fiber Pro 1530", "dimensions_m": {"length": 5.0, "width": 3.0, "height": 1.8}, "official_capacity": "Laser 1500 W; mesa 3000x1500 mm; velocidade de corte 20.000 mm/min; inox ate 2 mm", "source_id": "madetech_laser", "planned_rate_per_hour": 80, "rate_basis": "estimativa: 45 s por kit para cortar blanks da faca e garfo em chapa aninhada", "service_area_factor": 2.0},
+    {"id": "forno_tt", "type": "Forno de tratamento termico", "supplier": "Cecomatec", "model": "703.099 com carro", "dimensions_m": {"length": 3.75, "width": 1.6, "height": 3.1}, "official_capacity": "Camara 800x1400x900 mm; temperatura maxima 1200 C", "source_id": "cecomatec_furnace", "planned_rate_per_hour": 150, "rate_basis": "estimativa por batelada: 600 pecas metalicas/2 h, equivalente a 150 kits/h para 2 pecas metalicas por kit", "service_area_factor": 2.0},
+    {"id": "politriz_metal", "type": "Lixadeira/politriz de cinta para metal", "supplier": "Fornecedor a definir", "model": "Lixadeira/politriz industrial", "dimensions_m": {"length": 1.2, "width": 0.8, "height": 1.4}, "official_capacity": "A definir em cotacao; usar tempo padrao", "source_id": "premissa de engenharia", "planned_rate_per_hour": 40, "rate_basis": "estimativa: 90 s por kit para rebarbacao/polimento de faca e garfo", "service_area_factor": 2.0},
+    {"id": "afiador", "type": "Afiador de facas", "supplier": "Maksiwa", "model": "AF.650", "dimensions_m": {"length": 0.65, "width": 0.33, "height": 0.36}, "official_capacity": "Afia facas ate 650 mm; 1440 RPM", "source_id": "maksiwa_afiador", "planned_rate_per_hour": 120, "rate_basis": "estimativa: 30 s por faca; garfo nao passa por afiacao", "service_area_factor": 5.0},
+    {"id": "esquadrejadeira", "type": "Esquadrejadeira para madeira", "supplier": "Maksiwa", "model": "BMS.1900.I", "dimensions_m": {"length": 2.6, "width": 2.2, "height": 1.5}, "official_capacity": "Capacidade de corte 1900 mm; serra 4000 RPM", "source_id": "maksiwa_esquadrejadeira", "planned_rate_per_hour": 80, "rate_basis": "estimativa: 45 s por kit para cortar tabua e blanks de cabos", "service_area_factor": 2.0},
+    {"id": "router_cnc", "type": "Router CNC para madeira", "supplier": "Maksiwa Store", "model": "RTC.1313", "dimensions_m": {"length": 1.7, "width": 2.0, "height": 1.8}, "official_capacity": "Area util 1300x1300x200 mm; velocidade maxima 30 m/min; spindle 3,5 kW", "source_id": "maksiwa_router", "planned_rate_per_hour": 30, "rate_basis": "estimativa detalhada: 120 s por kit para fresar sulco da tabua e usinar/furar cabos", "service_area_factor": 2.2},
+    {"id": "lixadeira_madeira", "type": "Lixadeira de madeira", "supplier": "Fornecedor a definir", "model": "Lixadeira de cinta/orbital industrial", "dimensions_m": {"length": 1.2, "width": 0.8, "height": 1.4}, "official_capacity": "A definir em cotacao; usar tempo padrao", "source_id": "premissa de engenharia", "planned_rate_per_hour": 40, "rate_basis": "estimativa: 90 s por kit para lixamento de tabua e cabos", "service_area_factor": 2.0},
+    {"id": "acabamento_madeira", "type": "Bancada de acabamento de madeira", "supplier": "Montagem interna", "model": "Bancada + exaustao/local de cura", "dimensions_m": {"length": 2.0, "width": 1.0, "height": 0.9}, "official_capacity": "Capacidade definida por tempo padrao e area de cura", "source_id": "premissa de engenharia", "planned_rate_per_hour": 60, "rate_basis": "estimativa: 60 s por kit para aplicacao de acabamento; cura tratada como espera/area", "service_area_factor": 2.5},
+    {"id": "rebitadeira", "type": "Rebitadeira pneumatica", "supplier": "Rebitex", "model": "404-S TURBO-X", "dimensions_m": {"length": 1.2, "width": 0.8, "height": 1.5}, "official_capacity": "Capacidade ate 4 toneladas; velocidade 60 ciclos/min", "source_id": "rebitex_rebitadeira", "planned_rate_per_hour": 40, "rate_basis": "estimativa: 90 s por kit incluindo posicionamento de 4 rebites e manuseio", "service_area_factor": 2.0},
+    {"id": "bancada_montagem", "type": "Bancada de montagem e inspecao", "supplier": "Montagem interna", "model": "Bancada industrial", "dimensions_m": {"length": 2.0, "width": 1.0, "height": 0.9}, "official_capacity": "Capacidade definida por tempo padrao", "source_id": "premissa de engenharia", "planned_rate_per_hour": 60, "rate_basis": "estimativa: 60 s por kit para montagem/conferencia manual do conjunto", "service_area_factor": 2.0},
+    {"id": "seladora_blister", "type": "Seladora blister tipo carrossel", "supplier": "Flockcolor", "model": "40 x 50 cm semiautomatica pneumatica", "dimensions_m": {"length": 1.9, "width": 1.6, "height": 1.6}, "official_capacity": "Area util 40x50 cm; produtividade 4 prensadas/min; dimensao 190x160x160 cm", "source_id": "flockcolor_blister", "planned_rate_per_hour": 240, "rate_basis": "capacidade oficial: 4 prensadas/min, assumindo 1 kit por prensada", "service_area_factor": 2.0}
+  ],
+  "processes": [
+    {"number": 1, "name": "Receber materias-primas e embalagens", "type": "inspecao", "resource": "doca, paleteira, balanca, bancada de conferencia", "equipment_id": null, "depends_on": []},
+    {"number": 2, "name": "Armazenar aco inox, madeira, rebites e embalagens", "type": "armazenagem", "resource": "porta-paletes, estantes, area seca para madeira", "equipment_id": null, "depends_on": [1]},
+    {"number": 3, "name": "Transportar aco inox para corte", "type": "transporte", "resource": "carrinho/plataforma", "equipment_id": null, "depends_on": [2]},
+    {"number": 4, "name": "Cortar blanks da faca e do garfo em chapa de aco inox", "type": "operacao", "resource": "corte laser fibra CNC", "equipment_id": "laser_fibra", "depends_on": [3]},
+    {"number": 5, "name": "Inspecionar blanks metalicos", "type": "inspecao", "resource": "paquimetro, gabarito, bancada", "equipment_id": null, "depends_on": [4]},
+    {"number": 6, "name": "Realizar tratamento termico das pecas metalicas", "type": "operacao", "resource": "forno de tratamento termico com carro", "equipment_id": "forno_tt", "depends_on": [5]},
+    {"number": 7, "name": "Aguardar resfriamento/estabilizacao das pecas", "type": "espera", "resource": "rack metalico resistente a temperatura", "equipment_id": null, "depends_on": [6]},
+    {"number": 8, "name": "Rebarbar, lixar e polir faca e garfo", "type": "operacao", "resource": "lixadeira/politriz de metal, exaustao, EPIs", "equipment_id": "politriz_metal", "depends_on": [7]},
+    {"number": 9, "name": "Afiar faca", "type": "operacao", "resource": "afiador de facas, refrigeracao, gabarito de angulo", "equipment_id": "afiador", "depends_on": [8]},
+    {"number": 10, "name": "Armazenar pecas metalicas semiacabadas", "type": "armazenagem", "resource": "racks identificados", "equipment_id": null, "depends_on": [9]},
+    {"number": 11, "name": "Transportar madeira para corte", "type": "transporte", "resource": "carrinho para tabuas e sarrafos", "equipment_id": null, "depends_on": [2]},
+    {"number": 12, "name": "Cortar tabuas e blanks dos cabos", "type": "operacao", "resource": "esquadrejadeira, coletor de po", "equipment_id": "esquadrejadeira", "depends_on": [11]},
+    {"number": 13, "name": "Fresar sulco da tabua e usinar/furar cabos", "type": "operacao", "resource": "router CNC, fresas, presilhas", "equipment_id": "router_cnc", "depends_on": [12]},
+    {"number": 14, "name": "Lixar tabua e cabos", "type": "operacao", "resource": "lixadeira de madeira, bancadas, exaustao", "equipment_id": "lixadeira_madeira", "depends_on": [13]},
+    {"number": 15, "name": "Aplicar acabamento superficial na madeira", "type": "operacao", "resource": "bancada de acabamento, exaustao, suportes", "equipment_id": "acabamento_madeira", "depends_on": [14]},
+    {"number": 16, "name": "Aguardar cura/secagem do acabamento", "type": "espera", "resource": "estante de cura e area ventilada", "equipment_id": null, "depends_on": [15]},
+    {"number": 17, "name": "Inspecionar pecas de madeira", "type": "inspecao", "resource": "gabaritos, inspeção visual, paquimetro", "equipment_id": null, "depends_on": [16]},
+    {"number": 18, "name": "Transportar pecas para montagem", "type": "transporte", "resource": "carrinhos e caixas plasticas", "equipment_id": null, "depends_on": [10, 17]},
+    {"number": 19, "name": "Montar cabos na faca e no garfo por rebitagem", "type": "operacao", "resource": "rebitadeira pneumatica, gabaritos, compressor", "equipment_id": "rebitadeira", "depends_on": [18]},
+    {"number": 20, "name": "Inspecionar montagem, fio e acabamento", "type": "inspecao", "resource": "bancada, gabarito, check-list de qualidade", "equipment_id": "bancada_montagem", "depends_on": [19]},
+    {"number": 21, "name": "Montar kit na cartela/blister", "type": "operacao", "resource": "bancada de montagem, berco de posicionamento", "equipment_id": "bancada_montagem", "depends_on": [20]},
+    {"number": 22, "name": "Selar blister/cartela", "type": "operacao", "resource": "seladora blister tipo carrossel", "equipment_id": "seladora_blister", "depends_on": [21]},
+    {"number": 23, "name": "Inspecionar kit embalado", "type": "inspecao", "resource": "bancada, check-list visual, amostragem dimensional", "equipment_id": "bancada_montagem", "depends_on": [22]},
+    {"number": 24, "name": "Embalar para envio em caixa de transporte", "type": "operacao", "resource": "bancada de embalagem, etiquetadora, fita", "equipment_id": "bancada_montagem", "depends_on": [23]},
+    {"number": 25, "name": "Armazenar produto acabado", "type": "armazenagem", "resource": "porta-paletes, enderecamento, FIFO", "equipment_id": null, "depends_on": [24]},
+    {"number": 26, "name": "Transportar para expedicao", "type": "transporte", "resource": "paleteira, doca de expedicao", "equipment_id": null, "depends_on": [25]}
+  ],
+  "selected_equipment_calculation": {
+    "equipment_id": "router_cnc",
+    "reason": "A tabua e os cabos exigem usinagem/fresagem com repetibilidade; a etapa tem tempo padrao estimado alto e tende a ser gargalo.",
+    "operations": [13],
+    "standard_time_seconds_per_kit": 120,
+    "manufacturer_capacity_used_as_context": "Area util 1300x1300x200 mm; velocidade maxima de deslocamento 30 m/min; spindle 3,5 kW.",
+    "calculation_formula": "quantidade = teto(demanda_bruta_semana / (taxa_nominal_h * horas_uteis_semana * eficiencia * confiabilidade * yield_processo))"
+  }
+}

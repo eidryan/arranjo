@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Excel de cálculos - Projeto Tramontina</title>
+  <style>
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:#17212b; background:#ffffff; }
+    header { padding:24px clamp(20px,4vw,56px); background:#f8fafc; border-bottom:1px solid #d7dde5; }
+    main { padding:28px clamp(20px,4vw,56px) 48px; max-width:1320px; margin:0 auto; }
+    h1 { margin:0 0 8px; font-size:34px; letter-spacing:0; }
+    h2 { margin:28px 0 12px; font-size:23px; }
+    h3 { margin:22px 0 8px; font-size:18px; }
+    p, li { line-height:1.48; }
+    a { color:#17212b; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .actions a, .back { display:inline-block; text-decoration:none; border:1px solid #d7dde5; padding:8px 11px; background:#fff; }
+    .render { width:100%; max-height:720px; object-fit:contain; border:1px solid #d7dde5; background:#f8fafc; }
+    table { width:100%; border-collapse:collapse; margin:12px 0 18px; font-size:14px; }
+    th, td { border:1px solid #d7dde5; padding:8px 10px; text-align:left; vertical-align:top; }
+    th { background:#edf2f7; }
+    pre { white-space:pre-wrap; background:#f8fafc; border:1px solid #d7dde5; padding:12px; overflow:auto; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .card { border:1px solid #d7dde5; padding:14px; }
+    .note { color:#5d6977; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="../index.html">Voltar para a central</a>
+    <h1>Excel de cálculos</h1>
+    <div class="actions"><a href='../../02_calculos/demonstrativo_calculos.xlsx'>Abrir Excel editável</a></div>
+  </header>
+  <main>
+        <p class="note">Frente HTML do demonstrativo. O arquivo editável continua no Excel.</p>
+        <div class="grid">
+          <div class="card"><h3>Meta boa</h3><p>1000 kits/semana</p></div>
+          <div class="card"><h3>Demanda bruta</h3><p>1053 kits/semana</p></div>
+          <div class="card"><h3>Horas úteis</h3><p>35.0 h/semana</p></div>
+          <div class="card"><h3>Router CNC</h3><p>2 unidade(s)</p></div>
+        </div>
+        <h2>Capacidade por equipamento</h2>
+        <table><thead><tr><th>Equipamento</th><th>Fornecedor</th><th>Taxa nominal</th><th>Capacidade semanal</th><th>Qtd.</th><th>Utilização</th></tr></thead><tbody><tr><td>Corte laser fibra CNC</td><td>Madetech</td><td>80</td><td>2146</td><td>1</td><td>49.1%</td></tr>
+<tr><td>Forno de tratamento termico</td><td>Cecomatec</td><td>150</td><td>4023</td><td>1</td><td>26.2%</td></tr>
+<tr><td>Lixadeira/politriz de cinta para metal</td><td>Fornecedor a definir</td><td>40</td><td>1073</td><td>1</td><td>98.1%</td></tr>
+<tr><td>Afiador de facas</td><td>Maksiwa</td><td>120</td><td>3219</td><td>1</td><td>32.7%</td></tr>
+<tr><td>Esquadrejadeira para madeira</td><td>Maksiwa</td><td>80</td><td>2146</td><td>1</td><td>49.1%</td></tr>
+<tr><td>Router CNC para madeira</td><td>Maksiwa Store</td><td>30</td><td>805</td><td>2</td><td>65.4%</td></tr>
+<tr><td>Lixadeira de madeira</td><td>Fornecedor a definir</td><td>40</td><td>1073</td><td>1</td><td>98.1%</td></tr>
+<tr><td>Bancada de acabamento de madeira</td><td>Montagem interna</td><td>60</td><td>1609</td><td>1</td><td>65.4%</td></tr>
+<tr><td>Rebitadeira pneumatica</td><td>Rebitex</td><td>40</td><td>1073</td><td>1</td><td>98.1%</td></tr>
+<tr><td>Bancada de montagem e inspecao</td><td>Montagem interna</td><td>60</td><td>1609</td><td>1</td><td>65.4%</td></tr>
+<tr><td>Seladora blister tipo carrossel</td><td>Flockcolor</td><td>240</td><td>6437</td><td>1</td><td>16.4%</td></tr></tbody></table>
+        <h2>Consumo estimado de materiais</h2>
+        <table><thead><tr><th>Material</th><th>Consumo por kit</th><th>Consumo semanal</th><th>Base</th></tr></thead><tbody><tr><td>Aco inox faca</td><td>146.5 g/kit</td><td>154.2 kg/semana</td><td>Desenho tecnico Tramontina 22399036</td></tr>
+<tr><td>Aco inox garfo</td><td>77.6 g/kit</td><td>81.7 kg/semana</td><td>Desenho tecnico Tramontina 22399036</td></tr>
+<tr><td>Madeira tabua Macaranduba</td><td>1128.7 g/kit</td><td>1188.5 kg/semana</td><td>Pagina oficial Tramontina - produto 22399036</td></tr>
+<tr><td>Madeira cabos</td><td>36.9 g/kit</td><td>38.8 kg/semana</td><td>premissa de engenharia</td></tr>
+<tr><td>Aluminio rebites</td><td>5.0 g/kit</td><td>5.3 kg/semana</td><td>premissa de engenharia</td></tr></tbody></table>
+        </main>
+</body>
+</html>

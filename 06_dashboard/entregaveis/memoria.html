@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memória de cálculo - Projeto Tramontina</title>
+  <style>
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:#17212b; background:#ffffff; }
+    header { padding:24px clamp(20px,4vw,56px); background:#f8fafc; border-bottom:1px solid #d7dde5; }
+    main { padding:28px clamp(20px,4vw,56px) 48px; max-width:1320px; margin:0 auto; }
+    h1 { margin:0 0 8px; font-size:34px; letter-spacing:0; }
+    h2 { margin:28px 0 12px; font-size:23px; }
+    h3 { margin:22px 0 8px; font-size:18px; }
+    p, li { line-height:1.48; }
+    a { color:#17212b; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .actions a, .back { display:inline-block; text-decoration:none; border:1px solid #d7dde5; padding:8px 11px; background:#fff; }
+    .render { width:100%; max-height:720px; object-fit:contain; border:1px solid #d7dde5; background:#f8fafc; }
+    table { width:100%; border-collapse:collapse; margin:12px 0 18px; font-size:14px; }
+    th, td { border:1px solid #d7dde5; padding:8px 10px; text-align:left; vertical-align:top; }
+    th { background:#edf2f7; }
+    pre { white-space:pre-wrap; background:#f8fafc; border:1px solid #d7dde5; padding:12px; overflow:auto; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .card { border:1px solid #d7dde5; padding:14px; }
+    .note { color:#5d6977; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="../index.html">Voltar para a central</a>
+    <h1>Memória de cálculo</h1>
+    <div class="actions"><a href='../../02_calculos/demonstrativo_calculos.xlsx'>Abrir Excel editável</a>
+<a href='../../02_calculos/memoria_calculo_transparente.md' download>Baixar memória .md</a></div>
+  </header>
+  <main><h1>Memoria de calculo transparente</h1>
+<p>Todas as contas abaixo foram geradas por `scripts/generate_outputs.py` a partir de `data/projeto.json`.</p>
+<h2>Demanda</h2>
+<ul>
+<li>Meta de produtos bons: 1000 kits/semana.</li>
+<li>Rendimento final assumido: 95.00%.</li>
+<li>Demanda bruta: ceil(1000 / 0.95) = 1053 kits/semana.</li>
+<li>Horas uteis: 5 dias * 1 turno * 7 h = 35.0 h/semana.</li>
+<li>Ritmo medio necessario: 1053 / 35.0 = 30.09 kits/h.</li>
+</ul>
+<h2>Equipamento selecionado para memoria detalhada</h2>
+<ul>
+<li>Equipamento: Router CNC para madeira - Maksiwa Store RTC.1313.</li>
+<li>Operacoes consideradas: 13 - Fresar sulco da tabua e usinar/furar cabos.</li>
+<li>Motivo da selecao: A tabua e os cabos exigem usinagem/fresagem com repetibilidade; a etapa tem tempo padrao estimado alto e tende a ser gargalo..</li>
+<li>Tempo padrao: 120 s/kit.</li>
+<li>Taxa nominal: 3600 / 120 = 30.00 kits/h.</li>
+<li>Taxa efetiva: 30.00 * 0.85 * 0.92 * 0.98 = 22.99 kits/h.</li>
+<li>Capacidade semanal por maquina: 22.99 * 35.0 = 804.68 kits/semana.</li>
+<li>Quantidade necessaria: ceil(1053 / 804.68) = 2 equipamento(s).</li>
+<li>Utilizacao estimada: 65.4%.</li>
+</ul>
+<h2>Areas</h2>
+<ul>
+<li>Area total proposta: 24 m * 16 m = 384.0 m2.</li>
+<li>Area estimada necessaria: 260.4 m2.</li>
+<li>Ocupacao: 67.8%; folga: 123.6 m2.</li>
+</ul></main>
+</body>
+</html>

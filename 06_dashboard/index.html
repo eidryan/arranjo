@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeto de Fábrica - Tramontina 22399036</title>
+  <style>
+    :root {
+      --ink:#17212b; --muted:#5d6977; --line:#d7dde5; --paper:#f8fafc;
+      --green:#2f7d57; --blue:#315f9f; --gold:#b07820; --red:#a63d40; --soft:#fff8ef;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:#ffffff; }
+    nav { position:sticky; top:0; z-index:3; display:flex; gap:8px; flex-wrap:wrap; padding:10px clamp(20px,4vw,56px); border-bottom:1px solid var(--line); background:rgba(255,255,255,.96); }
+    nav a { color:var(--ink); text-decoration:none; border:1px solid var(--line); padding:7px 10px; font-size:13px; background:#fff; }
+    header { display:grid; grid-template-columns:minmax(260px, 1.05fr) minmax(260px, .95fr); gap:28px; padding:34px clamp(20px,4vw,56px); border-bottom:1px solid var(--line); background:var(--paper); }
+    h1 { margin:0 0 10px; font-size:clamp(26px,3.2vw,44px); line-height:1.08; letter-spacing:0; }
+    h2 { margin:0 0 14px; font-size:22px; }
+    h3 { margin:0 0 8px; font-size:15px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+    p { line-height:1.45; }
+    img.product { width:100%; max-height:340px; object-fit:contain; background:#fff; border:1px solid var(--line); }
+    main { padding:28px clamp(20px,4vw,56px) 48px; }
+    section { margin:0 0 32px; }
+    .kpis { display:grid; grid-template-columns:repeat(5,minmax(150px,1fr)); gap:12px; }
+    .kpi { border-left:5px solid var(--blue); padding:14px 16px; background:#fff; border-top:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .kpi:nth-child(2) { border-left-color:var(--green); }
+    .kpi:nth-child(3) { border-left-color:var(--gold); }
+    .kpi:nth-child(4) { border-left-color:var(--red); }
+    .kpi b { display:block; font-size:24px; margin-top:4px; }
+    .grid { display:grid; grid-template-columns:minmax(280px,.9fr) minmax(360px,1.1fr); gap:24px; align-items:start; }
+    .three-grid { display:grid; grid-template-columns:repeat(3,minmax(220px,1fr)); gap:18px; align-items:start; }
+    .wide-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    .media-card, .deliverable { display:flex; flex-direction:column; min-height:100%; color:var(--ink); text-decoration:none; border:1px solid var(--line); background:#fff; }
+    .media-card img { width:100%; aspect-ratio:4/3; object-fit:contain; background:#f7f7f7; border-bottom:1px solid var(--line); }
+    .media-card strong, .deliverable strong { display:block; padding:12px 12px 4px; font-size:15px; }
+    .media-card span, .deliverable span { display:block; padding:0 12px 12px; color:var(--muted); font-size:13px; line-height:1.35; }
+    .deliverable { min-height:96px; border-left:5px solid var(--blue); }
+    .deliverable:nth-child(3n+2) { border-left-color:var(--green); }
+    .deliverable:nth-child(3n) { border-left-color:var(--gold); }
+    .render-grid { display:grid; grid-template-columns:repeat(3,minmax(250px,1fr)); gap:18px; }
+    .render-card { border:1px solid var(--line); background:#fff; }
+    .render-card img { display:block; width:100%; aspect-ratio:16/10; object-fit:contain; background:#f8fafc; border-bottom:1px solid var(--line); }
+    .render-card div { padding:14px; }
+    .render-card h3 { color:var(--ink); text-transform:none; letter-spacing:0; font-size:18px; margin-bottom:8px; }
+    .render-card a { display:inline-block; color:var(--ink); text-decoration:none; border:1px solid var(--line); background:#fff; padding:7px 10px; font-size:13px; }
+    .tree { display:grid; gap:8px; padding:14px; border:1px solid var(--line); background:var(--soft); }
+    .tree b, .tree span { display:block; padding:9px 10px; border:1px solid var(--line); background:#fff; }
+    .tree .children { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px; }
+    .file-list { columns:2 260px; line-height:1.65; }
+    .front { border:1px solid var(--line); background:#fff; padding:18px; }
+    .front h3 { color:var(--ink); text-transform:none; letter-spacing:0; font-size:18px; margin-bottom:10px; }
+    .front-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .front-actions a { color:var(--ink); text-decoration:none; border:1px solid var(--line); background:#fff; padding:7px 10px; font-size:13px; }
+    .tag { display:inline-block; padding:3px 7px; border:1px solid var(--line); font-size:12px; background:#fff; }
+    .tag-operacao, .type-operacao { background:#D9EAD3; }
+    .tag-transporte, .type-transporte { background:#D9EAF7; }
+    .tag-inspecao, .type-inspecao { background:#FFF2CC; }
+    .tag-armazenagem, .type-armazenagem { background:#EADCF8; }
+    .tag-espera, .type-espera { background:#F4CCCC; }
+    .flow-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; }
+    .flow-node { min-height:88px; padding:10px; border:1px solid #9ca3af; }
+    .flow-node b { display:block; font-size:18px; }
+    .flow-node span { display:block; font-size:12px; line-height:1.25; }
+    .layout-preview { position:relative; width:100%; aspect-ratio:24/16; min-height:320px; border:2px solid #334155; background:#f8fafc; overflow:hidden; }
+    .zone { position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:6px; border:1px solid #334155; font-size:12px; font-weight:bold; }
+    .map-point { position:absolute; transform:translate(-50%,-50%); z-index:2; min-width:52px; padding:7px 8px; text-align:center; border:2px solid #111827; background:#fff; font-weight:bold; font-size:12px; }
+    .map-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    .scroll-table { overflow:auto; border:1px solid var(--line); }
+    .scroll-table table { min-width:760px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top; }
+    th { background:#edf2f7; }
+    .bar-row { display:grid; grid-template-columns:190px 1fr 42px; gap:10px; align-items:center; margin:9px 0; font-size:13px; }
+    .bar { height:13px; background:#e9edf2; border:1px solid #d6dde6; }
+    .bar i { display:block; height:100%; background:linear-gradient(90deg,var(--green),var(--gold)); }
+    .note { color:var(--muted); font-size:14px; }
+    code { background:#edf2f7; padding:2px 5px; border-radius:4px; }
+    .formula { border:1px solid var(--line); padding:14px 16px; background:#fbfbfd; }
+    @media (max-width: 900px) {
+      header, .grid, .three-grid, .render-grid { grid-template-columns:1fr; }
+      .kpis { grid-template-columns:repeat(2,minmax(140px,1fr)); }
+    }
+    @media (max-width: 560px) {
+      .kpis { grid-template-columns:1fr; }
+      .bar-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#produtos">Produtos</a>
+    <a href="#entregaveis">Entregáveis</a>
+    <a href="#renders">Renderizações</a>
+    <a href="#fronts">Frentes</a>
+    <a href="#calculos">Cálculos</a>
+    <a href="#tabela-processos">Processos</a>
+    <a href="#layout">Layout</a>
+    <a href="#fontes">Fontes</a>
+  </nav>
+  <header>
+    <div>
+      <h3>Projeto de fábrica</h3>
+      <h1>Kit para Churrasco Tramontina com Laminas em Aco Inox e Cabos em Madeira Natural 3 Pecas</h1>
+      <p>Kit de 3 pecas para churrasco composto por faca chef 8 polegadas, garfo trinchante e tabua retangular de madeira.</p>
+      <p class="note">SKU 22399036 · Embalagem 38.9 x 4.0 x 21.6 cm · 1.23 kg.</p>
+      <h3>Integrantes</h3>
+      <ul><li>Bernardo Gomes</li>
+<li>Lucas de Mello</li>
+<li>Clara Hermsdorff</li>
+<li>João Deccax</li>
+<li>André Baptista</li></ul>
+      <p class='note'>A captura mostra um integrante como &#x27;You&#x27;; falta substituir pelo nome real antes da entrega final.</p>
+    </div>
+    <img class="product" src="../04_fontes/assets_tramontina/22399036_produto_principal_G.jpg" alt="Produto Tramontina 22399036">
+  </header>
+  <main>
+    <section id="entregaveis">
+      <h2>Central de entregáveis</h2>
+      <div class="wide-grid"><a class='deliverable' href='entregaveis/readme.html'><strong>README geral</strong><span>Mapa do pacote e resumo dos resultados</span></a>
+<a class='deliverable' href='entregaveis/roteiro.html'><strong>Roteiro da apresentação</strong><span>Estrutura para montar os slides no fim</span></a>
+<a class='deliverable' href='entregaveis/calculos.html'><strong>Excel de cálculos</strong><span>Frente HTML do workbook com link para o editável</span></a>
+<a class='deliverable' href='entregaveis/memoria.html'><strong>Memória de cálculo</strong><span>Texto renderizado com fórmulas, entradas e resultados</span></a>
+<a class='deliverable' href='entregaveis/fluxograma.html'><strong>Fluxograma</strong><span>Diagrama renderizado do processo</span></a>
+<a class='deliverable' href='entregaveis/layout.html'><strong>Layout esquemático</strong><span>Arranjo físico renderizado</span></a>
+<a class='deliverable' href='entregaveis/mapofluxograma.html'><strong>Mapofluxograma</strong><span>Fluxo renderizado sobre o layout</span></a>
+<a class='deliverable' href='entregaveis/contexto-produto.html'><strong>Contexto do produto</strong><span>Dados extraídos da página da Tramontina</span></a>
+<a class='deliverable' href='entregaveis/fontes-premissas.html'><strong>Fontes e premissas</strong><span>Rastreabilidade das fontes pesquisadas</span></a>
+<a class='deliverable' href='entregaveis/revisao-plano.html'><strong>Revisão crítica do plano</strong><span>Riscos, lacunas e correções de rota</span></a></div>
+    </section>
+    <section id="renders">
+      <h2>Renderizações dos entregáveis</h2>
+      <div class="render-grid"><article class='render-card'><a href='entregaveis/fluxograma.html'><img src='renders/fluxograma_render.svg' alt='Fluxograma renderizado'></a><div><h3>Fluxograma renderizado</h3><p>Sequência completa dos 26 processos com cores por tipo.</p><a href='entregaveis/fluxograma.html'>Abrir frente renderizada</a></div></article>
+<article class='render-card'><a href='entregaveis/layout.html'><img src='renders/layout_render.svg' alt='Layout esquemático renderizado'></a><div><h3>Layout renderizado</h3><p>Arranjo físico com áreas de recebimento, metal, madeira, montagem, inspeção e expedição.</p><a href='entregaveis/layout.html'>Abrir frente renderizada</a></div></article>
+<article class='render-card'><a href='entregaveis/mapofluxograma.html'><img src='renders/mapofluxograma_render.svg' alt='Mapofluxograma renderizado'></a><div><h3>Mapofluxograma renderizado</h3><p>Fluxo macro sobre o layout, conectando recebimento, produção, inspeção e expedição.</p><a href='entregaveis/mapofluxograma.html'>Abrir frente renderizada</a></div></article></div>
+    </section>
+    <section id="produtos">
+      <h2>Produto, componentes e embalagem</h2>
+      <div class="wide-grid"><a class='media-card' href='../04_fontes/assets_tramontina/22399036_produto_principal_G.jpg'><img src='../04_fontes/assets_tramontina/22399036_produto_principal_G.jpg' alt='Kit principal'><strong>Kit principal</strong><span>Produto vendido: kit churrasco com faca, garfo, tábua e embalagem.</span></a>
+<a class='media-card' href='../04_fontes/assets_tramontina/22399036_item_aberto_G.jpg'><img src='../04_fontes/assets_tramontina/22399036_item_aberto_G.jpg' alt='Kit aberto'><strong>Kit aberto</strong><span>Visão dos itens fora da embalagem, útil para estrutura pai-filho.</span></a>
+<a class='media-card' href='../04_fontes/assets_tramontina/22399036_embalagem_G.jpg'><img src='../04_fontes/assets_tramontina/22399036_embalagem_G.jpg' alt='Embalagem'><strong>Embalagem</strong><span>38.9 x 4.0 x 21.6 cm; 1.23 kg.</span></a>
+<a class='media-card' href='../04_fontes/assets_tramontina/22399036_desenho_tecnico.jpg'><img src='../04_fontes/assets_tramontina/22399036_desenho_tecnico.jpg' alt='Desenho técnico'><strong>Desenho técnico</strong><span>Base visual para dimensões e desenho técnico no trabalho.</span></a>
+<a class='media-card' href='../04_fontes/assets_tramontina/22315008_faca_chef_8.jpg'><img src='../04_fontes/assets_tramontina/22315008_faca_chef_8.jpg' alt='Faca chef 8 pol.'><strong>Faca chef 8 pol.</strong><span>Item filho 22315008; lâmina em aço inox, cabo de madeira e rebites.</span></a>
+<a class='media-card' href='../04_fontes/assets_tramontina/22330000_garfo_trinchante.jpg'><img src='../04_fontes/assets_tramontina/22330000_garfo_trinchante.jpg' alt='Garfo trinchante'><strong>Garfo trinchante</strong><span>Item filho 22330000; peça metálica com cabo de madeira.</span></a>
+<a class='media-card' href='../04_fontes/assets_tramontina/13102152_tabua_retangular.jpg'><img src='../04_fontes/assets_tramontina/13102152_tabua_retangular.jpg' alt='Tábua retangular'><strong>Tábua retangular</strong><span>Item filho 13102152; madeira Maçaranduba com acabamento natural.</span></a></div>
+    </section>
+    <section class="grid">
+      <div>
+        <h2>Estrutura pai-filho</h2>
+        <div class="tree">
+          <b>Kit 22399036 embalado para envio</b>
+          <div class="children">
+            <span>Faca chef 8 pol.</span>
+            <span>Garfo trinchante</span>
+            <span>Tábua retangular</span>
+            <span>Cartela/cinta</span>
+            <span>Blister/suporte</span>
+            <span>Etiqueta e caixa</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Arquivos técnicos</h2>
+        <ul class="file-list"><li><a href='../data/projeto.json'>Base de entradas</a></li>
+<li><a href='../data/resultados_calculo.json'>Resultados calculados</a></li>
+<li><a href='../scripts/generate_outputs.py'>Script principal</a></li>
+<li><a href='../scripts/build_workbook.mjs'>Builder do Excel</a></li>
+<li><a href='../scripts/run_all.ps1'>Regenerar pacote</a></li>
+<li><a href='../04_fontes/prints_tramontina/01_topo_produto_preco.png'>Prints da página</a></li>
+<li><a href='../04_fontes/assets_tramontina/21198770_folheto.pdf'>Folheto oficial PDF</a></li></ul>
+      </div>
+    </section>
+    <section id="fronts">
+      <h2>Frentes visuais dos entregáveis</h2>
+      <div class="three-grid">
+        <article class="front">
+          <h3>Descrição do produto</h3>
+          <p>Kit de 3 pecas para churrasco composto por faca chef 8 polegadas, garfo trinchante e tabua retangular de madeira.</p>
+          <p class="note">Materiais: Laminas de aco inox; Cabos de madeira natural; Rebites de aluminio; Tabua de madeira Macaranduba com acabamento natural; Certificacao FSC C125626 informada na pagina/embalagem</p>
+          <div class="front-actions"><a href="entregaveis/contexto-produto.html">Abrir contexto renderizado</a><a href="../04_fontes/assets_tramontina/22399036_desenho_tecnico.jpg">Desenho técnico</a></div>
+        </article>
+        <article class="front">
+          <h3>Tabela 1 - BOM</h3>
+          <p>7 itens, separando fazer/comprar para uma unidade embalada para envio.</p>
+          <div class="front-actions"><a href="#bom">Ver tabela</a><a href="entregaveis/calculos.html">Abrir frente dos cálculos</a></div>
+        </article>
+        <article class="front">
+          <h3>Tabela 2 - Processos</h3>
+          <p>26 processos classificados em operação, transporte, inspeção, armazenagem e espera.</p>
+          <div class="front-actions"><a href="#tabela-processos">Ver tabela</a><a href="entregaveis/fluxograma.html">Abrir fluxograma renderizado</a></div>
+        </article>
+        <article class="front">
+          <h3>Tabela 3 - Equipamentos</h3>
+          <p>11 recursos principais dimensionados com eficiência, confiabilidade e rendimento.</p>
+          <div class="front-actions"><a href="#equipamentos">Ver capacidade</a><a href="entregaveis/calculos.html">Abrir frente dos cálculos</a></div>
+        </article>
+        <article class="front">
+          <h3>Cálculo do equipamento</h3>
+          <p>Maksiwa Store RTC.1313: 2 unidade(s) para atender a demanda.</p>
+          <div class="front-actions"><a href="#calculo-detalhado">Ver memória</a><a href="entregaveis/memoria.html">Abrir memória renderizada</a></div>
+        </article>
+        <article class="front">
+          <h3>Layout e mapofluxograma</h3>
+          <p>Área proposta de 384 m², com ocupação estimada de 67.8%.</p>
+          <div class="front-actions"><a href="#layout">Ver layout</a><a href="entregaveis/mapofluxograma.html">Abrir mapofluxograma renderizado</a></div>
+        </article>
+      </div>
+    </section>
+    <section id="calculos" class="kpis">
+      <div class="kpi">Meta boa semanal<b>1000</b></div>
+      <div class="kpi">Demanda bruta<b>1053</b></div>
+      <div class="kpi">Horas úteis/semana<b>35.0</b></div>
+      <div class="kpi">Router CNC necessário<b>2x</b></div>
+      <div class="kpi">Área ocupada estimada<b>260 m²</b></div>
+    </section>
+    <section id="bom" class="grid">
+      <div>
+        <h2>Estrutura do produto</h2>
+        <table>
+          <thead><tr><th>Componente</th><th>Qtd.</th><th>Un.</th><th>F/C</th></tr></thead>
+          <tbody><tr><td>Faca chef 8 pol. com lamina em aco inox, cabo de madeira natural e rebites de aluminio</td><td>1</td><td>unidade</td><td>Fazer</td></tr>
+<tr><td>Garfo trinchante com lamina em aco inox, cabo de madeira natural e rebites de aluminio</td><td>1</td><td>unidade</td><td>Fazer</td></tr>
+<tr><td>Tabua retangular em madeira Macaranduba com acabamento natural</td><td>1</td><td>unidade</td><td>Fazer</td></tr>
+<tr><td>Cartela/cinta impressa da embalagem</td><td>1</td><td>unidade</td><td>Comprar</td></tr>
+<tr><td>Blister/suporte plastico transparente</td><td>1</td><td>unidade</td><td>Comprar</td></tr>
+<tr><td>Etiqueta/codigo de barras/rastreabilidade</td><td>1</td><td>conjunto</td><td>Comprar</td></tr>
+<tr><td>Caixa de transporte para envio</td><td>1</td><td>unidade</td><td>Comprar</td></tr></tbody>
+        </table>
+      </div>
+      <div>
+        <h2>Capacidade por equipamento</h2>
+        <div class='bar-row'><span>Corte laser fibra CNC</span><div class='bar'><i style='width:49%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Forno de tratamento termico</span><div class='bar'><i style='width:26%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Lixadeira/politriz de cinta para metal</span><div class='bar'><i style='width:98%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Afiador de facas</span><div class='bar'><i style='width:33%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Esquadrejadeira para madeira</span><div class='bar'><i style='width:49%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Router CNC para madeira</span><div class='bar'><i style='width:65%'></i></div><b>2x</b></div>
+<div class='bar-row'><span>Lixadeira de madeira</span><div class='bar'><i style='width:98%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Bancada de acabamento de madeira</span><div class='bar'><i style='width:65%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Rebitadeira pneumatica</span><div class='bar'><i style='width:98%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Bancada de montagem e inspecao</span><div class='bar'><i style='width:65%'></i></div><b>1x</b></div>
+<div class='bar-row'><span>Seladora blister tipo carrossel</span><div class='bar'><i style='width:16%'></i></div><b>1x</b></div>
+      </div>
+    </section>
+    <section id="tabela-processos">
+      <h2>Tabela 2 - Processos com tipos e recursos</h2>
+      <div class="scroll-table">
+        <table>
+          <thead><tr><th>No.</th><th>Processo</th><th>Tipo</th><th>Recursos físicos</th></tr></thead>
+          <tbody><tr><td>1</td><td>Receber materias-primas e embalagens</td><td><span class='tag tag-inspecao'>Inspeção</span></td><td>doca, paleteira, balanca, bancada de conferencia</td></tr>
+<tr><td>2</td><td>Armazenar aco inox, madeira, rebites e embalagens</td><td><span class='tag tag-armazenagem'>Armazenagem</span></td><td>porta-paletes, estantes, area seca para madeira</td></tr>
+<tr><td>3</td><td>Transportar aco inox para corte</td><td><span class='tag tag-transporte'>Transporte</span></td><td>carrinho/plataforma</td></tr>
+<tr><td>4</td><td>Cortar blanks da faca e do garfo em chapa de aco inox</td><td><span class='tag tag-operacao'>Operação</span></td><td>corte laser fibra CNC</td></tr>
+<tr><td>5</td><td>Inspecionar blanks metalicos</td><td><span class='tag tag-inspecao'>Inspeção</span></td><td>paquimetro, gabarito, bancada</td></tr>
+<tr><td>6</td><td>Realizar tratamento termico das pecas metalicas</td><td><span class='tag tag-operacao'>Operação</span></td><td>forno de tratamento termico com carro</td></tr>
+<tr><td>7</td><td>Aguardar resfriamento/estabilizacao das pecas</td><td><span class='tag tag-espera'>Espera</span></td><td>rack metalico resistente a temperatura</td></tr>
+<tr><td>8</td><td>Rebarbar, lixar e polir faca e garfo</td><td><span class='tag tag-operacao'>Operação</span></td><td>lixadeira/politriz de metal, exaustao, EPIs</td></tr>
+<tr><td>9</td><td>Afiar faca</td><td><span class='tag tag-operacao'>Operação</span></td><td>afiador de facas, refrigeracao, gabarito de angulo</td></tr>
+<tr><td>10</td><td>Armazenar pecas metalicas semiacabadas</td><td><span class='tag tag-armazenagem'>Armazenagem</span></td><td>racks identificados</td></tr>
+<tr><td>11</td><td>Transportar madeira para corte</td><td><span class='tag tag-transporte'>Transporte</span></td><td>carrinho para tabuas e sarrafos</td></tr>
+<tr><td>12</td><td>Cortar tabuas e blanks dos cabos</td><td><span class='tag tag-operacao'>Operação</span></td><td>esquadrejadeira, coletor de po</td></tr>
+<tr><td>13</td><td>Fresar sulco da tabua e usinar/furar cabos</td><td><span class='tag tag-operacao'>Operação</span></td><td>router CNC, fresas, presilhas</td></tr>
+<tr><td>14</td><td>Lixar tabua e cabos</td><td><span class='tag tag-operacao'>Operação</span></td><td>lixadeira de madeira, bancadas, exaustao</td></tr>
+<tr><td>15</td><td>Aplicar acabamento superficial na madeira</td><td><span class='tag tag-operacao'>Operação</span></td><td>bancada de acabamento, exaustao, suportes</td></tr>
+<tr><td>16</td><td>Aguardar cura/secagem do acabamento</td><td><span class='tag tag-espera'>Espera</span></td><td>estante de cura e area ventilada</td></tr>
+<tr><td>17</td><td>Inspecionar pecas de madeira</td><td><span class='tag tag-inspecao'>Inspeção</span></td><td>gabaritos, inspeção visual, paquimetro</td></tr>
+<tr><td>18</td><td>Transportar pecas para montagem</td><td><span class='tag tag-transporte'>Transporte</span></td><td>carrinhos e caixas plasticas</td></tr>
+<tr><td>19</td><td>Montar cabos na faca e no garfo por rebitagem</td><td><span class='tag tag-operacao'>Operação</span></td><td>rebitadeira pneumatica, gabaritos, compressor</td></tr>
+<tr><td>20</td><td>Inspecionar montagem, fio e acabamento</td><td><span class='tag tag-inspecao'>Inspeção</span></td><td>bancada, gabarito, check-list de qualidade</td></tr>
+<tr><td>21</td><td>Montar kit na cartela/blister</td><td><span class='tag tag-operacao'>Operação</span></td><td>bancada de montagem, berco de posicionamento</td></tr>
+<tr><td>22</td><td>Selar blister/cartela</td><td><span class='tag tag-operacao'>Operação</span></td><td>seladora blister tipo carrossel</td></tr>
+<tr><td>23</td><td>Inspecionar kit embalado</td><td><span class='tag tag-inspecao'>Inspeção</span></td><td>bancada, check-list visual, amostragem dimensional</td></tr>
+<tr><td>24</td><td>Embalar para envio em caixa de transporte</td><td><span class='tag tag-operacao'>Operação</span></td><td>bancada de embalagem, etiquetadora, fita</td></tr>
+<tr><td>25</td><td>Armazenar produto acabado</td><td><span class='tag tag-armazenagem'>Armazenagem</span></td><td>porta-paletes, enderecamento, FIFO</td></tr>
+<tr><td>26</td><td>Transportar para expedicao</td><td><span class='tag tag-transporte'>Transporte</span></td><td>paleteira, doca de expedicao</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section>
+      <h2>Fluxograma do processo</h2>
+      <div class="flow-strip"><div class='flow-node type-inspecao'><b>1</b><span>Receber materias-primas e embalagens</span></div>
+<div class='flow-node type-armazenagem'><b>2</b><span>Armazenar aco inox, madeira, rebites e embalagens</span></div>
+<div class='flow-node type-transporte'><b>3</b><span>Transportar aco inox para corte</span></div>
+<div class='flow-node type-operacao'><b>4</b><span>Cortar blanks da faca e do garfo em chapa de aco inox</span></div>
+<div class='flow-node type-inspecao'><b>5</b><span>Inspecionar blanks metalicos</span></div>
+<div class='flow-node type-operacao'><b>6</b><span>Realizar tratamento termico das pecas metalicas</span></div>
+<div class='flow-node type-espera'><b>7</b><span>Aguardar resfriamento/estabilizacao das pecas</span></div>
+<div class='flow-node type-operacao'><b>8</b><span>Rebarbar, lixar e polir faca e garfo</span></div>
+<div class='flow-node type-operacao'><b>9</b><span>Afiar faca</span></div>
+<div class='flow-node type-armazenagem'><b>10</b><span>Armazenar pecas metalicas semiacabadas</span></div>
+<div class='flow-node type-transporte'><b>11</b><span>Transportar madeira para corte</span></div>
+<div class='flow-node type-operacao'><b>12</b><span>Cortar tabuas e blanks dos cabos</span></div>
+<div class='flow-node type-operacao'><b>13</b><span>Fresar sulco da tabua e usinar/furar cabos</span></div>
+<div class='flow-node type-operacao'><b>14</b><span>Lixar tabua e cabos</span></div>
+<div class='flow-node type-operacao'><b>15</b><span>Aplicar acabamento superficial na madeira</span></div>
+<div class='flow-node type-espera'><b>16</b><span>Aguardar cura/secagem do acabamento</span></div>
+<div class='flow-node type-inspecao'><b>17</b><span>Inspecionar pecas de madeira</span></div>
+<div class='flow-node type-transporte'><b>18</b><span>Transportar pecas para montagem</span></div>
+<div class='flow-node type-operacao'><b>19</b><span>Montar cabos na faca e no garfo por rebitagem</span></div>
+<div class='flow-node type-inspecao'><b>20</b><span>Inspecionar montagem, fio e acabamento</span></div>
+<div class='flow-node type-operacao'><b>21</b><span>Montar kit na cartela/blister</span></div>
+<div class='flow-node type-operacao'><b>22</b><span>Selar blister/cartela</span></div>
+<div class='flow-node type-inspecao'><b>23</b><span>Inspecionar kit embalado</span></div>
+<div class='flow-node type-operacao'><b>24</b><span>Embalar para envio em caixa de transporte</span></div>
+<div class='flow-node type-armazenagem'><b>25</b><span>Armazenar produto acabado</span></div>
+<div class='flow-node type-transporte'><b>26</b><span>Transportar para expedicao</span></div></div>
+      <div class="front-actions"><a href="entregaveis/fluxograma.html">Abrir frente do fluxograma</a></div>
+    </section>
+    <section id="equipamentos">
+      <h2>Tabela de equipamentos</h2>
+      <table>
+        <thead><tr><th>Tipo</th><th>Fornecedor</th><th>Taxa nom. kit/h</th><th>Capacidade sem./máq.</th><th>Qtd.</th><th>Utilização</th></tr></thead>
+        <tbody><tr><td>Corte laser fibra CNC</td><td>Madetech</td><td>80</td><td>2146</td><td>1</td><td>49%</td></tr>
+<tr><td>Forno de tratamento termico</td><td>Cecomatec</td><td>150</td><td>4023</td><td>1</td><td>26%</td></tr>
+<tr><td>Lixadeira/politriz de cinta para metal</td><td>Fornecedor a definir</td><td>40</td><td>1073</td><td>1</td><td>98%</td></tr>
+<tr><td>Afiador de facas</td><td>Maksiwa</td><td>120</td><td>3219</td><td>1</td><td>33%</td></tr>
+<tr><td>Esquadrejadeira para madeira</td><td>Maksiwa</td><td>80</td><td>2146</td><td>1</td><td>49%</td></tr>
+<tr><td>Router CNC para madeira</td><td>Maksiwa Store</td><td>30</td><td>805</td><td>2</td><td>65%</td></tr>
+<tr><td>Lixadeira de madeira</td><td>Fornecedor a definir</td><td>40</td><td>1073</td><td>1</td><td>98%</td></tr>
+<tr><td>Bancada de acabamento de madeira</td><td>Montagem interna</td><td>60</td><td>1609</td><td>1</td><td>65%</td></tr>
+<tr><td>Rebitadeira pneumatica</td><td>Rebitex</td><td>40</td><td>1073</td><td>1</td><td>98%</td></tr>
+<tr><td>Bancada de montagem e inspecao</td><td>Montagem interna</td><td>60</td><td>1609</td><td>1</td><td>65%</td></tr>
+<tr><td>Seladora blister tipo carrossel</td><td>Flockcolor</td><td>240</td><td>6437</td><td>1</td><td>16%</td></tr></tbody>
+      </table>
+    </section>
+    <section id="calculo-detalhado" class="grid">
+      <div class="formula">
+        <h2>Conta crítica</h2>
+        <p><b>Maksiwa Store RTC.1313</b>: A tabua e os cabos exigem usinagem/fresagem com repetibilidade; a etapa tem tempo padrao estimado alto e tende a ser gargalo.</p>
+        <p><code>qtd = teto(demanda_bruta / (taxa_nominal * horas_úteis * eficiência * confiabilidade * rendimento))</code></p>
+        <p>2 unidade(s), com utilização estimada de 65.4%.</p>
+        <table>
+          <thead><tr><th>Item</th><th>Valor</th><th>Conta</th></tr></thead>
+          <tbody><tr><td>Demanda bruta</td><td>1053 kits/semana</td><td>ceil(1000 / 0.95)</td></tr>
+<tr><td>Horas úteis</td><td>35.0 h/semana</td><td>5 dias * 1 turno * 7 h</td></tr>
+<tr><td>Taxa nominal</td><td>30.00 kits/h</td><td>3600 / 120 s</td></tr>
+<tr><td>Taxa efetiva</td><td>22.99 kits/h</td><td>nominal * eficiência * confiabilidade * rendimento</td></tr>
+<tr><td>Capacidade semanal por máquina</td><td>804.68 kits/semana</td><td>taxa efetiva * horas úteis</td></tr>
+<tr><td>Quantidade necessária</td><td>2 unidade(s)</td><td>ceil(demanda bruta / capacidade por máquina)</td></tr>
+<tr><td>Utilização estimada</td><td>65.4%</td><td>demanda / (quantidade * capacidade)</td></tr></tbody>
+        </table>
+      </div>
+      <div class="formula">
+        <h2>Arquivos transparentes</h2>
+        <p>Entradas: <code>data/projeto.json</code></p>
+        <p>Código de cálculo: <code>scripts/generate_outputs.py</code></p>
+        <p>Resultados: <code>data/resultados_calculo.json</code> e <code>02_calculos/demonstrativo_calculos.xlsx</code></p>
+      </div>
+    </section>
+    <section>
+      <h2>Consumo estimado de materiais</h2>
+      <table>
+        <thead><tr><th>Material</th><th>Consumo por kit</th><th>Consumo semanal</th><th>Base</th></tr></thead>
+        <tbody><tr><td>Aco inox faca</td><td>146.5 g/kit</td><td>154.2 kg/sem.</td><td>Desenho tecnico Tramontina 22399036</td></tr>
+<tr><td>Aco inox garfo</td><td>77.6 g/kit</td><td>81.7 kg/sem.</td><td>Desenho tecnico Tramontina 22399036</td></tr>
+<tr><td>Madeira tabua Macaranduba</td><td>1128.7 g/kit</td><td>1188.5 kg/sem.</td><td>Pagina oficial Tramontina - produto 22399036</td></tr>
+<tr><td>Madeira cabos</td><td>36.9 g/kit</td><td>38.8 kg/sem.</td><td>premissa de engenharia</td></tr>
+<tr><td>Aluminio rebites</td><td>5.0 g/kit</td><td>5.3 kg/sem.</td><td>premissa de engenharia</td></tr></tbody>
+      </table>
+    </section>
+    <section id="layout" class="grid">
+      <div>
+        <h2>Layout esquemático</h2>
+        <div class="layout-preview"><div class='zone' style='left:1.10%;top:1.85%;width:19.78%;height:38.89%;background:#D9EAD3'>Recebimento / MP</div>
+<div class='zone' style='left:25.27%;top:1.85%;width:32.97%;height:44.44%;background:#D9EAF7'>Setor metal</div>
+<div class='zone' style='left:63.74%;top:1.85%;width:34.07%;height:44.44%;background:#FFF2CC'>Setor madeira</div>
+<div class='zone' style='left:25.27%;top:57.41%;width:43.96%;height:38.89%;background:#EADCF8'>Montagem e embalagem</div>
+<div class='zone' style='left:73.63%;top:57.41%;width:19.78%;height:17.59%;background:#FCE5CD'>Inspecao / CQ</div>
+<div class='zone' style='left:1.10%;top:57.41%;width:19.78%;height:38.89%;background:#F4CCCC'>PA / Expedicao</div>
+<div class='zone' style='left:73.63%;top:80.56%;width:24.18%;height:15.74%;background:#EEEEEE'>Apoio / manutencao</div></div>
+        <div class="front-actions"><a href="entregaveis/layout.html">Abrir frente do layout</a></div>
+      </div>
+      <div>
+        <h2>Mapofluxograma</h2>
+        <div class="layout-preview">
+          <div class='zone' style='left:1.10%;top:1.85%;width:19.78%;height:38.89%;background:#D9EAD3'>Recebimento / MP</div>
+<div class='zone' style='left:25.27%;top:1.85%;width:32.97%;height:44.44%;background:#D9EAF7'>Setor metal</div>
+<div class='zone' style='left:63.74%;top:1.85%;width:34.07%;height:44.44%;background:#FFF2CC'>Setor madeira</div>
+<div class='zone' style='left:25.27%;top:57.41%;width:43.96%;height:38.89%;background:#EADCF8'>Montagem e embalagem</div>
+<div class='zone' style='left:73.63%;top:57.41%;width:19.78%;height:17.59%;background:#FCE5CD'>Inspecao / CQ</div>
+<div class='zone' style='left:1.10%;top:57.41%;width:19.78%;height:38.89%;background:#F4CCCC'>PA / Expedicao</div>
+<div class='zone' style='left:73.63%;top:80.56%;width:24.18%;height:15.74%;background:#EEEEEE'>Apoio / manutencao</div>
+          <svg class="map-svg" viewBox="0 0 910 540" preserveAspectRatio="none">
+            <polyline points="102,124 412,154 767,154 467,439 797,384 137,439" fill="none" stroke="#17212b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <div class='map-point' style='left:7.14%;top:18.52%'>1-2</div>
+<div class='map-point' style='left:41.21%;top:24.07%'>3-10</div>
+<div class='map-point' style='left:80.22%;top:24.07%'>11-17</div>
+<div class='map-point' style='left:47.25%;top:76.85%'>18-22</div>
+<div class='map-point' style='left:83.52%;top:66.67%'>23</div>
+<div class='map-point' style='left:10.99%;top:76.85%'>24-26</div>
+        </div>
+        <div class="front-actions"><a href="entregaveis/mapofluxograma.html">Abrir frente do mapofluxograma</a></div>
+      </div>
+    </section>
+    <section id="fontes">
+      <h2>Fontes principais</h2>
+      <ul><li><a href='https://www.tramontina.com.br/kit-para-churrasco-tramontina-com-laminas-em-aco-inox-e-cabos-em-madeira-natural-3-pecas/22399036.html'>Pagina oficial Tramontina - produto 22399036</a></li>
+<li><a href='https://assets.tramontina.com.br/upload/tramon/imagens/CUT/22399036DCM002G.jpg'>Desenho tecnico Tramontina 22399036</a></li>
+<li><a href='https://www.aperam.com/pt-br/product/420d-aisi-420-sus420j1-pt/'>Aperam 420D - AISI 420/SUS420J1</a></li>
+<li><a href='https://rolmetais.com/ficheiros/fichas_tecnicas/ft_22_ficha_tecnica_aisi_420_site.docx.pdf'>Ficha tecnica AISI 420 - Rolmetais</a></li>
+<li><a href='https://www.remade.com.br/madeiras-exoticas/210/madeiras-brasileiras-e-exoticas/macaranduba'>Madeira Macaranduba - propriedades fisico-mecanicas</a></li>
+<li><a href='https://www.madetech.com.br/M%C3%A1quinas/cnc-fiber-pro-1530.html'>Madetech CNC Fiber Pro 1530</a></li>
+<li><a href='https://www.cecomatec.com.br/produto/forno-de-tratamento-termico-com-carro'>Cecomatec Forno de Tratamento Termico com Carro</a></li>
+<li><a href='https://maksiwastore.com/produtos/router-cnc-rtc-1313/'>Maksiwa Store Router CNC RTC.1313</a></li>
+<li><a href='https://maksiwa.com.br/produto/esquadrejadeira-de-precisao-bms-1900-i-black-edition/'>Maksiwa Esquadrejadeira BMS.1900.I</a></li>
+<li><a href='https://maksiwa.com.br/produto/afiador-de-facas-af-650/'>Maksiwa Afiador de Facas AF.650</a></li>
+<li><a href='https://www.rebitex.com.br/rebitadeira-pneumatica-404s'>Rebitex Rebitadeira Pneumatica 404-S TURBO-X</a></li>
+<li><a href='https://www.flockcolor.com.br/produtos/maquinas-para-embalagens/seladora-blister/seladora-blister-tipo-carrossel-semiautomatica-pneumatica'>Flockcolor Seladora Blister tipo carrossel</a></li></ul>
+      <div class="scroll-table">
+        <table>
+          <thead><tr><th>ID</th><th>Tema</th><th>Dado / uso</th><th>Confiança</th></tr></thead>
+          <tbody><tr><td>tramontina_product</td><td>Produto</td><td>Kit 3 pecas ref. 22399036</td><td>alta</td></tr>
+<tr><td>tramontina_product</td><td>Embalagem</td><td>Dimensoes com embalagem</td><td>alta</td></tr>
+<tr><td>tramontina_product</td><td>Embalagem</td><td>Peso com embalagem</td><td>alta</td></tr>
+<tr><td>aperam_420d</td><td>Material</td><td>Aco inox 420D endurecivel por tratamento termico e aplicavel a laminas de facas</td><td>media</td></tr>
+<tr><td>rolmetais_aisi420</td><td>Material</td><td>Densidade AISI 420</td><td>media</td></tr>
+<tr><td>madeira_macaranduba_remade</td><td>Material</td><td>Densidade aparente Macaranduba</td><td>media</td></tr>
+<tr><td>madetech_laser</td><td>Equipamento</td><td>CNC laser fiber mesa 3000x1500, velocidade 20000 mm/min</td><td>media</td></tr>
+<tr><td>cecomatec_furnace</td><td>Equipamento</td><td>Forno tratamento termico com camara 800x1400x900 e 1200 C</td><td>alta</td></tr>
+<tr><td>maksiwa_router</td><td>Equipamento</td><td>Router CNC area util 1300x1300x200 e velocidade maxima 30 m/min</td><td>alta</td></tr>
+<tr><td>rebitex_rebitadeira</td><td>Equipamento</td><td>Rebitadeira 60 ciclos/min, capacidade ate 4 toneladas</td><td>alta</td></tr>
+<tr><td>flockcolor_blister</td><td>Equipamento</td><td>Seladora blister 4 prensadas/min</td><td>alta</td></tr>
+<tr><td>aula_arranjo</td><td>Metodo</td><td>Fluxograma mostra sequencia; mapofluxograma mostra sequencia sobre layout</td><td>alta</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

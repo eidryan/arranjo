@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="70" y="48" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#17212b"><tspan x="70" dy="0">Layout esquemático</tspan></text>
+<text x="70" y="80" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#17212b"><tspan x="70" dy="0">Área total proposta: 24 m x 16 m</tspan></text>
+<rect x="80" y="95" width="1040" height="620" fill="#f8fafc" stroke="#17212b" stroke-width="3"/>
+<rect x="91.4" y="106.5" width="205.7" height="241.1" fill="#D9EAD3" stroke="#334155" stroke-width="1.5"/>
+<text x="103" y="134" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="103" dy="0">Recebimento / MP</tspan></text>
+<rect x="342.9" y="106.5" width="342.9" height="275.6" fill="#D9EAF7" stroke="#334155" stroke-width="1.5"/>
+<text x="355" y="134" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="355" dy="0">Setor metal</tspan></text>
+<rect x="742.9" y="106.5" width="354.3" height="275.6" fill="#FFF2CC" stroke="#334155" stroke-width="1.5"/>
+<text x="755" y="134" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="755" dy="0">Setor madeira</tspan></text>
+<rect x="342.9" y="450.9" width="457.1" height="241.1" fill="#EADCF8" stroke="#334155" stroke-width="1.5"/>
+<text x="355" y="479" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="355" dy="0">Montagem e</tspan><tspan x="355" dy="16">embalagem</tspan></text>
+<rect x="845.7" y="450.9" width="205.7" height="109.1" fill="#FCE5CD" stroke="#334155" stroke-width="1.5"/>
+<text x="858" y="479" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="858" dy="0">Inspecao / CQ</tspan></text>
+<rect x="91.4" y="450.9" width="205.7" height="241.1" fill="#F4CCCC" stroke="#334155" stroke-width="1.5"/>
+<text x="103" y="479" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="103" dy="0">PA / Expedicao</tspan></text>
+<rect x="845.7" y="594.4" width="251.4" height="97.6" fill="#EEEEEE" stroke="#334155" stroke-width="1.5"/>
+<text x="858" y="622" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#17212b"><tspan x="858" dy="0">Apoio / manutencao</tspan></text>
+</svg>
