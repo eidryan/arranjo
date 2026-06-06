@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-13T13:45:56",
+  "generated_at": "2026-06-05T22:20:21",
   "project_name": "Projeto de fabrica - Kit para Churrasco Tramontina 22399036",
   "metadata": {
     "project_name": "Projeto de fabrica - Kit para Churrasco Tramontina 22399036",
@@ -1075,5 +1075,47 @@
       "used_for": "metodo produto-arvore-tabela-processo-fluxograma-layout-mapofluxograma e tipos de processo",
       "url_or_path": "C:/Users/dvill/Documents/arranjo"
     }
+  },
+  "project_objectives": [
+    "Desenvolver proposta básica de fábrica para o Kit para Churrasco Tramontina 3 Peças (ref. 22399036), com meta semanal de 1.000 kits bons.",
+    "Dimensionar processos, equipamentos e arranjo físico para integrar setor metálico, setor madeira, montagem e embalagem em fluxo contínuo.",
+    "Calcular quantidades de equipamentos com base em tempos-padrão estimados, eficiência, confiabilidade e rendimento de processo explicitados.",
+    "Selecionar segmentos de mercado visados e justificar a meta de produção proposta.",
+    "Gerar documentação técnica auditável — tabelas, fluxograma, mapofluxograma, layout esquemático e memória de cálculo — com todas as fontes identificadas."
+  ],
+  "market_segments": [
+    {
+      "name": "Varejo doméstico de churrasco",
+      "description": "Supermercados, lojas de utilidades domésticas, redes especializadas em artigos para churrasco e grill.",
+      "justification": "O Brasil possui cultura de churrasco consolidada com consumo frequente em todas as regiões. O produto Tramontina tem reconhecimento nacional de qualidade, garantia de 5 anos e distribuição em redes de varejo de grande porte."
+    },
+    {
+      "name": "Kits presente e gift sets sazonais",
+      "description": "Embalagem blister/cartela posiciona o produto como presente premium em datas comemorativas.",
+      "justification": "Dia dos Pais, Natal e Dia dos Namorados concentram picos de demanda por kits de churrasco. A embalagem compacta (1,23 kg, 38,9 cm de altura) facilita o transporte e o presenteamento."
+    },
+    {
+      "name": "E-commerce e marketplaces",
+      "description": "Venda direta em plataformas como Mercado Livre, Amazon Brasil, Shopee e site próprio Tramontina.",
+      "justification": "As dimensões compactas da embalagem (38,9 × 4,0 × 21,6 cm, 1,23 kg) são favoráveis ao custo de frete e compatíveis com restrições de tamanho das plataformas. O produto já está disponível no e-commerce oficial da Tramontina."
+    },
+    {
+      "name": "Brindes corporativos e programas de fidelidade",
+      "description": "Empresas que oferecem brindes premium para clientes, colaboradores e ações de marketing.",
+      "justification": "A certificação FSC C125626 da madeira e a marca Tramontina reforçam o apelo sustentável, relevante para empresas com compromissos ESG. O kit representa um brinde de alto valor percebido com custo unitário moderado."
+    }
+  ],
+  "conclusions": {
+    "summary": "O projeto propõe uma fábrica de 384 m² (24 m × 16 m) capaz de produzir 1.000 kits bons/semana (demanda bruta calculada de 1.053 kits/semana) em regime de 1 turno de 7 h úteis/dia, 5 dias/semana. A ocupação do espaço é de 67,8%, com área requerida estimada de 260,4 m².",
+    "bottleneck_note": "O gargalo identificado é o Router CNC (Maksiwa RTC.1313), com utilização de 65,4% para 2 unidades. A operação de fresagem do sulco da tábua e usinagem dos cabos tem o maior tempo-padrão estimado (120 s/kit). Para dobrar a capacidade sem alterar o prédio, seria necessário adicionar um terceiro turno ou uma terceira unidade do Router CNC.",
+    "layout_note": "O arranjo físico proposto é misto: setores funcionais para metal e madeira (com equipamentos agrupados por processo) e fluxo em célula/linha para montagem e embalagem. A folga de 32,2% da área (123,6 m²) permite expansão futura sem reforma estrutural.",
+    "improvements": [
+      "Realizar estudo de tempos real (cronoanálise) no chão de fábrica para substituir os tempos-padrão estimados por valores medidos.",
+      "Cotar equipamentos com pelo menos dois fornecedores alternativos para validar capacidades e dimensões antes de fechar o layout definitivo.",
+      "Conduzir um piloto de produção de 1 semana para validar o rendimento final de 95% e as taxas de eficiência e confiabilidade assumidas.",
+      "Avaliar implantação de Controle Estatístico de Processo (CEP) nas etapas críticas de tratamento térmico e afiação para reduzir variabilidade de qualidade.",
+      "Modelar cenários de demanda (±30%) para dimensionar plano de capacidade de resposta sem ociosidade excessiva ou gargalos adicionais.",
+      "Incluir análise de custo de implantação e payback como complemento ao projeto básico de fábrica."
+    ]
   }
 }

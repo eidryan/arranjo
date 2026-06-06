@@ -329,6 +329,9 @@ def build_results(project: dict[str, Any]) -> dict[str, Any]:
         "processes": project["processes"],
         "research_matrix": project["research_matrix"],
         "sources": source_map(project),
+        "project_objectives": project.get("project_objectives", []),
+        "market_segments": project.get("market_segments", []),
+        "conclusions": project.get("conclusions", {}),
     }
 
 
@@ -851,6 +854,67 @@ def write_html_page(slug: str, title: str, body: str, actions: list[tuple[str, s
     return f"entregaveis/{slug}.html"
 
 
+def render_objectives_page(results: dict[str, Any]) -> str:
+    objectives = results.get("project_objectives", [])
+    items_html = "\n".join(f"<li>{escape(obj)}</li>" for obj in objectives)
+    body = f"""
+<h2>Objetivos do Projeto</h2>
+<p>Projeto de fábrica para o <strong>{escape(results['product']['name'])}</strong> (ref. {escape(results['product']['sku'])}) — UFF, Niterói.</p>
+<ul>{items_html}</ul>
+"""
+    return write_html_page(
+        "objetivos",
+        "Objetivos do Projeto",
+        body,
+        [("Baixar OBJETIVO.md", "../../OBJETIVO.md", True)],
+    )
+
+
+def render_market_page(results: dict[str, Any]) -> str:
+    segments = results.get("market_segments", [])
+    cards_html = ""
+    for seg in segments:
+        cards_html += f"""
+<div class="card">
+  <h3>{escape(seg['name'])}</h3>
+  <p><strong>Descrição:</strong> {escape(seg['description'])}</p>
+  <p><strong>Justificativa:</strong> {escape(seg['justification'])}</p>
+</div>"""
+    body = f"""
+<h2>Segmentos de Mercado Visados</h2>
+<p>Justificativa da meta de 1.000 kits bons/semana e seleção dos principais canais de venda.</p>
+<div class="grid">{cards_html}</div>
+"""
+    return write_html_page(
+        "mercado",
+        "Segmentos de Mercado",
+        body,
+    )
+
+
+def render_conclusions_page(results: dict[str, Any]) -> str:
+    c = results.get("conclusions", {})
+    improvements_html = "\n".join(
+        f"<li>{escape(item)}</li>" for item in c.get("improvements", [])
+    )
+    body = f"""
+<h2>Conclusões</h2>
+<h3>Resumo dos Resultados</h3>
+<p>{escape(c.get('summary', ''))}</p>
+<h3>Gargalo Identificado</h3>
+<p>{escape(c.get('bottleneck_note', ''))}</p>
+<h3>Observação sobre o Layout</h3>
+<p>{escape(c.get('layout_note', ''))}</p>
+<h3>O que Seria Necessário para Aprimorar o Projeto</h3>
+<ul>{improvements_html}</ul>
+"""
+    return write_html_page(
+        "conclusoes",
+        "Conclusões",
+        body,
+    )
+
+
 def write_deliverable_pages(results: dict[str, Any]) -> dict[str, str]:
     pages: dict[str, str] = {}
     root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -939,6 +1003,9 @@ def write_deliverable_pages(results: dict[str, Any]) -> dict[str, str]:
         markdown_to_html(revisao),
         [("Baixar revisão .md", "../../05_base_tecnica/revisao_plano_e_pontos_fracos.md", True)],
     )
+    pages["objetivos"] = render_objectives_page(results)
+    pages["mercado"] = render_market_page(results)
+    pages["conclusoes"] = render_conclusions_page(results)
     return pages
 
 
@@ -1030,6 +1097,9 @@ def write_dashboard(results: dict[str, Any]) -> None:
         ("Contexto do produto", pages["contexto"], "Dados extraídos da página da Tramontina"),
         ("Fontes e premissas", pages["fontes"], "Rastreabilidade das fontes pesquisadas"),
         ("Revisão crítica do plano", pages["revisao"], "Riscos, lacunas e correções de rota"),
+        ("Objetivos do Projeto", pages["objetivos"], "5 objetivos do projeto básico de fábrica"),
+        ("Segmentos de Mercado", pages["mercado"], "4 segmentos com justificativa"),
+        ("Conclusões", pages["conclusoes"], "Gargalo, layout, melhorias"),
     ]
     deliverable_cards = "\n".join(
         f"<a class='deliverable' href='{escape(href)}'><strong>{escape(title)}</strong><span>{escape(desc)}</span></a>"
