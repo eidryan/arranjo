@@ -70,7 +70,7 @@ def _render_pngs(tmp: Path) -> dict:
 
 def _add_img_slide(prs, idx: int, title: str, img_path: Path):
     """Insert a new blank slide with a full-width image at 0-based position idx."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])  # blank, added at end
+    slide = prs.slides.add_slide(prs.slides[0].slide_layout)  # same layout as all existing slides
 
     # Move from end to target idx
     lst = prs.slides._sldIdLst
