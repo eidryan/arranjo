@@ -193,14 +193,14 @@ def _replace_in_para(para, fixes):
                 run.text = run.text.replace(old, new)
     # Paragraph-level pass catches strings split across runs
     full = "".join(r.text for r in para.runs)
+    new_full = full
     for old, new in fixes:
-        if old in full:
-            full = full.replace(old, new)
-            if para.runs:
-                para.runs[0].text = full
-                for r in para.runs[1:]:
-                    r.text = ""
-            break
+        if old in new_full:
+            new_full = new_full.replace(old, new)
+    if new_full != full and para.runs:
+        para.runs[0].text = new_full
+        for r in para.runs[1:]:
+            r.text = ""
 
 
 def _fix_texts(prs):
