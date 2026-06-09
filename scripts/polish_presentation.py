@@ -119,21 +119,6 @@ def _insert_fluxograma_slides(prs, pngs: dict):
     _add_img_slide(prs, 12, "Fluxograma do Processo (2/2)", pngs["fluxo_bot"])
 
 
-def _fill_existing_slide(slide, img_path: Path):
-    """Add image below the lowest existing shape on the slide."""
-    lowest_emu = 0
-    for shape in slide.shapes:
-        bottom = shape.top + shape.height
-        if bottom > lowest_emu:
-            lowest_emu = bottom
-    top_in = max(lowest_emu / 914400 + 0.08, 0.75)
-    slide.shapes.add_picture(
-        str(img_path),
-        Inches(0.1), Inches(top_in),
-        Inches(W - 0.2), Inches(H - top_in - 0.08)
-    )
-
-
 # Longer/more-specific strings first to avoid partial-match shadowing
 TEXT_FIXES = [
     # Meta — production target
@@ -226,26 +211,29 @@ def _fix_texts(prs):
 
 
 def _fill_diagram_slides(prs, pngs: dict):
-    """Find diagram placeholder slides by title keyword and add renders."""
+    """Insert new render slides immediately after each diagram placeholder.
+    Never modifies existing slides — only inserts new ones (safe operation)."""
     targets = {
-        "ESQUEMÁTICO": pngs["layout_render"],
-        "MAPOFLUXOGRAMA": pngs["mapofluxograma_render"],
+        "ESQUEMÁTICO": ("Layout Esquemático — 24 × 16 m", pngs["layout_render"]),
+        "MAPOFLUXOGRAMA": ("Mapofluxograma da Produção", pngs["mapofluxograma_render"]),
     }
-    filled: set = set()
-    for slide in prs.slides:
+    found: dict = {}
+    for i, slide in enumerate(prs.slides):
         for shape in slide.shapes:
             if not shape.has_text_frame:
                 continue
             text = shape.text_frame.text.upper()
-            for keyword, img_path in targets.items():
-                if keyword in text and keyword not in filled:
-                    print(f"  Filling: {shape.text_frame.text.strip()[:50]}")
-                    _fill_existing_slide(slide, img_path)
-                    filled.add(keyword)
-                    break
-    missing = set(targets) - filled
+            for keyword in targets:
+                if keyword in text and keyword not in found:
+                    found[keyword] = i
+    missing = set(targets) - set(found)
     if missing:
         raise RuntimeError(f"Diagram placeholder(s) not found in PPTX: {missing}")
+    # Insert in reverse index order so earlier insertions don't shift later indices
+    for keyword, idx in sorted(found.items(), key=lambda x: x[1], reverse=True):
+        title, img_path = targets[keyword]
+        print(f"  Inserting after slide {idx}: {title}")
+        _add_img_slide(prs, idx + 1, title, img_path)
 
 
 def _normalize_fonts(prs):
