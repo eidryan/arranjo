@@ -110,6 +110,41 @@ def _insert_fluxograma_slides(prs, pngs: dict):
     _add_img_slide(prs, 12, "Fluxograma do Processo (2/2)", pngs["fluxo_bot"])
 
 
+def _fill_existing_slide(slide, img_path: Path):
+    """Add image below the lowest existing shape on the slide."""
+    lowest_emu = 0
+    for shape in slide.shapes:
+        bottom = shape.top + shape.height
+        if bottom > lowest_emu:
+            lowest_emu = bottom
+    top_in = max(lowest_emu / 914400 + 0.08, 0.75)
+    slide.shapes.add_picture(
+        str(img_path),
+        Inches(0.1), Inches(top_in),
+        Inches(W - 0.2), Inches(H - top_in - 0.08)
+    )
+
+
+def _fill_diagram_slides(prs, pngs: dict):
+    """Find diagram placeholder slides by title keyword and add renders."""
+    targets = {
+        "ESQUEMÁTICO": pngs["layout_render"],
+        "MAPOFLUXOGRAMA": pngs["mapofluxograma_render"],
+    }
+    filled: set = set()
+    for slide in prs.slides:
+        for shape in slide.shapes:
+            if not shape.has_text_frame:
+                continue
+            text = shape.text_frame.text.upper()
+            for keyword, img_path in targets.items():
+                if keyword in text and keyword not in filled:
+                    print(f"  Filling: {shape.text_frame.text.strip()[:50]}")
+                    _fill_existing_slide(slide, img_path)
+                    filled.add(keyword)
+                    break
+
+
 def main():
     print("Rendering SVGs to PNG...")
     with tempfile.TemporaryDirectory() as tmp:
@@ -122,6 +157,9 @@ def main():
         print("Inserting fluxograma slides...")
         _insert_fluxograma_slides(prs, pngs)
         print(f"  Slides after: {len(prs.slides)}")
+
+        print("Filling diagram slides...")
+        _fill_diagram_slides(prs, pngs)
 
         OUT_DIR.mkdir(exist_ok=True)
         out = OUT_DIR / "apresentacao_final.pptx"
