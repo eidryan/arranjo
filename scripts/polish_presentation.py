@@ -32,7 +32,7 @@ def _svg_to_png(svg: Path, png: Path, width=1800, height=1000):
         browser = p.chromium.launch(**kwargs)
         try:
             page = browser.new_page(viewport={"width": width, "height": height})
-            page.goto("file:///" + str(svg).replace("\\", "/"), wait_until="load")
+            page.goto(svg.as_uri(), wait_until="networkidle")
             page.screenshot(path=str(png))
         finally:
             browser.close()
@@ -50,14 +50,20 @@ def _render_pngs(tmp: Path) -> dict:
     pngs = {}
     print("  fluxograma_render.svg -> PNG ...")
     full = tmp / "fluxo_full.png"
-    _svg_to_png(RENDERS / "fluxograma_render.svg", full, width=1800, height=1000)
+    fluxo_svg = RENDERS / "fluxograma_render.svg"
+    if not fluxo_svg.exists():
+        raise FileNotFoundError(f"Missing render: {fluxo_svg}")
+    _svg_to_png(fluxo_svg, full, width=1800, height=1000)
     pngs["fluxo_top"] = tmp / "fluxo_top.png"
     pngs["fluxo_bot"] = tmp / "fluxo_bot.png"
     _split_png(full, pngs["fluxo_top"], pngs["fluxo_bot"])
     for name in ("layout_render", "mapofluxograma_render"):
         print(f"  {name}.svg -> PNG ...")
+        svg_path = RENDERS / f"{name}.svg"
+        if not svg_path.exists():
+            raise FileNotFoundError(f"Missing render: {svg_path}")
         png = tmp / f"{name}.png"
-        _svg_to_png(RENDERS / f"{name}.svg", png)
+        _svg_to_png(svg_path, png)
         pngs[name] = png
     return pngs
 
