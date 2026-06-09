@@ -68,12 +68,65 @@ def _render_pngs(tmp: Path) -> dict:
     return pngs
 
 
+def _add_img_slide(prs, idx: int, title: str, img_path: Path):
+    """Insert a new blank slide with a full-width image at 0-based position idx."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])  # blank, added at end
+
+    # Move from end to target idx
+    lst = prs.slides._sldIdLst
+    ref = lst[-1]
+    lst.remove(ref)
+    lst.insert(idx, ref)
+
+    # Dark title bar at bottom
+    bar_h = 0.40
+    bar = slide.shapes.add_shape(
+        1, Inches(0), Inches(H - bar_h), Inches(W), Inches(bar_h)
+    )
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = RGBColor(0x17, 0x21, 0x2b)
+    bar.line.fill.background()
+
+    tb = slide.shapes.add_textbox(Inches(0), Inches(H - bar_h), Inches(W), Inches(bar_h))
+    tf = tb.text_frame
+    p = tf.paragraphs[0]
+    p.alignment = PP_ALIGN.CENTER
+    run = p.add_run()
+    run.text = title
+    run.font.size = Pt(15)
+    run.font.bold = True
+    run.font.color.rgb = RGBColor(0xff, 0xff, 0xff)
+
+    # Image fills area above bar
+    slide.shapes.add_picture(
+        str(img_path), Inches(0), Inches(0), Inches(W), Inches(H - bar_h - 0.02)
+    )
+    return slide
+
+
+def _insert_fluxograma_slides(prs, pngs: dict):
+    """Insert 2 fluxograma slides after index 10 ('PAIS E FILHOS')."""
+    _add_img_slide(prs, 11, "Fluxograma do Processo (1/2)", pngs["fluxo_top"])
+    _add_img_slide(prs, 12, "Fluxograma do Processo (2/2)", pngs["fluxo_bot"])
+
+
 def main():
     print("Rendering SVGs to PNG...")
     with tempfile.TemporaryDirectory() as tmp:
         pngs = _render_pngs(Path(tmp))
-        for k, v in pngs.items():
-            print(f"  {k}: {v.stat().st_size // 1024} KB")
+
+        print("Loading source PPTX...")
+        prs = Presentation(str(SOURCE))
+        print(f"  Slides before: {len(prs.slides)}")
+
+        print("Inserting fluxograma slides...")
+        _insert_fluxograma_slides(prs, pngs)
+        print(f"  Slides after: {len(prs.slides)}")
+
+        OUT_DIR.mkdir(exist_ok=True)
+        out = OUT_DIR / "apresentacao_final.pptx"
+        prs.save(str(out))
+        print(f"Saved -> {out}")
 
 
 if __name__ == "__main__":
