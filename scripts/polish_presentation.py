@@ -236,6 +236,24 @@ def _fill_diagram_slides(prs, pngs: dict):
                     break
 
 
+def _normalize_fonts(prs):
+    """Raise font sizes below readability minimums. Never reduces sizes."""
+    for slide in prs.slides:
+        for shape in slide.shapes:
+            if shape.has_text_frame:
+                for para in shape.text_frame.paragraphs:
+                    for run in para.runs:
+                        if run.font.size and run.font.size < Pt(12):
+                            run.font.size = Pt(12)
+            if hasattr(shape, "table"):
+                for row in shape.table.rows:
+                    for cell in row.cells:
+                        for para in cell.text_frame.paragraphs:
+                            for run in para.runs:
+                                if run.font.size and run.font.size < Pt(9):
+                                    run.font.size = Pt(9)
+
+
 def main():
     print("Rendering SVGs to PNG...")
     with tempfile.TemporaryDirectory() as tmp:
@@ -243,11 +261,10 @@ def main():
 
         print("Loading source PPTX...")
         prs = Presentation(str(SOURCE))
-        print(f"  Slides before: {len(prs.slides)}")
+        print(f"  Slides: {len(prs.slides)}")
 
         print("Inserting fluxograma slides...")
         _insert_fluxograma_slides(prs, pngs)
-        print(f"  Slides after: {len(prs.slides)}")
 
         print("Filling diagram slides...")
         _fill_diagram_slides(prs, pngs)
@@ -255,10 +272,13 @@ def main():
         print("Applying text corrections...")
         _fix_texts(prs)
 
+        print("Normalizing fonts...")
+        _normalize_fonts(prs)
+
         OUT_DIR.mkdir(exist_ok=True)
         out = OUT_DIR / "apresentacao_final.pptx"
         prs.save(str(out))
-        print(f"Saved -> {out}")
+        print(f"\nPronto -> {out}  ({out.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":
