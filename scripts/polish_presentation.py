@@ -234,6 +234,9 @@ def _fill_diagram_slides(prs, pngs: dict):
                     _fill_existing_slide(slide, img_path)
                     filled.add(keyword)
                     break
+    missing = set(targets) - filled
+    if missing:
+        raise RuntimeError(f"Diagram placeholder(s) not found in PPTX: {missing}")
 
 
 def _normalize_fonts(prs):
