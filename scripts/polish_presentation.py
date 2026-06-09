@@ -46,6 +46,13 @@ def _split_png(src: Path, top: Path, bot: Path):
     img.crop((0, int(h * 0.40), w, h           )).save(str(bot))
 
 
+def _to_jpg(png: Path) -> Path:
+    """Convert PNG to JPG (removes alpha, avoids PPTX compatibility issues)."""
+    jpg = png.with_suffix(".jpg")
+    Image.open(str(png)).convert("RGB").save(str(jpg), "JPEG", quality=95)
+    return jpg
+
+
 def _render_pngs(tmp: Path) -> dict:
     pngs = {}
     print("  fluxograma_render.svg -> PNG ...")
@@ -54,9 +61,11 @@ def _render_pngs(tmp: Path) -> dict:
     if not fluxo_svg.exists():
         raise FileNotFoundError(f"Missing render: {fluxo_svg}")
     _svg_to_png(fluxo_svg, full, width=1800, height=1000)
-    pngs["fluxo_top"] = tmp / "fluxo_top.png"
-    pngs["fluxo_bot"] = tmp / "fluxo_bot.png"
-    _split_png(full, pngs["fluxo_top"], pngs["fluxo_bot"])
+    top_png = tmp / "fluxo_top.png"
+    bot_png = tmp / "fluxo_bot.png"
+    _split_png(full, top_png, bot_png)
+    pngs["fluxo_top"] = _to_jpg(top_png)
+    pngs["fluxo_bot"] = _to_jpg(bot_png)
     for name in ("layout_render", "mapofluxograma_render"):
         print(f"  {name}.svg -> PNG ...")
         svg_path = RENDERS / f"{name}.svg"
@@ -64,7 +73,7 @@ def _render_pngs(tmp: Path) -> dict:
             raise FileNotFoundError(f"Missing render: {svg_path}")
         png = tmp / f"{name}.png"
         _svg_to_png(svg_path, png)
-        pngs[name] = png
+        pngs[name] = _to_jpg(png)
     return pngs
 
 
