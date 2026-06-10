@@ -1,340 +1,521 @@
 # Guia de Defesa — Projeto de Fábrica
-## Kit para Churrasco Tramontina 22399036 · Grupo A
+## Kit Churrasco Tramontina 22399036 · Grupo A
+
+> **Fonte da verdade:** `Downloads/apresentacao_final.pptx` (26 slides).
+> Este documento cruza o conteúdo real dos slides com a lógica técnica e aponta inconsistências.
 
 ---
 
-## Como ler este documento
+## Referência rápida — números que não podem errar
 
-Cada seção cobre um dos 14 itens obrigatórios da atividade. Para cada um:
-- **O que foi feito** — o conteúdo e a lógica
-- **Por que fizemos assim** — raciocínio técnico
-- **Lacunas e como responder** — o que é fraco e o argumento de defesa
-
----
-
-## 1. Integrantes
-
-**Grupo A:** Adrian Vilela, André Baptista, Bernardo Gomes, Clara Barboza, João Pedro Deccax, Leonardo Nespoli, Lucas de Mello
-
-**Orientação:** Professora Suzana Dantas — Disciplina Arranjo Físico Industrial 2026.1
-
----
-
-## 2. Objetivos do projeto
-
-Cinco objetivos formais:
-
-1. Desenvolver proposta de fábrica para o kit com meta de 1.000 kits bons/semana
-2. Dimensionar processos, equipamentos e layout em fluxo contínuo
-3. Calcular quantidades de equipamentos com tempos-padrão, eficiência, confiabilidade e rendimento explicitados
-4. Selecionar segmentos de mercado e justificar a meta
-5. Gerar documentação técnica auditável com fontes identificadas
-
-**Por que esses objetivos:** Cobrem exatamente os 14 itens obrigatórios do enunciado. O objetivo 5 é o diferencial — toda conta é gerada por código com fonte declarada, não foi digitada manualmente.
+| O que | Valor |
+|---|---|
+| Meta semanal (kits bons) | **1.000 kits/semana** |
+| Meta diária | **200 kits/dia** (1000 ÷ 5 dias) |
+| Produto bom | **97%** |
+| Demanda bruta diária | **206,2 kits/dia** (200 ÷ 0,97) |
+| Jornada programada | **8 h/dia = 480 min** |
+| Eficiência | **85%** |
+| Disponibilidade | **90%** |
+| Tempo disponível efetivo | **367,2 min/dia** (480 × 0,85 × 0,90) |
+| Equipamento selecionado | **Laser Fibra CNC** (Madetech) |
+| Capacidade do laser | **422 kits/dia** |
+| Quantidade de lasers | **1 unidade — 49% utilização** |
+| Layout | **384 m² (24 × 16 m)** |
+| Tábua | **330 × 200 mm — Madeira Maçaranduba** |
+| Rebites por kit | **6 total** (3 por cabo × 2 cabos) |
+| Total de processos | **26 processos** |
 
 ---
 
-## 3. Produto
+## Guia slide a slide
 
-**Kit SKU 22399036** — Kit para Churrasco Tramontina com Lâminas em Aço Inox e Cabos em Madeira Natural 3 Peças
+### Slide 1 — Capa
+**Conteúdo:** ARRANJO FÍSICO INDUSTRIAL · Kit Churrasco Tramontina · Engenharia de Produção · Grupo A · 2026 · Cód. 22399/036
 
-### Composição
-| Componente | SKU filho | Material principal |
+**Legenda:** Slide de abertura. O código 22399/036 é a referência comercial do produto na Tramontina (mesmo produto, formatação com barra).
+
+---
+
+### Slide 2 — Equipe do Projeto
+**Conteúdo:** Integrantes + orientação
+
+**Legenda:**
+- **Integrantes:** Adrian Vilela, André Baptista, Bernardo Gomes, Clara Barboza, João Pedro Deccax, Leonardo Nespoli, Lucas de Mello
+- **Orientação:** Professora Suzana Dantas · Disciplina Arranjo Físico Industrial · 2026.1
+
+⚠️ O slide escreve "André Bapista" (sem 't'). O nome correto é **André Baptista**.
+
+---
+
+### Slide 3 — Objetivos do Projeto
+**Conteúdo:** 3 blocos — Objetivo Geral, Processos, Dimensionamento
+
+**Legenda:**
+- **Objetivo Geral:** Estruturar uma unidade fabril para produção em escala industrial do kit
+- **Processos:** Definir os fluxos produtivos e recursos físicos
+- **Dimensionamento:** Calcular carga de máquinas e layout para **1.000 kits semanais**
+
+**Como defender:** Os 3 blocos cobrem os 14 itens do enunciado — produto + BOM + processos + equipamentos + layout + mapofluxograma.
+
+---
+
+### Slide 4 — Descrição do Produto
+**Conteúdo:** Características do Kit Churrasco Dynamic
+
+**Legenda elemento a elemento:**
+- **Peça 1 — Faca 8" em Aço Inox AISI 420:** lâmina de aço inox martensítico endurecível por tratamento térmico
+- **Peça 2 — Garfo Trinchante Inox Estampado:** forma da lâmina obtida por processo de corte/conformação
+- **Peça 3 — Tábua de Madeira (33×20 cm):** dimensões externas da tábua
+- **Cabos: Madeira natural rebitada:** os cabos da faca e do garfo são fixados à lâmina com rebites de aço inox
+- **Diferencial: Tratamento térmico para durabilidade do fio:** justifica o Processo P6 (forno) e o Processo P9 (afiação)
+
+---
+
+### Slide 5 — Dimensões Técnicas
+**Conteúdo:** Especificações dimensionais de cada componente
+
+**Legenda elemento a elemento:**
+
+| Elemento | Valor | O que significa |
 |---|---|---|
-| Faca Chef 8" | 22315008 | Lâmina AISI 420, cabo madeira natural |
-| Garfo Trinchante | 22330000 | Lâmina AISI 420, cabo madeira natural |
-| Tábua Retangular | 13102152 | Madeira Maçaranduba com acabamento natural |
-
-### Dados técnicos (fonte: página oficial Tramontina)
-- Embalagem: 38,9 × 4,0 × 21,6 cm · 1,23 kg
-- Certificação FSC C125626 (madeira de manejo sustentável)
-- Garantia: 5 anos
-
-### Material das lâminas — AISI 420
-O aço escolhido é o **AISI 420 martensitico** (Aperam 420D). A escolha importa porque:
-- É endurecível por tratamento térmico — justifica o processo P6 (forno)
-- Dureza final controlada para fio de corte — justifica o processo P9 (afiação)
-- Alternativa ao AISI 304 (que não endurece) — usado em facas de qualidade
-
-**Lacuna:** As dimensões exatas da lâmina (espessura 2 mm, comprimento 317 mm) são estimativas a partir do desenho técnico oficial. Não foram confirmadas por desmontagem do produto.
-
-**Como responder:** "Usamos o desenho técnico oficial da Tramontina disponível no site como base. A espessura de 2 mm é compatível com a especificação do laser fibra (corte até 2 mm em inox) e com padrões industriais de facas desse segmento."
+| Faca — Lâmina | 200 mm | Comprimento da parte cortante |
+| Faca — Cabo | 120 mm | Comprimento do cabo de madeira |
+| Faca — Total | 320 mm | Comprimento total da peça |
+| Garfo — Total | ≈ 330 mm | Comprimento total estimado |
+| Material lâminas | AISI 420 | Aço inox martensítico (Alta Resistência) |
+| Tábua | 330 × 200 mm | Comprimento × Largura |
+| Tábua — Material | Madeira Maçaranduba | Madeira tropical dura, certificada FSC |
+| Fixação | 3 rebites de aço inox por cabo | 3 furos por cabo × 2 cabos = 6 rebites por kit |
 
 ---
 
-## 4. Estrutura pai-filho (BOM — Tabela 1)
+### Slide 6 — Pais e Filhos (BOM — Estrutura do Produto)
+**Conteúdo:** Diagrama em árvore da estrutura do produto
 
-### Decisão FAZER vs COMPRAR
+**Legenda — o que é cada nível:**
+- **Nível 0 (topo):** Kit 22399036 embalado para envio — o produto final que sai da fábrica
+- **Nível 1 (filhos diretos):** Os componentes que compõem o kit — faca montada, garfo montado, tábua processada, embalagem
+- **Nível 2 (insumos):** O que entra na produção para gerar os filhos — chapas de inox AISI 420, cabos de madeira (pré-cortados internamente), rebites inox, caixa kraft display
 
-⚠️ **INCONSISTÊNCIA PENDENTE NO SLIDE:** A Tabela 1 do PPTX atual ainda mostra cabo de madeira e tábua como COMPRAR (versão do grupo). A decisão técnica é FAZER. Isso precisa ser corrigido antes da apresentação.
-
-**Decisão técnica adotada neste projeto:**
-
-| Componente | Qtd | Un | Decisão | Justificativa |
-|---|---|---|---|---|
-| Faca chef (lâmina + cabo + rebites) | 1 | un | **FAZER** | Controle de qualidade do fio e acabamento |
-| Garfo trinchante (lâmina + cabo + rebites) | 1 | un | **FAZER** | Controle de qualidade do acabamento |
-| Tábua retangular maçaranduba | 1 | un | **FAZER** | Peça principal do kit, diferencial de qualidade |
-| Cartela/cinta impressa | 1 | un | COMPRAR | Item gráfico padronizado |
-| Blister/suporte plástico | 1 | un | COMPRAR | Fornecedor especializado em injeção |
-| Etiqueta/código de barras | 1 | conj | COMPRAR | Requisito de rastreabilidade |
-| Caixa de transporte | 1 | un | COMPRAR | Requisito do enunciado |
-
-**Por que FAZER tábua e cabos:** Se compramos prontos, eliminamos 7 processos de madeira (P11–P17), o Router CNC, a esquadrejadeira e a lixadeira. O projeto perde substância técnica e o arranjo físico fica trivial. Para um projeto de fábrica acadêmico, é mais correto modelar a produção completa.
-
-**Como responder se questionarem:** "Tramontina é fabricante verticalizado — a madeira é processada internamente para garantir encaixe preciso do cabo no anel de rebitagem e acabamento uniforme. Terceirizar o cabo implicaria perder controle dimensional nos 3 furos de rebite."
+**Por que essa estrutura importa:** Ela define o que **fabricamos** (lâminas, cabos, tábua) e o que **compramos** (rebites, embalagem) — base da Tabela 1.
 
 ---
 
-## 5. Segmentos de mercado
+### Slides 9 e 10 — Tabela 1: Componentes e Justificativas (BOM)
 
-Quatro segmentos:
-1. **Varejo doméstico** — supermercados e lojas de utilidades, demanda regular
-2. **Kits presente sazonal** — Dia dos Pais, Natal, Namorados; pico de demanda
-3. **E-commerce e marketplaces** — Mercado Livre, Amazon, site Tramontina; embalagem compacta favorece frete
-4. **Brindes corporativos / ESG** — FSC C125626 como diferencial sustentável
+**Slide 9 — Componentes:**
 
-**Por que 4 segmentos:** O enunciado pede segmentos e justificativa. O quarto segmento (brindes/ESG) diferencia o trabalho pois usa a certificação FSC como argumento técnico.
-
----
-
-## 6. Meta semanal de produção
-
-### Números finais
-| Parâmetro | Valor | Fonte |
-|---|---|---|
-| Meta de kits bons | **1.000 kits/semana** | Premissa do projeto |
-| Rendimento final | 95% | Premissa de engenharia |
-| Demanda bruta necessária | **1.053 kits/semana** | Calculado: 1000 / 0,95 |
-| Dias úteis | 5 dias/semana | Premissa |
-| Turnos | 1 turno/dia | Premissa |
-| Horas úteis/turno | 7 h (de 8 programadas) | Premissa (1h pausas/manutenção) |
-| Horas úteis/semana | **35 h** | Calculado |
-| Ritmo médio necessário | **~30 kits/h** | Calculado |
-
-### Fórmula da demanda bruta
-```
-demanda_bruta = ARREDONDAR.PARA.CIMA(meta_boa / rendimento_final)
-demanda_bruta = ARREDONDAR.PARA.CIMA(1000 / 0,95) = 1.053 kits/semana
-```
-
-⚠️ **Lacuna crítica:** A justificativa para 1.000 kits/semana não está formalmente documentada. É uma premissa do projeto.
-
-**Como responder:** "A meta de 1.000 kits/semana foi definida como ponto de partida viável para uma fábrica de médio porte. Representa ~50.000 kits/ano, compatível com a presença da Tramontina em redes nacionais de varejo. O modelo é facilmente escalável — para 2.000 kits, dobramos as quantidades de equipamentos mantendo o mesmo layout com a folga de 32% existente."
-
----
-
-## 7. Tabela 1 — Componentes (ver seção 4 acima)
-
----
-
-## 8. Tabela 2 — Processos (26 processos)
-
-### Distribuição por tipo
-| Tipo | Qtd | Processos |
-|---|---|---|
-| Operação | 12 | P4, P6, P8, P9, P12, P13, P14, P15, P19, P21, P22, P24 |
-| Inspeção | 5 | P1, P5, P17, P20, P23 |
-| Transporte | 4 | P3, P11, P18, P26 |
-| Armazenagem | 3 | P2, P10, P25 |
-| Espera | 2 | P7, P16 |
-
-### Lógica do fluxo
-O processo segue **duas trilhas paralelas** que convergem na montagem:
-- **Trilha metal (P1–P10):** recebimento → corte laser → inspeção → tratamento térmico → resfriamento → polimento → afiação → estoque intermediário
-- **Trilha madeira (P11–P17):** transporte da madeira → corte → fresagem CNC → lixamento → acabamento → cura → inspeção
-- **Montagem e embalagem (P18–P26):** convergência das trilhas → rebitagem → inspeção → kit → blister → inspeção → caixa → estoque PA → expedição
-
-### Por que 26 processos
-Cada processo tem identidade única: tipo diferente OU recurso diferente OU produto diferente entrando/saindo. P7 (resfriamento) e P16 (cura) são esperas porque o produto está parado aguardando transformação física sem ação humana direta.
-
-⚠️ **Lacuna:** Os tempos-padrão são todos **estimativas de engenharia**, não medições reais (cronoanálise). Isso é normal para projeto básico de fábrica mas é vulnerabilidade técnica.
-
-**Como responder:** "Os tempos-padrão foram estimados com base nas capacidades declaradas pelos fabricantes e em benchmarks de operações similares. A conclusão 1 do projeto já aponta explicitamente que o próximo passo seria um estudo de tempos real (cronoanálise) para substituir as estimativas."
-
----
-
-## 9. Fluxograma do processo
-
-O fluxograma usa a **notação ASME** com os 5 símbolos padrão:
-- ⬤ Operação (círculo)
-- ▷ Transporte (seta/triângulo)
-- □ Inspeção (quadrado)
-- ▽ Armazenagem (triângulo invertido)
-- D Espera (D maiúsculo)
-
-Duas trilhas paralelas (metal e madeira) convergem na montagem. Os números dos processos correspondem exatamente à Tabela 2 — isso é fundamental.
-
-**Por que é importante a correspondência:** O enunciado pede fluxograma "utilizando os ícones representativos e a numeração correspondente à Tabela 2". Se o número no fluxograma não bater com a tabela, é erro.
-
----
-
-## 10. Tabela 3 — Equipamentos
-
-### Parque de máquinas (11 equipamentos)
-| # | Equipamento | Fornecedor/Modelo | Taxa efetiva | Qtd | Utilização |
-|---|---|---|---|---|---|
-| 1 | Corte laser fibra CNC | Madetech / CNC Fiber Pro 1530 | 61,3 kits/h | 1 | 49% |
-| 2 | Forno de tratamento térmico | Cecomatec / 703.099 com carro | 115,0 kits/h | 1 | 26% |
-| 3 | Lixadeira/politriz de metal | A cotar | 30,7 kits/h | 1 | **98%** |
-| 4 | Afiador de facas | Maksiwa / AF.650 | 91,9 kits/h | 1 | 33% |
-| 5 | Esquadrejadeira para madeira | Maksiwa / BMS.1900.I | 61,3 kits/h | 1 | 49% |
-| 6 | Router CNC para madeira | Maksiwa Store / RTC.1313 | 23,0 kits/h | 2 | 65% |
-| 7 | Lixadeira de madeira | A cotar | 30,7 kits/h | 1 | **98%** |
-| 8 | Bancada de acabamento madeira | Montagem interna | 46,0 kits/h | 1 | 65% |
-| 9 | Rebitadeira pneumática | Rebitex / 404-S TURBO-X | 30,7 kits/h | 1 | **98%** |
-| 10 | Bancada de montagem/inspeção | Montagem interna | 46,0 kits/h | 1 | 65% |
-| 11 | Seladora blister carrossel | Flockcolor / 40×50 cm | 183,9 kits/h | 1 | 16% |
-
-### Fórmula para quantidade de equipamentos
-```
-Q = TETO( demanda_bruta / (taxa_nominal × h_úteis/semana × eficiência × confiabilidade × rendimento_processo) )
-```
-
-Onde:
-- Eficiência geral: 85%
-- Confiabilidade: 92%
-- Rendimento do processo: 98%
-
-⚠️ **Lacuna:** Politriz de metal, lixadeira de madeira e rebitadeira estão a **98% de utilização** — tecnicamente são os gargalos reais, não o Router CNC. A escolha do Router CNC como equipamento da memória de cálculo foi estratégica (mais capital intensivo e interessante tecnicamente).
-
-**Como responder se perguntarem sobre os 98%:** "A politriz e a lixadeira industrial têm capacidade facilmente ampliável — adicionar um segundo turno ou um segundo equipamento de baixo custo resolve. O Router CNC foi selecionado para a memória de cálculo por ser o equipamento de maior valor de capital e mais crítico para a qualidade dimensional."
-
----
-
-## 11. Memória de cálculo — Equipamento selecionado: Laser Fibra CNC
-
-### Por que o Laser Fibra e não a Prensa Excêntrica (versão do grupo)
-
-O grupo originalmente selecionou a Prensa Excêntrica 60 tf. Mudamos para o Laser Fibra CNC pelos seguintes motivos técnicos:
-
-| Critério | Prensa Excêntrica | Laser Fibra CNC |
-|---|---|---|
-| Processo correto para AISI 420 | Estampagem — forma, não corta perfil | **Corte — perfil preciso da lâmina** |
-| Qualidade do corte | Rebarbas, exige desbaste posterior | **Borda limpa, tolerância ±0,05 mm** |
-| Fornecedor cotado | Harlo do Brasil (SP) | **Madetech (SP) — com specs reais** |
-| Resultado do cálculo | 1 unidade, ~2% utilização | **1 unidade, 49% utilização** |
-| Coerência com P4 da Tabela 2 | "Corte de blanks" — laser é correto | ✅ |
-
-### Cálculo
-```
-Tempo-padrão: 45 s/kit (cortar blanks de faca e garfo em chapa aninhada)
-Taxa nominal: 3600 / 45 = 80 kits/h
-
-Taxa efetiva = 80 × 0,85 × 0,92 × 0,98 = 61,3 kits/h
-Capacidade/semana = 61,3 × 35 = 2.145 kits/semana
-
-N = TETO(1053 / 2145) = TETO(0,49) = 1 unidade
-Utilização = 1053 / 2145 = 49%
-```
-
-⚠️ **Lacuna:** O tempo de 45 s/kit é estimativa. Com laser fibra a 20.000 mm/min e blank de ~200 mm de comprimento, o corte do perfil de uma faca leva ~30–60 s dependendo da complexidade. 45 s é defensável.
-
----
-
-## 12. Layout esquemático
-
-### Dimensões e ocupação
-- Área total: **384 m² (24 × 16 m)** — premissa do projeto
-- Área requerida calculada: 260,4 m²
-- Ocupação: 67,8%
-- Folga: 32,2% (~123,6 m²) — permite expansão futura
-
-### Setores
-| Setor | Área | Conteúdo |
-|---|---|---|
-| Recebimento/Expedição | 24,0 m² | Doca, conferência, separação |
-| Setor Metal | ~60 m² | Laser, forno TT, politriz, afiador |
-| Setor Madeira | ~50 m² | Esquadrejadeira, 2× Router CNC, lixadeira, bancada |
-| Montagem/Embalagem | ~30 m² | Rebitadeira, bancadas, seladora |
-| Estoques (MP, intermediário, PA) | 54,0 m² | Porta-paletes, FIFO |
-| Inspeção e controle | 12,0 m² | Bancada, instrumentos |
-| Apoio (manutenção, EPI, compressor) | 20,0 m² | Serviços |
-
-### Tipo de arranjo
-**Arranjo misto:** funcional para metal e madeira (equipamentos agrupados por processo), célula/linha para montagem e embalagem (fluxo unitário contínuo). Justificativa: volumes médios com variedade de componentes favorecem funcional nos setores; o kit é padronizado logo depois, favorecendo linha na montagem.
-
-⚠️ **Lacuna:** As dimensões 24×16 m foram escolhidas como premissa, não derivadas de um estudo de terreno real. A área de 384 m² acomoda todos os equipamentos com margem de 32%.
-
----
-
-## 13. Mapofluxograma
-
-O mapofluxograma **sobrepõe o fluxograma ao layout** — mostra por onde o material caminha fisicamente.
-
-Aspectos técnicos a dominar:
-- Cada processo tem uma posição aproximada no mapa correspondente ao setor do layout
-- As setas mostram a sequência física do fluxo
-- Cruzamentos de seta indicam onde há potencial de conflito de movimentação — área para melhoria
-
-**Como ler:** "Começando no Recebimento (P1–P2), a matéria-prima metálica vai para o Setor Metal (P3–P10) e a madeira para o Setor Madeira (P11–P17). Ambos convergem para a Montagem (P18–P26) e saem pela Expedição."
-
----
-
-## 14. Conclusões
-
-### Resumo do projeto
-Fábrica de 384 m² capaz de produzir 1.000 kits bons/semana em 1 turno de 7 h úteis. Demanda bruta de 1.053 kits/semana com rendimento final de 95%.
-
-### Gargalo identificado
-**Router CNC Maksiwa RTC.1313** — 2 unidades a 65% de utilização. É a etapa mais lenta do setor madeira (tempo-padrão de 120 s/kit para fresar sulco da tábua e usinar/furar cabos). Para dobrar a capacidade: terceiro turno ou terceira unidade do router.
-
-### 6 oportunidades de melhoria (obrigatório no enunciado)
-1. Estudo de tempos real (cronoanálise) para substituir estimativas
-2. Cotar equipamentos em pelo menos 2 fornecedores alternativos
-3. Piloto de 1 semana para validar rendimento de 95% e premissas de eficiência
-4. Controle Estatístico de Processo (CEP) no TT e afiação
-5. Modelar cenários de demanda ±30%
-6. Análise de custo de implantação e payback
-
----
-
-## Resumo das inconsistências a resolver antes da apresentação
-
-| # | Problema | Impacto | Ação necessária |
+| Comp. | Descrição | Qtd | Fazer/Comprar |
 |---|---|---|---|
-| 1 | Tabela 1 no slide: cabo e tábua aparecem como COMPRAR | Alto — contradiz todos os processos de madeira | Corrigir no PPTX para FAZER |
-| 2 | Meta de 1.000 kits sem justificativa formal | Médio — pergunta provável da professora | Preparar argumento verbal (ver seção 6) |
-| 3 | Tempos-padrão são estimativas | Médio — vulnerabilidade técnica | Já coberto nas conclusões — citar |
-| 4 | Politriz/lixadeira/rebitadeira a 98% | Médio — parecem ser os gargalos reais | Explicar que são fáceis de ampliar |
-| 5 | Número de rebites: 4 (nosso) vs 3 por cabo (produto real) | Baixo | Verificar no produto físico se possível |
+| 01 | Lâmina Faca Inox AISI 420 | 1 | **FAZER** |
+| 02 | Lâmina Garfo Inox 420 | 1 | **FAZER** |
+| 03 | Cabo Madeira (pré-cortado) | 2 | **FAZER** |
+| 04 | Tábua Madeira Acabada | 1 | **FAZER** |
+| 05 | Rebites Inox | 6 | **COMPRAR** |
+| 06 | Embalagem Kraft Display | 1 | **COMPRAR** |
+
+**Legenda:**
+- **Qtd = 2 cabos:** uma faca e um garfo, cada um com 1 cabo → 2 cabos por kit
+- **Qtd = 6 rebites:** 3 rebites por cabo × 2 cabos = 6 por kit
+- **Embalagem Kraft Display:** caixa com janela transparente que embala o kit completo
+
+**Slide 10 — Justificativas:**
+- **FAZER (lâminas, cabos, tábua):** controle dimensional preciso antes da rebitagem — se o furo do cabo não bater com o furo da lâmina, o rebite não fecha. Terceirizar significa depender de tolerâncias externas.
+- **COMPRAR (rebites, embalagem):** custo baixo, sem valor diferencial para fabricar internamente; o foco é nas lâminas.
 
 ---
 
-## Perguntas prováveis da banca e respostas sugeridas
+### Slides 11, 12, 13 — Processos Industriais (Tabela 2)
+
+**Legenda dos 5 tipos de processo (notação ASME):**
+
+| Tipo | Símbolo | O que significa |
+|---|---|---|
+| **Operação** | ⬤ círculo | Transformação física do material — corte, solda, usinagem |
+| **Inspeção** | □ quadrado | Verificação dimensional ou visual sem transformar |
+| **Transporte** | ▷ seta | Movimentação de material de um ponto a outro |
+| **Armazenagem** | ▽ triângulo | Material parado aguardando etapa futura |
+| **Espera** | D letra D | Material parado sem ação planejada — resfriamento, cura |
+
+**Slide 11 — Processos 1 a 10 (Setor Metal):**
+
+| Nº | Processo | Tipo | Por que existe |
+|---|---|---|---|
+| 01 | Inspeção de Matéria-Prima | Inspeção | Conferir chapa de inox antes de gastar energia cortando |
+| 02 | Armazenagem de MP | Armazenagem | Estoque de segurança para manter ritmo de produção |
+| 03 | Transporte Aço Inox para corte | Transporte | Levar a chapa até o laser |
+| 04 | Corte do aço inox para blanks | Operação | Laser fibra CNC corta o perfil da faca e do garfo |
+| 05 | Inspeção dos blanks | Inspeção | Verificar se o corte ficou dentro da tolerância |
+| 06 | Tratamento térmico dos blanks | Operação | Forno a 1.050–1.100°C endurece o AISI 420 (martensita) |
+| 07 | Espera de resfriamento | Espera | Peças precisam esfriar — sem ação humana |
+| 08 | Rebarbar, lixar e polir faca e garfo | Operação | Remove rebarbas do corte e dá acabamento superficial |
+| 09 | Afiar facas | Operação | Gera o fio de corte — único processo que não se aplica ao garfo |
+| 10 | Armazenagem de peças metálicas semiacabadas | Armazenagem | Pulmão entre setor metal e montagem |
+
+**Slide 12 — Processos 11 a 20 (Setor Madeira + início da Montagem):**
+
+| Nº | Processo | Tipo | Por que existe |
+|---|---|---|---|
+| 11 | Transporte de madeira para corte | Transporte | Levar tábua bruta até a serra |
+| 12 | Corte da tábua e blanks dos cabos | Operação | Serra industrial corta a tábua e os cabos no comprimento certo |
+| 13 | Fresar tábua e furar cabos | Operação | Router CNC/fresa: sulco na tábua + 3 furos por cabo |
+| 14 | Lixar cabos e tábua | Operação | Lixadeira remove marca da serra, deixa superfície lisa |
+| 15 | Acabamento superficial | Operação | Aplica verniz/óleo sobre a madeira para proteção |
+| 16 | Aguardar cura do acabamento | Espera | Verniz precisa secar — sem ação |
+| 17 | Inspeção de peças de madeira | Inspeção | Verificar dimensões e acabamento antes da montagem |
+| 18 | Transporte de madeira para montagem | Transporte | Levar cabos e tábua para a área de montagem |
+| 19 | Transporte de garfos e facas para montagem | Transporte | Convergência das duas trilhas |
+| 20 | Transporte dos rebites para montagem | Transporte | Rebites chegam ao posto de rebitagem |
+
+**Slide 13 — Processos 21 a 26 (Montagem, Embalagem, Expedição):**
+
+| Nº | Processo | Tipo | Por que existe |
+|---|---|---|---|
+| 21 | Montagem de facas e garfos (rebitagem) | Operação | Rebitadeira pneumática fixa cabo na lâmina com 3 rebites |
+| 22 | Inspeção das facas e garfos acabados | Inspeção | Verificar rebites, fio, acabamento antes de montar o kit |
+| 23 | Transporte da cartela para montagem | Transporte | A embalagem kraft vem do estoque até a mesa |
+| 24 | Montagem do kit (faca + garfo + tábua + cartela) | Operação | Montagem manual do kit completo na embalagem display |
+| 25 | Transporte do kit finalizado | Transporte | Levar kit para armazenagem ou expedição |
+| 26 | Armazenagem de kit finalizado | Armazenagem | Estoque de produto acabado antes da expedição |
+
+---
+
+### Slides 14, 15, 16 — Fluxograma do Processo (P1, P2, P3)
+
+**O que é o fluxograma:** representação visual da sequência dos 26 processos usando os símbolos ASME. Cada símbolo tem o número do processo correspondente à Tabela 2.
+
+**Legenda visual — o que cada forma significa:**
+- **Círculo (●)** = Operação — máquina ou operador transformando o material
+- **Quadrado (■)** = Inspeção — alguém verificando dimensões ou qualidade
+- **Seta (→)** = Transporte — material se movendo
+- **Triângulo invertido (▽)** = Armazenagem — material parado em estoque
+- **D (⊃)** = Espera — material aguardando sem ação planejada
+- **Linha** conectando os símbolos = sequência do processo
+- **Número** dentro do símbolo = número do processo (bate com a Tabela 2)
+
+**P1 (slide 14):** processos 1 a 10 — trilha do metal
+**P2 (slide 15):** processos 11 a 20 — trilha da madeira + convergência para montagem
+**P3 (slide 16):** processos 21 a 26 — montagem, embalagem, expedição
+
+---
+
+### Slide 17 — Tabela de Equipamentos (Tabela 3)
+
+**Legenda de cada coluna:**
+- **Equipamento:** nome/tipo da máquina
+- **Fornecedor(es):** empresa real que fabrica/vende (pesquisado)
+- **Medidas Aprox.:** footprint da máquina em comprimento × largura × altura
+- **Capacidade (Fabricante):** o que o fabricante declara (não o que usamos nos cálculos — essa é a capacidade nominal bruta)
+- **Qtd:** quantidade necessária para atender a demanda
+
+**Equipamentos listados e o que fazem:**
+
+| Equipamento | O que faz no processo |
+|---|---|
+| **Laser Fibra CNC** (Madetech) | P04 — Corta blanks de faca e garfo na chapa de inox |
+| **Forno de Têmpera** (Jung Industrial) | P06 — Tratamento térmico 1.050–1.100°C |
+| **Lixadeira de Cinta** (Lippel/Ferromax) | P08 — Rebarbação e polimento das lâminas · 3 unidades |
+| **Rebitadeira Pneumática** (Pram Ferramentas) | P21 — Fixa cabo na lâmina com rebites · 3 unidades |
+| **Afiadora Automática** (Lippel/Mecanofar) | P09 — Afia o fio de corte das facas |
+| **Serra Industrial** (Lippel/Invicta) | P12 — Corta tábua e blanks dos cabos |
+| **Router CNC / Fresa** (Batistella/SCM) | P13 — Fresa sulco da tábua e fura cabos |
+
+---
+
+### Slide 18 — Seleção de 1 Equipamento
+
+**O que este slide faz:** detalha o equipamento escolhido para o memorial de cálculo — o **Laser Fibra CNC**.
+
+**Legenda da tabela de parâmetros:**
+
+| Parâmetro | Valor | O que significa |
+|---|---|---|
+| Capacidade Nominal | 20.000 mm/min | Velocidade máxima de corte declarada pelo fabricante |
+| Mesa | 600 × 400 mm | Área útil de trabalho do laser |
+| Turnos | 1 turno/dia | Regime de trabalho adotado |
+| Jornada | 8 h/dia | Horas programadas (não úteis) |
+| Dias úteis | 5 dias/semana | Dias de trabalho |
+| Disponibilidade | 90% | Fração do tempo que a máquina está operacional (sem quebras) |
+| Eficiência | 85% | Fração do tempo disponível que é tempo produtivo |
+| Produto bom | 97% | Fração das peças cortadas que passam na inspeção |
+| Setup | 30 min/semana | Tempo de ajuste/troca de programação já descontado |
+
+---
+
+### Slide 19 — Parque de Máquinas — Quantidades Finais
+
+**O que este slide faz:** mostra TODOS os equipamentos com as quantidades calculadas.
+
+**Legenda:**
+
+| Equipamento | Qtd | Por que essa quantidade |
+|---|---|---|
+| Laser Fibra CNC | **1** | Memorial de cálculo — 49% utilização |
+| Forno de Têmpera | **1** | Ciclo em batelada cobre lote diário |
+| Lixadeira de Cinta | **3** | 3 estações em linha para desbaste, lixamento e polimento |
+| Rebitadeira Pneumática | **3** | 1 por estação de montagem (faca, garfo, fixação) |
+| Afiadora Automática | **1** | Capacidade (~400 facas/h) supera demanda com folga |
+| Politriz/Retificadeira | **2** | Acabamento final das lâminas |
+| Empilhadeira Elétrica | **1** | Movimentação de pallets — logística interna geral |
+| Esteiras Transportadoras | **6** | Interligam todos os postos produtivos |
+| Serra Industrial | **1** | Linha de madeira |
+| Router CNC/Fresa | **1** | Linha de madeira |
+
+---
+
+### Slide 20 — Memorial de Cálculo (Laser Fibra CNC)
+
+> Este é o slide mais importante tecnicamente. Ver **seção completa** abaixo.
+
+---
+
+### Slide 21 — Desenho Esquemático do Arranjo Físico
+
+> Ver **seção completa** abaixo.
+
+---
+
+### Slide 22 — Layout Industrial (descrição textual)
+
+**Conteúdo do slide:**
+- Área: 384 m² (24 × 16 m)
+- Setores em sequência: Recebimento → Estampagem → Tratamento Térmico → Polimento → Montagem → Expedição
+- Fluxo otimizado para produção puxada
+
+**O que é "produção puxada":** o material avança quando a etapa seguinte sinaliza que está pronta para receber. Reduz estoques intermediários.
+
+---
+
+### Slide 23 — Mapofluxograma da Produção
+
+**O que é o mapofluxograma:** o fluxograma dos 26 processos desenhado SOBRE o layout físico. Mostra onde cada processo acontece no espaço da fábrica.
+
+**Como ler:**
+- Cada símbolo ASME está posicionado na zona do layout onde ocorre
+- As setas entre símbolos mostram o caminho físico do material
+- Duas trilhas visíveis: metal (setor metal) e madeira (setor madeira), convergindo na montagem
+- Cruzamentos ou setas longas indicam possíveis melhorias no layout
+
+---
+
+### Slide 24 — Maquinário Principal
+
+**Conteúdo:** destaque para os 2 equipamentos mais críticos
+
+- **Laser Fibra CNC:** corte de precisão dos blanks de faca e garfo em chapa AISI 420
+- **Forno de Têmpera:** garante a dureza Rockwell necessária (endurecimento do AISI 420)
+
+**Por que estes dois:** são os equipamentos do setor metal que definem a qualidade final do produto. Sem o laser, não há geometria precisa; sem o forno, não há dureza para o fio de corte.
+
+---
+
+### Slide 25 — Conclusões
+
+Slide de encerramento. Título: "Kit Churrasco Tramontina | Engenharia de Produção | 2026"
+
+---
+
+### Slide 26 — Fontes de Pesquisa
+
+**Fontes confirmadas:**
+- Página oficial Tramontina (tramontina.com.br) — produto, composição, dimensões
+- Desenho técnico oficial Tramontina (assets.tramontina.com.br)
+- Demais fontes: fornecedores de equipamentos pesquisados (Madetech, Jung Industrial, Lippel, Pram, Batistella/SCM)
+
+---
+
+## Memorial de Cálculo completo (Slide 20 — fonte da verdade)
+
+### Contexto
+O equipamento selecionado é o **Laser Fibra CNC** (Madetech), que executa o Processo 04 (corte dos blanks de faca e garfo).
+
+### Variáveis e o que significam
+
+| Variável | Símbolo | Valor | Origem |
+|---|---|---|---|
+| Meta diária de kits bons | — | 200 kits/dia | 1.000 kits/semana ÷ 5 dias |
+| Taxa de produto bom | — | 97% = 0,97 | Premissa do projeto |
+| Demanda bruta diária | **Db** | 206,2 kits/dia | Calculado |
+| Jornada programada | — | 480 min/dia | 8 h × 60 min |
+| Eficiência | η | 85% = 0,85 | Premissa de engenharia |
+| Disponibilidade | disp | 90% = 0,90 | Premissa de engenharia |
+| Tempo disponível efetivo | **Td** | 367,2 min/dia | Calculado |
+| Tempo de ciclo por kit | **Tc** | 0,87 min/kit | Estimativa (≈ 52 s/kit) |
+| Capacidade diária do laser | **Cap** | 422 kits/dia | Calculado |
+| Número de máquinas | **N** | 0,49 → **1** | Calculado |
+
+### Passo 1 — Demanda bruta diária
+
+> Produzimos mais do que 200 porque parte dos kits será rejeitada.
+
+```
+Db = meta_diária / produto_bom
+Db = 200 / 0,97
+Db = 206,2 kits/dia
+```
+
+### Passo 2 — Tempo disponível efetivo
+
+> Das 8 horas programadas, só parte é tempo realmente produtivo.
+
+```
+Td = jornada_min × eficiência × disponibilidade
+Td = 480 × 0,85 × 0,90
+Td = 367,2 min/dia
+```
+
+**Por que multiplicar eficiência e disponibilidade:**
+- **Eficiência (85%):** dos minutos em que a máquina está ligada, 15% são perdidos em micro-paradas, variações de ritmo e pequenos ajustes
+- **Disponibilidade (90%):** 10% do tempo a máquina está em manutenção ou parada por falha
+
+### Passo 3 — Tempo de ciclo
+
+```
+Tc = 0,87 min/kit  (= 52,2 segundos por kit)
+```
+
+Este é o tempo que o laser leva por kit — inclui corte da faca, corte do garfo e tempo de carga/descarga da chapa. É uma estimativa baseada na velocidade do laser (20.000 mm/min) e no comprimento do caminho de corte de cada blank.
+
+### Passo 4 — Capacidade diária
+
+> Quantos kits o laser consegue processar em um dia.
+
+```
+Cap = Td / Tc
+Cap = 367,2 / 0,87
+Cap = 421,8 ≈ 422 kits/dia
+```
+
+### Passo 5 — Número de máquinas
+
+```
+N = Db / Cap
+N = 206,2 / 422
+N = 0,49
+```
+
+Como não existe 0,49 máquina, arredondamos para cima:
+
+```
+N = 1 Laser Fibra CNC
+```
+
+### Utilização
+
+```
+utilização = Db / Cap = 206,2 / 422 = 49%
+```
+
+**O que significa 49%:** a máquina opera com folga de 51%. Absorve variações de demanda sem precisar de horas extras ou segundo equipamento.
+
+### Resultado
+> **1 Laser Fibra CNC Madetech é suficiente, operando a 49% de utilização.**
+
+---
+
+## Desenho Esquemático — guia completo (Slide 21)
+
+O layout mostra a fábrica de **24 m × 16 m = 384 m²** vista de cima, dividida em **9 zonas**.
+
+### Legenda das zonas (cores no slide)
+
+| Zona | Cor | Área | O que acontece ali |
+|---|---|---|---|
+| **Setor Metal** | Verde claro | 104 m² | Processos P03 a P10 — corte laser, TT, polimento, afiação |
+| **Setor Madeira** | Amarelo claro | 99 m² | Processos P11 a P17 — corte, fresagem, lixamento, acabamento |
+| **Montagem** | Azul claro | 49 m² | Processos P18 a P22 — convergência dos dois setores, rebitagem |
+| **Embalagem** | Vermelho claro | 28 m² | Processos P23 a P25 — montagem do kit completo na embalagem |
+| **Inspeção / QC** | Laranja claro | 20 m² | Bancada de controle de qualidade |
+| **Apoio / Manutenção** | Cinza claro | 20 m² | Ferramentas, EPIs, compressor de ar |
+| **Estoque de MP** | Roxo claro | 20 m² | Bobinas de inox, tábuas de madeira, rebites |
+| **Estoque Intermediário** | Roxo claro | 20 m² | Peças semiacabadas entre setor metal e montagem |
+| **Recebimento / Expedição** | Azul claro | 24 m² | Doca de entrada de matéria-prima e saída de produto acabado |
+
+### Legenda dos equipamentos (retângulos escuros dentro das zonas)
+
+**No Setor Metal:**
+| Equipamento no layout | Nome completo | Processo |
+|---|---|---|
+| CNC Fiber Pro 1530 | Laser Fibra CNC Madetech | P04 — Corte de blanks |
+| 703.099 com carro | Forno de Têmpera Jung Industrial | P06 — Tratamento térmico |
+| Lixadeira/politriz | Lixadeira/Politriz de cinta para metal | P08 — Polimento |
+| AF.650 | Afiador de Facas Maksiwa | P09 — Afiação |
+
+**No Setor Madeira:**
+| Equipamento no layout | Nome completo | Processo |
+|---|---|---|
+| BMS.1900.I (ou Serra) | Serra/Esquadrejadeira para madeira | P12 — Corte da tábua e cabos |
+| Router CNC (1) e (2) | Router CNC / Fresa | P13 — Fresagem e furação |
+| Lixadeira de cinta | Lixadeira de madeira | P14 — Lixamento |
+| Bancada + exaustão | Bancada de acabamento | P15 — Acabamento superficial |
+
+**Na Montagem:**
+| Equipamento no layout | Nome completo | Processo |
+|---|---|---|
+| 404-S TURBO-X | Rebitadeira Pneumática Rebitex | P21 — Rebitagem |
+| Bancada Montagem | Bancada industrial | P22/P24 — Inspeção e montagem do kit |
+
+**Na Embalagem:**
+| Equipamento no layout | Nome completo | Processo |
+|---|---|---|
+| 40×50 cm semiaut | Seladora Blister Flockcolor | P22 — Selagem (se aplicável) |
+| Bancada Embalagem | Bancada industrial | P24 — Embalagem final |
+
+**Na Inspeção/QC:**
+| Equipamento no layout | Nome completo | Processo |
+|---|---|---|
+| Bancada QC | Bancada de controle de qualidade | Inspeções gerais |
+
+### As dimensões externas
+- **24 m** = dimensão horizontal (comprimento da fábrica)
+- **16 m** = dimensão vertical (largura da fábrica)
+- Dimensões são premissas de projeto — não foi baseado em terreno real
+
+---
+
+## Cross-check — inconsistências encontradas
+
+| # | Onde | Inconsistência | Status |
+|---|---|---|---|
+| 1 | Slide 2 | "André Bapista" — falta o 't' no sobrenome | ⚠️ Erro tipográfico |
+| 2 | Slide 17 | Laser Fibra CNC no mesmo campo que "RHTC/ProfiPress" — são fornecedores misturados na tabela | ⚠️ Formatação confusa da tabela |
+| 3 | Slide 19 | Router CNC: 1 unidade | vs nosso layout SVG que mostra 2 Router CNCs — o slide é a verdade, 1 unidade |
+| 4 | Slide 9 | Mistura conteúdo de BOM e Tabela de Processos P2 na extração — provavelmente layout de duas colunas | ✅ Não é problema real |
+| 5 | Slide 20 | Tc = 0,87 min/kit não é explicitado de onde vem | ⚠️ Lacuna de transparência |
+| 6 | Slide 22 | Diz "Estampagem" nos setores (Recebimento → Estampagem → TT...) mas o processo é corte a laser, não estampagem | ⚠️ Terminologia incorreta — deveria ser "Corte Laser" |
+| 7 | Slide 26 | Fontes incompletas — só 2 visíveis, mas o projeto usou ~12 fontes | ⚠️ Slide de fontes poderia ser mais completo |
+
+---
+
+## Perguntas prováveis da banca e respostas
 
 **"Por que 1.000 kits/semana?"**
-"Representa ~50.000 kits/ano. Para uma fábrica nova do porte proposto (384 m²), é uma meta conservadora e alcançável. O modelo foi construído para ser facilmente escalável."
+"Representa 200 kits/dia — ritmo viável para uma fábrica nova de médio porte com 9 equipamentos principais. O laser opera a 49% de utilização, o que dá margem para absorver picos de demanda sem investimento adicional."
 
-**"De onde vieram os tempos-padrão?"**
-"São estimativas baseadas nas capacidades declaradas pelos fabricantes dos equipamentos e em benchmarks de operações similares. A limitação está documentada nas conclusões como primeiro ponto de melhoria — cronoanálise real seria o próximo passo."
+**"O que é AISI 420 e por que foi escolhido?"**
+"É um aço inox martensítico — o único tipo de inox que endurece com tratamento térmico. Isso permite criar fio de corte na faca, o que é impossível com AISI 304 (o inox comum). Toda faca de qualidade usa aço desta família."
 
-**"Por que laser e não prensa para cortar o aço?"**
-"O AISI 420 em espessura de 2 mm é cortado com laser fibra na indústria de cutelaria. A prensa excêntrica faz estampagem (deformação), não corte de perfil — o que exigiria um molde/punção específico para cada geometria de lâmina. Laser corta qualquer perfil programado com tolerância de ±0,05 mm."
+**"Por que FAZER cabos e tábua em vez de comprar prontos?"**
+"O cabo tem 3 furos de rebite em posições precisas — se o fornecedor errar 0,5mm, o rebite não fecha direito. A tábua precisa ter as dimensões compatíveis com a embalagem display. Fabricar internamente garante controle dimensional em ambos."
+
+**"O que é tratamento térmico e por que é necessário?"**
+"É o aquecimento da lâmina AISI 420 a 1.050–1.100°C seguido de resfriamento controlado. Isso transforma a microestrutura do aço em martensita — fase mais dura. Sem isso a lâmina fica mole e não sustenta o fio de corte."
+
+**"Por que 3 lixadeiras e 3 rebitadeiras?"**
+"As 3 lixadeiras operam em linha: desbaste grosso, lixamento médio e polimento fino — uma máquina por etapa de acabamento. As 3 rebitadeiras são 1 por posto de montagem: um para a faca, um para o garfo, e um de reserva/manutenção alternada."
 
 **"O que é o mapofluxograma e por que é diferente do fluxograma?"**
-"O fluxograma mostra a *sequência* das operações. O mapofluxograma mostra *onde no espaço físico* cada operação acontece. Ele combina os dois: o fluxo de processo sobreposto ao layout. É a ferramenta que revela perdas de movimentação — se as setas cruzam muito ou percorrem longas distâncias, o layout precisa de ajuste."
+"O fluxograma mostra a sequência das 26 operações. O mapofluxograma mostra onde no espaço físico cada operação acontece — é o fluxograma desenhado sobre o layout. Ele revela perdas de movimentação: se as setas cruzam muito ou percorrem distâncias longas, o layout precisa de ajuste."
+
+**"Como calcularam o número de lasers?"**
+"Pela fórmula: N = Db / Cap, onde Db é a demanda bruta diária (206,2 kits) e Cap é a capacidade efetiva (422 kits/dia). Cap = Td / Tc = 367,2 min / 0,87 min por kit. Td é o tempo disponível considerando eficiência e disponibilidade. Resultado: N = 0,49, arredondado para 1."
 
 **"Por que arranjo misto?"**
-"Os setores de metal e madeira têm vários equipamentos especializados processando os mesmos componentes — isso favorece o arranjo funcional (por processo). A montagem e embalagem são operações em sequência fixa com produto padronizado — isso favorece a linha ou célula. O misto captura os benefícios dos dois."
+"Setor metal e madeira usam arranjo funcional — equipamentos agrupados por processo (laser com laser, forno com forno), porque cada componente passa por uma sequência específica e os equipamentos são caros e especializados. A montagem usa arranjo em linha — operações em sequência fixa para um produto padronizado, o que minimiza movimentação e esperas."
 
-**"A área de 384 m² é suficiente?"**
-"Sim. A área requerida calculada é 260,4 m², com 67,8% de ocupação. Os 32,2% restantes (~123 m²) cobrem corredores de segurança e permitem expansão futura sem reforma estrutural."
+**"Qual é o gargalo da produção?"**
+"Formalmente identificado: o Laser Fibra CNC com 49% de utilização. Na prática, as lixadeiras de metal e rebitadeiras operam mais próximo da capacidade total. Para dobrar a produção, bastaria adicionar um segundo laser e replicar as estações de lixamento e rebitagem."
 
----
-
-## Fontes principais
-
-| Fonte | Uso |
-|---|---|
-| Página oficial Tramontina (22399036) | Produto, composição, dimensões, certificação FSC |
-| Aperam 420D (aperam.com) | Material AISI 420 para lâminas |
-| Rolmetais — AISI 420 | Densidade e tratamento térmico |
-| Madetech — CNC Fiber Pro 1530 | Laser fibra: mesa, velocidade, espessura |
-| Cecomatec — Forno 703.099 | TT: câmara, temperatura |
-| Maksiwa Store — RTC.1313 | Router CNC: área útil, velocidade, spindle |
-| Maksiwa — BMS.1900.I | Esquadrejadeira |
-| Maksiwa — AF.650 | Afiador de facas |
-| Rebitex — 404-S TURBO-X | Rebitadeira: ciclos/min, força |
-| Flockcolor — Seladora Blister | Produtividade: 4 prensadas/min |
-| Slides e guias da disciplina | Método: produto→BOM→Tabela 2→fluxograma→layout→mapo |
+**"O que são as esteiras transportadoras?"**
+"São 6 esteiras que interligam as estações de trabalho — transportam peças do laser para o forno, do forno para o polimento, e assim por diante. Correspondem aos Processos de Transporte na Tabela 2 (P03, P11, P18, P19, P20, P25)."
